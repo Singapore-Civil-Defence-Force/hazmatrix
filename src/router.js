@@ -42,11 +42,13 @@ export default new VueRouter({
     },
 
     // NotFound Client side 404 route
-    // {
-    //   // Make this a wild card so any invalid name comes here
-    //   path: "/**",
-    //   name: "*",
-    //   component: () => import("../views/NotFound.vue"),
-    // },
+    {
+      // Make this a wild card so any invalid name comes here
+      path: "/**",
+      name: "*",
+      // @todo Might add a 404 component instead of just redirecting back to home page
+      // component: () => import("../views/NotFound.vue"),
+      redirect: { name: "home" },
+    },
   ],
 });
