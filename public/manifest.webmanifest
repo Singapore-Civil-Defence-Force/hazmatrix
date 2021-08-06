@@ -1,7 +1,7 @@
 {
-  "name": "SCDF-ims",
-  "short_name": "SCDF-ims",
-  "description": "SCDF ims PWA",
+  "name": "SCDF-HazMatrix",
+  "short_name": "HazMatrix",
+  "description": "SCDF HazMatrix PWA",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",

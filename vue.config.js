@@ -37,11 +37,6 @@ const gitValues = {
 };
 
 module.exports = {
-  devServer: {
-    // Enable https by default as ios requires https connections to give camera access
-    https: true,
-  },
-
   // Some useful articles for reference on Vue+PWA
   // https://medium.com/@myeris/getting-started-with-pwas-an-ios-nightmare-f0712c2f950
   // https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130
