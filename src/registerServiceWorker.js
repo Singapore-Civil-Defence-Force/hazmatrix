@@ -3,6 +3,7 @@
 import { register } from "register-service-worker";
 
 if (process.env.NODE_ENV === "production") {
+  // @todo Test if service worker is valid
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
       console.log(
