@@ -37,6 +37,10 @@ const gitValues = {
 };
 
 module.exports = {
+  // Only use /hazmatrix/ default baseURL/publicPath when building for production to deploy on Github pages
+  // Because the deployed site on Github pages is https://singapore-civil-defence-force.github.io/hazmatrix/
+  publicPath: process.env.NODE_ENV === "production" ? "/hazmatrix/" : "/",
+
   // Some useful articles for reference on Vue+PWA
   // https://medium.com/@myeris/getting-started-with-pwas-an-ios-nightmare-f0712c2f950
   // https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130
