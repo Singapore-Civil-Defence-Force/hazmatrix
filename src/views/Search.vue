@@ -10,6 +10,7 @@
           <b>Search (Chemical name or UN Number)</b>
 
           <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
+          <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
           <input
             v-autofocus
             type="text"
@@ -26,9 +27,8 @@
       <div v-for="result in results" :key="result.item.name" class="column">
         <div class="card px-4">
           <!-- Display the card content in a router-link element to make the card's content section clickable -->
-          <!-- @todo Use actual result ID -->
           <router-link
-            :to="{ name: 'chemical', params: { id: 1 } }"
+            :to="{ name: 'chemical', params: { id: result.item.id } }"
             class="card-content content"
           >
             <h1>{{ result.item.name }}</h1>
@@ -37,14 +37,13 @@
               Formula: <b>{{ result.item.formula || "NA" }}</b>
             </p>
             <p class="subtitle">
-              UN Number: <b>{{ result.item.un }}</b>
+              UN Number: <b>{{ result.item.un || "NA" }}</b>
             </p>
           </router-link>
 
-          <!-- @todo Use actual result ID -->
           <footer
             class="card-footer"
-            @click="shareViaWebShare(1, result.item.name)"
+            @click="shareViaWebShare(result.item.id, result.item.name)"
           >
             <span class="card-footer-item" style="cursor: pointer; color: pink">
               Share
@@ -63,7 +62,7 @@
 </template>
 
 <script>
-import matrix from "../../data.json";
+import chemicals from "../../data/chemicals.json";
 import Fuse from "fuse.js";
 
 export default {
@@ -81,6 +80,7 @@ export default {
   data() {
     return {
       search_options: {
+        // @todo Allow search for formula?
         // Search in `name` and in `un` number array
         keys: ["name", "un"],
       },
@@ -92,7 +92,7 @@ export default {
   computed: {
     // Update fuse object when search options is updated
     fuse() {
-      return new Fuse(matrix, this.search_options);
+      return new Fuse(Object.values(chemicals), this.search_options);
     },
 
     // Continously search as user input changes

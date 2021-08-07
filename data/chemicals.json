@@ -1,27 +1,32 @@
-[
-  {
+{
+  "1": {
+    "id": "1",
     "name": "Acetic acid (ethanoic acid)",
     "formula": "CH3COOH",
     "un": [2789, 2790]
   },
-  {
+  "2": {
+    "id": "2",
     "name": "Acetone",
     "formula": "C3H6O",
     "un": [1090]
   },
-  {
+  "3": {
+    "id": "3",
     "name": "Acetylene",
     "formula": "C2H2",
     "un": [1001, 3374]
   },
-  {
+  "4": {
+    "id": "4",
     "name": "Aliphatic hydrocarbon",
     "formula": null,
     "un": null
   },
-  {
+  "5": {
+    "id": "5",
     "name": "Allene",
     "formula": null,
     "un": null
   }
-]
+}

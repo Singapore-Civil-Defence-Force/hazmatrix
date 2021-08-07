@@ -112,7 +112,6 @@ export default {
       // Get the current user's email
       // @todo Slice away the "@scdf.gov.sg"
       // const userEmail = firebase.auth().currentUser.email;
-      const userEmail = "JJ@scdf.gov.sg";
 
       // Break out of function if itemID is blank or quantity is not set
       if (

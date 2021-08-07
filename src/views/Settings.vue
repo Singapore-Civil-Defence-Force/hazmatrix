@@ -84,7 +84,7 @@
 <script>
 import loader from "./Loader";
 import version from "./Version";
-import { ffetch, getAuthHeader } from "../utils/fetch";
+// import { ffetch, getAuthHeader } from "../utils/fetch";
 
 export default {
   name: "settings",
