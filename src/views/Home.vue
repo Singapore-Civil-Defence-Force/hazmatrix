@@ -9,7 +9,7 @@
       <br />
 
       <!-- Allow multiple line in desktop / landscape mode -->
-      <div class="columns is-multiline">
+      <div class="columns is-multiline" style="width: 90vw">
         <div class="column">
           <button
             v-if="scanQR"
@@ -64,20 +64,23 @@
           </router-link>
         </div>
       </div>
+
+      <version />
     </div>
   </div>
 </template>
 
 <script>
 import loader from "./Loader";
-import { ffetch, getAuthHeader } from "../utils/fetch";
+import version from "./Version";
+// import { ffetch, getAuthHeader } from "../utils/fetch";
 
 import QRCodeScanner from "./QRCodeScanner";
 
 export default {
   name: "home",
 
-  components: { loader, QRCodeScanner },
+  components: { loader, version, QRCodeScanner },
 
   props: {
     // @todo Dont leave as prop, since should not mutate prop

@@ -6,7 +6,6 @@
   >
     Version: {{ gitBranch + " " + commitHash.slice(0, 6).toString() }}
     <br />
-    <!-- @todo Problematic if using CI/CD where build server location is not in SG -->
     Build Time: {{ buildTime }}
   </div>
 </template>
@@ -16,9 +15,13 @@ export default {
   name: "version",
 
   data() {
+    // Environment variables injected in by webpack, configured in vue.config.js
     return {
-      // Environment variables injected in by webpack, configured in vue.config.js
-      buildTime: process.env.buildTime,
+      // buildTime is ISO string format, so convert to Date and remove singapore string part after converting to user's locale (assumed to be SG)
+      buildTime: new Date(process.env.buildTime)
+        .toString()
+        .replace(" (Singapore Standard Time)", ""),
+
       commitHash: process.env.commitHash,
       gitBranch: process.env.gitBranch,
     };

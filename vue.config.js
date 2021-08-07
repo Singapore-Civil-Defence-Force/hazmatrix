@@ -74,8 +74,8 @@ module.exports = {
       // https://webpack.js.org/plugins/environment-plugin/
       new webpack.EnvironmentPlugin({
         ...gitValues,
-        // @todo Problematic if using CI/CD where build server location is not in SG
-        buildTime: new Date().toLocaleString(),
+        // CI/CD build server might not be in SG, so store date as ISO string, to create a new Date object when viewing to show time in user's locale
+        buildTime: new Date(),
       })
     );
   },
