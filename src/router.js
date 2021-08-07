@@ -32,6 +32,11 @@ export default new VueRouter({
       path: "/home",
       name: "home",
       component: () => import("@/views/Home.vue"),
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: () => import("@/views/Search.vue"),
       // Pass URL query parameters as prop to component
       props: (route) => route.query,
     },

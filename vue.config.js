@@ -41,6 +41,11 @@ module.exports = {
   // Because the deployed site on Github pages is https://singapore-civil-defence-force.github.io/hazmatrix/
   publicPath: process.env.NODE_ENV === "production" ? "/hazmatrix/" : "/",
 
+  // Need to serve over HTTPS to test the Web Share API for sharing links with other personnel
+  devServer: {
+    https: true,
+  },
+
   // Some useful articles for reference on Vue+PWA
   // https://medium.com/@myeris/getting-started-with-pwas-an-ios-nightmare-f0712c2f950
   // https://itnext.io/pwa-splash-screen-and-icon-generator-a74ebb8a130

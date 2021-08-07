@@ -1,165 +1,117 @@
 <template>
   <div style="text-align: left">
-    <!-- Include the side nav bar component -->
+    <!-- @todo Include the side nav bar component -->
 
-    <!-- Show full screen loader before search result is loaded -->
-    <loader v-if="searching" />
+    <!-- Allow multiple line in desktop / landscape mode -->
+    <div class="cloumns is-multiline">
+      <!-- is-full to fill up column space when in desktop / landscape mode -->
+      <div class="column is-full">
+        <label>
+          <b>Search (Chemical name or UN Number)</b>
 
-    <!-- Search results -->
-    <div v-else class="cloumns">
-      <div class="column mx-4 mt-4 pb-0">Number: {{ num }}</div>
-
-      <div v-if="search_result.reported" class="column">
-        <div class="columns">
-          <div class="column mx-4 pb-0">
-            Reported: <b>{{ search_result.reported }}</b> times
-          </div>
-
-          <div class="column content">
-            <div style="padding-left: 1em; font-weight: bold">
-              Recent Reasons:
-            </div>
-            <!-- @todo Remove the fixed view height -->
-            <div style="height: 50vh; overflow-y: scroll">
-              <ol>
-                <li
-                  class="content"
-                  v-for="(reason, i) in search_result.reasons"
-                  :key="i"
-                >
-                  {{ reason }}
-                </li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- Button to report currently searched number, at the bottom center of screen -->
-          <!-- @todo Remove the fixed position and use bulma columns force bottom class -->
-          <div
-            class="column"
-            style="
-              position: absolute;
-              bottom: 2em;
-              right: 0;
-              left: 0;
-              margin: 1em;
-            "
-          >
-            <div class="columns">
-              <div class="column">
-                <router-link
-                  :to="{ name: 'report', params: { num: this.num } }"
-                  class="button is-fullwidth is-light is-danger"
-                >
-                  report this number
-                </router-link>
-              </div>
-              <div class="column">
-                <router-link
-                  :to="{ name: 'home' }"
-                  class="button is-fullwidth is-light is-success"
-                >
-                  back
-                </router-link>
-              </div>
-            </div>
-          </div>
-        </div>
+          <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
+          <input
+            v-autofocus
+            type="text"
+            v-model="search_input"
+            placeholder="E.g. Acetone or 1090"
+            required
+            class="input"
+            style="width: 100%"
+          />
+        </label>
       </div>
 
-      <!-- Card to show when the number has not reported before -->
-      <!-- Setting height to 90vh to give space to number on top, if 100vh here then it will be scrollable (we dont want that) -->
-      <div v-else class="column center" style="height: 90vh">
-        <div class="card">
-          <div class="card-content">
-            <p class="title">
-              Great news, this number has not been reported before!
+      <!-- Search results -->
+      <div v-for="result in results" :key="result.item.name" class="column">
+        <div class="card px-4">
+          <!-- Display the card content in a router-link element to make the card's content section clickable -->
+          <!-- @todo Use actual result ID -->
+          <router-link
+            :to="{ name: 'chemical', params: { id: 1 } }"
+            class="card-content content"
+          >
+            <h1>{{ result.item.name }}</h1>
+
+            <p class="subtitle mb-1">
+              Formula: <b>{{ result.item.formula || "NA" }}</b>
             </p>
+            <p class="subtitle">
+              UN Number: <b>{{ result.item.un }}</b>
+            </p>
+          </router-link>
 
-            <p class="subtitle pt-4">- Bad Numbers Team</p>
-          </div>
-
-          <footer class="card-footer">
-            <span class="card-footer-item">
-              <router-link
-                :to="{ name: 'report', params: { num: this.num } }"
-                style="color: pink"
-              >
-                Report this number
-              </router-link>
-            </span>
-
-            <span class="card-footer-item">
-              <router-link :to="{ name: 'home' }" style="color: green">
-                Go Back
-              </router-link>
+          <!-- @todo Use actual result ID -->
+          <footer
+            class="card-footer"
+            @click="shareViaWebShare(1, result.item.name)"
+          >
+            <span class="card-footer-item" style="cursor: pointer; color: pink">
+              Share
             </span>
           </footer>
         </div>
+      </div>
+
+      <!-- Show no results UI if no results and search input is not empty -->
+      <div v-if="results.length === 0 && search_input !== ''" class="center">
+        Nothing matched your input
+        <!-- @todo Allow user to report this as an issue to get this new item added or something -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import loader from "./Loader";
-import firebase from "firebase/app";
-import { ffetch, getAuthHeader } from "../utils/fetch";
+import matrix from "../../data.json";
+import Fuse from "fuse.js";
 
 export default {
   name: "search",
 
-  components: { loader },
+  // @todo Allow sharing of searches, before you choose a chemical, in fact every stage should be shareable
+  // props: ["num"],
 
-  props: ["num"],
+  // @todo Only if search view is shareable
+  // Run search method on component creation
+  // created() {
+  //   this.search();
+  // },
 
   data() {
     return {
-      // Variable used to track if search result is loaded
-      searching: true,
-
-      search_result: {
-        // 0 because, this will be the number of times it has been reported, and 0 represents not reported before which will be the default
-        // Actually change to something to else to show a loading screen? With CSS preferably
-        reported: 0,
+      search_options: {
+        // Search in `name` and in `un` number array
+        keys: ["name", "un"],
       },
+
+      search_input: "",
     };
   },
 
-  // Run search method on component creation
-  created() {
-    this.search();
+  computed: {
+    // Update fuse object when search options is updated
+    fuse() {
+      return new Fuse(matrix, this.search_options);
+    },
+
+    // Continously search as user input changes
+    results() {
+      // Limit max number of returned search results to ensure not too many results are returned (esp for lower spec mobile devices),
+      // especially at the start of the search where alot of results will be matched when only 1 - 4 characters are entered
+      return this.fuse.search(this.search_input, { limit: 20 });
+    },
   },
 
+  // @todo Fn to report missing chemical
   methods: {
-    async search() {
-      // If have additional validation, make it into a utils module and import to reuse since report view will also need
-      // HTML form validation will have already taken care of this
-      // if (!/[+][0-9]+/.test(this.num)) return;
-
-      try {
-        const response = await ffetch(
-          process.env.NODE_ENV === "production"
-            ? `https://api-dw64m6z4wq-uc.a.run.app/search/${this.num}`
-            : `http://localhost:3000/search/${this.num}`,
-          {
-            method: "GET",
-            headers: { Authorization: await getAuthHeader(firebase.auth) },
-          }
-        ).then((response) => response.json());
-
-        if (!response.ok) throw new Error(response.error);
-
-        // Set response onto search_result obj of this vue component for auto UI update
-        this.search_result = response;
-
-        // Remove loader once search result is received
-        this.searching = false;
-      } catch (error) {
-        this.searching = false;
-        console.error(error);
-        alert("Something went wrong!");
-      }
+    shareViaWebShare(chemicalID, chemicalName) {
+      // @todo Await this to show in UI when sharing succeeded
+      navigator.share({
+        title: "Share this chemical",
+        text: chemicalName,
+        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${chemicalID}`,
+      });
     },
   },
 };

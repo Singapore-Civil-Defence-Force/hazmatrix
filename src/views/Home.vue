@@ -10,44 +10,6 @@
 
       <!-- Allow multiple line in desktop / landscape mode -->
       <div class="columns is-multiline">
-        <!-- is-full to fill up column space when in desktop / landscape mode -->
-        <div class="column is-full">
-          <label>
-            <!-- @todo Use after the mobile width is fixed -->
-            <!-- <b>Item ID</b> -->
-            <b>Enter selected item's ID</b>
-
-            <!-- Pattern matching version for a any number of digits and whitespaces -->
-            <input
-              type="number"
-              pattern="[\s0-9]+"
-              v-model="itemID"
-              placeholder="E.g. 1234"
-              required
-              class="input"
-              style="width: 100%"
-            />
-          </label>
-        </div>
-
-        <!-- is-full to fill up column space when in desktop / landscape mode -->
-        <div class="column is-full">
-          <label>
-            <b>Quantity</b>
-
-            <!-- Pattern matching version for a any number of digits and whitespaces -->
-            <input
-              type="number"
-              pattern="[\s0-9]+"
-              v-model="quantity"
-              placeholder="E.g. 1"
-              required
-              class="input"
-              style="width: 100%"
-            />
-          </label>
-        </div>
-
         <div class="column">
           <button
             v-if="scanQR"
@@ -64,6 +26,15 @@
           >
             Scan QR
           </button>
+        </div>
+
+        <div class="column">
+          <router-link
+            :to="{ name: 'search' }"
+            class="button is-light is-fullwidth is-success"
+          >
+            Search
+          </router-link>
         </div>
 
         <div class="column">
