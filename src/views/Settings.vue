@@ -84,7 +84,6 @@
 <script>
 import loader from "./Loader";
 import version from "./Version";
-import firebase from "firebase/app";
 import { ffetch, getAuthHeader } from "../utils/fetch";
 
 export default {
@@ -93,11 +92,6 @@ export default {
   components: { loader, version },
 
   data() {
-    // Get current user's email
-    const userEmail = firebase.auth().currentUser.email;
-    // Slice away "@scdf.gov.sg" to get user's default name (front part of email)
-    const name = userEmail.slice(0, userEmail.length - 12);
-
     // @todo Load this from DB? Or is this part of a custom claims value of RBAC
     const userFirestationID = 2;
 
@@ -106,7 +100,7 @@ export default {
 
       // Original data used to compare if user made any changes
       original: { name, userFirestationID },
-      name,
+      name: "JJ",
       userFirestationID,
 
       // @todo Load this from DB and cache in vuex store
@@ -136,89 +130,40 @@ export default {
     },
 
     // Async function to sent API server a help request for it to notify admins
-    async help() {
-      // Get the current user's email
-      const userEmail = firebase.auth().currentUser.email;
+    // async help() {
+    //   // Get the current user's email
+    //   const userEmail = firebase.auth().currentUser.email;
 
-      // Show loader once validation is completed and before calling the API
-      this.loader = true;
+    //   // Show loader once validation is completed and before calling the API
+    //   this.loader = true;
 
-      try {
-        const response = await ffetch(
-          process.env.NODE_ENV === "production"
-            ? "https://api-pivlacyi5a-as.a.run.app/help"
-            : "http://localhost:3000/help",
+    //   try {
+    //     const response = await ffetch(
+    //       process.env.NODE_ENV === "production"
+    //         ? "https://api-pivlacyi5a-as.a.run.app/help"
+    //         : "http://localhost:3000/help",
 
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: await getAuthHeader(firebase.auth),
-            },
-          },
-          { user: userEmail }
-        ).then((response) => response.json());
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           Authorization: await getAuthHeader(firebase.auth),
+    //         },
+    //       },
+    //       { user: userEmail }
+    //     ).then((response) => response.json());
 
-        if (!response.ok) throw new Error(response.error);
+    //     if (!response.ok) throw new Error(response.error);
 
-        alert("Admins will contact you via your email asap!");
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong:\n" + error.message);
-      } finally {
-        // Always ensure the full screen loader is removed
-        this.loader = false;
-      }
-    },
-
-    // Async function to save settings
-    async saveSettings() {
-      // Get the current user's email
-      const userEmail = firebase.auth().currentUser.email;
-
-      // Show loader once validation is completed and before calling the API
-      this.loader = true;
-
-      try {
-        //   const response = await ffetch(
-        //     process.env.NODE_ENV === "production"
-        //       ? "https://api-pivlacyi5a-as.a.run.app/settings/save"
-        //       : "http://localhost:3000/settings/save",
-
-        //     {
-        //       method: "POST",
-        //       headers: {
-        //         "Content-Type": "application/json",
-        //         Authorization: await getAuthHeader(firebase.auth),
-        //       },
-        //     },
-        //     {
-        //       // @todo Might not need this as email can be read from token
-        //       user: userEmail,
-
-        //       // @todo Might not store both if only 1 is updated
-        //       name: this.name,
-        //       userFirestationID: this.userFirestationID,
-        //     }
-        //   ).then((response) => response.json());
-
-        //   if (!response.ok) throw new Error(response.error);
-
-        // @todo Make sure this is not just a ref that will change when the inner value changes too
-        this.original = {
-          name: this.name,
-          userFirestationID: this.userFirestationID,
-        };
-
-        alert("Settings saved");
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong:\n" + error.message);
-      } finally {
-        // Always ensure the full screen loader is removed
-        this.loader = false;
-      }
-    },
+    //     alert("Admins will contact you via your email asap!");
+    //   } catch (error) {
+    //     console.error(error);
+    //     alert("Something went wrong:\n" + error.message);
+    //   } finally {
+    //     // Always ensure the full screen loader is removed
+    //     this.loader = false;
+    //   }
+    // },
   },
 };
 </script>

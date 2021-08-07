@@ -76,9 +76,12 @@
       <!-- @todo Might want to give more space on top -->
       <div class="columns is-mobile">
         <div class="column">
-          <button @click="logout" class="button is-light is-fullwidth">
-            logout
-          </button>
+          <router-link
+            :to="{ name: 'settings' }"
+            class="button is-light is-fullwidth"
+          >
+            settings
+          </router-link>
         </div>
 
         <div class="column">
@@ -86,7 +89,7 @@
             :to="{ name: 'settings' }"
             class="button is-light is-fullwidth"
           >
-            settings
+            next..
           </router-link>
         </div>
       </div>
@@ -95,10 +98,7 @@
 </template>
 
 <script>
-import logout from "../utils/logout";
-
 import loader from "./Loader";
-import firebase from "firebase/app";
 import { ffetch, getAuthHeader } from "../utils/fetch";
 
 import QRCodeScanner from "./QRCodeScanner";
@@ -128,8 +128,6 @@ export default {
   },
 
   methods: {
-    logout,
-
     setItemID(detectedCode) {
       // Close QR Code scanner once code has been detected
       this.scanQR = false;
@@ -139,7 +137,8 @@ export default {
     async take() {
       // Get the current user's email
       // @todo Slice away the "@scdf.gov.sg"
-      const userEmail = firebase.auth().currentUser.email;
+      // const userEmail = firebase.auth().currentUser.email;
+      const userEmail = "JJ@scdf.gov.sg";
 
       // Break out of function if itemID is blank or quantity is not set
       if (
@@ -153,27 +152,27 @@ export default {
       this.loader = true;
 
       try {
-        const response = await ffetch(
-          process.env.NODE_ENV === "production"
-            ? "https://api-pivlacyi5a-as.a.run.app/take"
-            : "http://localhost:3000/take",
+        // const response = await ffetch(
+        //   process.env.NODE_ENV === "production"
+        //     ? "https://api-pivlacyi5a-as.a.run.app/take"
+        //     : "http://localhost:3000/take",
 
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: await getAuthHeader(firebase.auth),
-            },
-          },
-          {
-            item: this.itemID,
-            quantity: this.quantity,
-            user: userEmail,
-            // reason: this.reason,
-          }
-        ).then((response) => response.json());
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       Authorization: await getAuthHeader(firebase.auth),
+        //     },
+        //   },
+        //   {
+        //     item: this.itemID,
+        //     quantity: this.quantity,
+        //     user: userEmail,
+        //     // reason: this.reason,
+        //   }
+        // ).then((response) => response.json());
 
-        if (!response.ok) throw new Error(response.error);
+        // if (!response.ok) throw new Error(response.error);
 
         // Reset inputs to allow users to quickly take multiple items
         this.itemID = "";

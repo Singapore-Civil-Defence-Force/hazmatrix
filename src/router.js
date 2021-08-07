@@ -18,16 +18,16 @@ export default new VueRouter({
    * which is lazy-loaded when the route is visited.
    */
   routes: [
-    {
-      path: "/",
-      name: "login",
-      component: () => import("@/views/Login.vue"),
-    },
-    {
-      path: "/phone-login",
-      name: "phone-login",
-      component: () => import("@/views/PhoneLogin.vue"),
-    },
+    // {
+    //   path: "/",
+    //   name: "login",
+    //   component: () => import("@/views/Login.vue"),
+    // },
+    // {
+    //   path: "/phone-login",
+    //   name: "phone-login",
+    //   component: () => import("@/views/PhoneLogin.vue"),
+    // },
     {
       path: "/home",
       name: "home",
