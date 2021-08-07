@@ -41,6 +41,12 @@ export default new VueRouter({
       props: (route) => route.query,
     },
     {
+      path: "/chemical/:id",
+      props: true,
+      name: "chemical",
+      component: () => import("@/views/Chemical.vue"),
+    },
+    {
       path: "/settings",
       name: "settings",
       component: () => import("@/views/Settings.vue"),

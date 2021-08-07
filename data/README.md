@@ -7,10 +7,14 @@
     - Store all the name, formula and UN number of chemicals
     - Used for searching for a specific chemical by name or un number
     - Root object keyed with chemical ID
-- equipments.json
+- detection_equipments.json
+    - Store the equipments' name, operating pressure and addtional information if any
+    - Showned in 
+    - Root object keyed with detection equipment ID
+- mitigation_equipments.json
     - Store the equipments' name, mitigating limitation, operating pressure, working temperature and if it can be used in a flammable environment
     - Showned in 
-    - Root object keyed with equipment ID
+    - Root object keyed with mitigation equipment ID
 - mitigation.json
     - Mapping from chemical ID to equipment ID
     - Root object keyed with chemical ID
