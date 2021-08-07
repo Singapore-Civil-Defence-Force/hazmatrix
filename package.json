@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "deploy-firebase-hosting": "firebase deploy --only hosting:scdf-ims",
-    "deploy": "npm run build && npm run deploy-firebase-hosting",
+    "build": "vue-cli-service build --dest ./docs",
+    "deploy-to-github": "node ./deploy-to-github-pages.js",
+    "deploy": "npm run build && npm run deploy-to-github",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
