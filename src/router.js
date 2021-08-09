@@ -47,6 +47,12 @@ export default new VueRouter({
       component: () => import("@/views/Chemical.vue"),
     },
     {
+      path: "/equipment/:id",
+      props: true,
+      name: "equipment",
+      component: () => import("@/views/Equipment.vue"),
+    },
+    {
       path: "/settings",
       name: "settings",
       component: () => import("@/views/Settings.vue"),
