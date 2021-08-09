@@ -11,42 +11,97 @@
   },
   "2": {
     "name": "Leak sealing lance (Chloroprene rubber)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      [
+        "Leaking opening and width",
+        [
+          "Wedge bag 6: 1.5-4.5 cm, 6-9 cm",
+          "Wedge bag 8: 1.5-4.5 cm, 8-12 cm",
+          "Wedge bag 11: 3-6 cm, 11-17 cm",
+          "Cone bag 7: Ø 3-9 cm"
+        ]
+      ]
+    ],
     "Operating Pressure": "1.5 Bar",
     "Working Temperature": "-55°C to 85°C",
     "flammable environment": "Yes"
   },
   "3": {
     "name": "Mini leak sealing bag (Chloroprene rubber)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      "For container Ø 10-90 cm",
+      [
+        "Size and sealing area",
+        [
+          "LDK 10/10: 15 x 15 x 1.2 cm, 9.5 x 9.5 cm",
+          "LDK 10/25: 15 x 31 x 1.2 cm, 9.5 x 25.5 cm",
+          "LDK 20/20: 25 x 25 x 1.2 cm, 19.5 x 19.5 cm"
+        ]
+      ]
+    ],
     "Operating Pressure": "1.5 Bar",
     "Working Temperature": "-40°C to 95°C",
     "flammable environment": "Yes"
   },
   "4": {
     "name": "Leak sealing bag (Chloroprene rubber)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      "For container Ø > 50 cm",
+      "Size: 61.5 x 30 x 2 cm",
+      "Sealing area: 50 x 30 cm",
+      "PVC acid protective cover",
+      "Tension and extension belt: 10 m",
+      "2 Sealing plates: 60 x 30 x 3 cm"
+    ],
     "Operating Pressure": "1.5 Bar",
     "Working Temperature": "-40°C to 90°C",
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "5": {
     "name": "Leak drainage bag (Natural rubber)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      "For container Ø > 50 cm",
+      "Size: 62 x 30 x 6 cm",
+      "Sealing area: 50 x 30 cm",
+      "Drainage space: 40 x 20 x 3.5 cm",
+      "Tension and extension belt: 10 m",
+      "Acid drain hose: 5 m"
+    ],
     "Operating Pressure": "1.5 Bar",
     "Working Temperature": "-40°C to 90°C",
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "6": {
     "name": "Pipe sealing bag (Natural rubber)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      "For pipe/drain Ø 10-120 cm",
+      [
+        "Size and pipe/drain Ø",
+        [
+          "PDK 10/20: 63.5 x 9.7 cm, 10-20 cm",
+          "PDK 20/50: 70 x 19.5 cm, 20-50 cm",
+          "PDK 50/80: 72 x 45 cm, 50-80 cm (store)",
+          "PDK 50/120: 107 x 45 cm, 50-120 cm (store)"
+        ]
+      ],
+      [
+        "Drainage hose",
+        ["1 x 2.5” Storz x 10 m (store)", "1 x 4” Storz x 10 m (store)"]
+      ]
+    ],
     "Operating Pressure": "1.5 Bar",
     "Working Temperature": "-40°C to 70°C",
     "flammable environment": "Yes"
   },
   "7": {
     "name": "Emergency response containment vessel (ERCV) (Salvage Cylinder)",
-    "Mitigation Limitations": [],
+    "Mitigation Limitations": [
+      "Cylinder size limit",
+      "Length: < 90 cm (inclusive of cap)",
+      "Diameter: < 25 cm",
+      "Only for metallic containers with no explosive mixture, and cylinders that are not damaged by fire or explosion-damage.",
+      "Cylinders cannot be liquid-full."
+    ],
     "Operating Pressure": "10 Bar",
     "Working Temperature": "20°C to 50°C",
     "flammable environment": "Yes"

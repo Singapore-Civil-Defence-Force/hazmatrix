@@ -12,10 +12,20 @@
 
           <ul>
             <li
-              v-for="limitation in equipment['Mitigation Limitations']"
-              :key="limitation"
+              v-for="(limitation, i) in equipment['Mitigation Limitations']"
+              :key="i"
             >
-              {{ limitation }}
+              <!-- Limitation can either be a simple String or a "tuple" of [String, Array<String>] -->
+              <!-- Useful for when limitations are grouped together, and thus need nesting in the UI with another unordered list -->
+              <div v-if="Array.isArray(limitation)">
+                {{ limitation[0] }}
+
+                <ul v-for="(nestedLimitation, i) in limitation[1]" :key="i">
+                  <li>{{ nestedLimitation }}</li>
+                </ul>
+              </div>
+
+              <span v-else>{{ limitation }}</span>
             </li>
           </ul>
         </details>
