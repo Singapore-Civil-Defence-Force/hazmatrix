@@ -9,17 +9,25 @@
         <label>
           <b>Search (Chemical name or UN Number)</b>
 
-          <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
-          <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
-          <input
-            v-autofocus
-            type="text"
-            v-model="search_input"
-            placeholder="E.g. Acetone or 1090"
-            required
-            class="input"
-            style="width: 100%"
-          />
+          <div class="field has-addons">
+            <div class="control is-expanded">
+              <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
+              <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
+              <input
+                v-autofocus
+                ref="searchField"
+                type="text"
+                v-model="search_input"
+                placeholder="E.g. Acetone or 1090"
+                required
+                class="input"
+                style="width: 100%"
+              />
+            </div>
+            <div class="control">
+              <button class="button" @click="clearSearchInput">clear</button>
+            </div>
+          </div>
         </label>
       </div>
 
@@ -105,6 +113,12 @@ export default {
 
   // @todo Fn to report missing chemical
   methods: {
+    // Clear the search input box and re-focus on the search field
+    clearSearchInput() {
+      this.search_input = "";
+      this.$refs.searchField.focus();
+    },
+
     shareViaWebShare(chemicalID, chemicalName) {
       // @todo Await this to show in UI when sharing succeeded
       navigator.share({
