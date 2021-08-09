@@ -24,30 +24,34 @@
       <details class="column">
         <summary><b>Detection</b></summary>
 
-        <div
-          v-for="equipment in detection_equipments"
-          :key="equipment.id"
-          class="card px-4 my-4"
-        >
-          <!-- Display the card content in a router-link element to make the card's content section clickable -->
-          <!-- @todo Click into Equipment page? -->
-          <router-link
-            :to="{ name: 'equipment', params: { id: equipment.id } }"
-            class="card-content content"
+        <!-- Show equipments if any -->
+        <!-- @todo Remove this if all data is filled -->
+        <div v-if="detection_equipments && detection_equipments.length > 0">
+          <div
+            v-for="equipment in detection_equipments"
+            :key="equipment.id"
+            class="card px-4 my-4"
           >
-            <h3>{{ all_detection_equipments[equipment.id].name }}</h3>
-
-            <p
-              v-for="(key, i) in all_detection_equipments[equipment.id].keys"
-              :key="i"
-              class="subtitle mb-1"
+            <!-- Display the card content in a router-link element to make the card's content section clickable -->
+            <router-link
+              :to="{ name: 'equipment', params: { id: equipment.id } }"
+              class="card-content content"
             >
-              {{ key }}: <b>{{ equipment.values[i] }}</b>
-            </p>
-          </router-link>
+              <h3>{{ all_detection_equipments[equipment.id].name }}</h3>
+
+              <p
+                v-for="(key, i) in all_detection_equipments[equipment.id].keys"
+                :key="i"
+                class="subtitle mb-1"
+              >
+                {{ key }}: <b>{{ equipment.values[i] }}</b>
+              </p>
+            </router-link>
+          </div>
         </div>
 
-        <!-- @todo Optionally show Null if nothing instead of just blank -->
+        <!-- Show `Nothing Available` if nothing instead of just blank -->
+        <h3 v-else class="subtitle px-5 mt-4 mb-0">Nothing Available</h3>
       </details>
 
       <div class="column">
@@ -57,23 +61,30 @@
       <details class="column">
         <summary><b>Mitigation</b></summary>
 
-        <div
-          v-for="equipment in mitigation_equipments"
-          :key="equipment.id"
-          class="card px-4 my-4"
-        >
-          <!-- Display the card content in a router-link element to make the card's content section clickable -->
-          <!-- @todo Add coloring just like the Mitigation matrix? -->
-          <!-- @todo Click into Equipment page? -->
-          <router-link
-            :to="{ name: 'equipment', params: { id: equipment.id } }"
-            class="card-content content"
+        <!-- Show equipments if any -->
+        <!-- @todo Remove this if all data is filled -->
+        <div v-if="mitigation_equipments && mitigation_equipments.length > 0">
+          <div
+            v-for="equipment in mitigation_equipments"
+            :key="equipment.id"
+            class="card px-4 my-4"
           >
-            <h3>{{ all_mitigation_equipments[equipment.id].name }}</h3>
+            <!-- Display the card content in a router-link element to make the card's content section clickable -->
+            <!-- @todo Add coloring just like the Mitigation matrix? -->
+            <!-- @todo Click into Equipment page? -->
+            <router-link
+              :to="{ name: 'equipment', params: { id: equipment.id } }"
+              class="card-content content"
+            >
+              <h3>{{ all_mitigation_equipments[equipment.id].name }}</h3>
 
-            <p class="subtitle mb-1">{{ equipment.note }}</p>
-          </router-link>
+              <p class="subtitle mb-1">{{ equipment.note }}</p>
+            </router-link>
+          </div>
         </div>
+
+        <!-- Show `Nothing Available` if nothing instead of just blank -->
+        <h3 v-else class="subtitle px-5 mt-4 mb-0">Nothing Available</h3>
       </details>
     </div>
   </div>
