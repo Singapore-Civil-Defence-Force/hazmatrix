@@ -1,11 +1,31 @@
 <template>
   <div id="app">
-    <!-- Router view for the main view -->
-    <router-view />
+    <!-- Using keep-alive to cache the pages to
+        - optimize their rendering time when navigating back and forth a set of views
+        - keep UI and state of view between navigations,
+          - e.g. keep details tag open/close after clicking into a specific equipment and going back to see the chemical view
+          - e.g. keep the page scroll location so that it feels more natural after going back with a back button.
+        
+        - Only cache maximum of 4 views to prevent using too much memory and crashing site especially on less powerful mobile devices
+    -->
+    <keep-alive max="4">
+      <!-- key to force vue to create new version of a cached component if the routes/params is different -->
+      <router-view :key="$route.fullPath" />
+    </keep-alive>
+
+    <!-- @todo Conditionally cache views on a route by route basis -->
+    <!--
+      <keep-alive v-if="$route.meta.keepAlive" max="4">
+        <router-view :key="$route.fullPath" />
+      </keep-alive>
+      <router-view v-else />
+    -->
   </div>
 </template>
 
 <script>
+// Parent component that contains and switches between all the view components using view router's router-view
+
 export default {
   name: "App",
 };
