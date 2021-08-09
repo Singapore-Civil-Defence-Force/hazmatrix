@@ -1,26 +1,54 @@
 {
   "1": {
-    "name": "Flange drainage bag (Chloroprene rubber)"
+    "name": "Flange drainage bag (Chloroprene rubber)",
+    "Mitigation Limitations": [
+      "Flange connection: Ø < 21 cm",
+      "Pipe: Ø < 10 cm"
+    ],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-55°C to 85°C",
+    "flammable environment": "Yes"
   },
   "2": {
-    "name": "Leak sealing lance (Chloroprene rubber)"
+    "name": "Leak sealing lance (Chloroprene rubber)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-55°C to 85°C",
+    "flammable environment": "Yes"
   },
   "3": {
-    "name": "Mini leak sealing bag (Chloroprene rubber)"
+    "name": "Mini leak sealing bag (Chloroprene rubber)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-40°C to 95°C",
+    "flammable environment": "Yes"
   },
   "4": {
-    "name": "Leak sealing bag (Chloroprene rubber)"
+    "name": "Leak sealing bag (Chloroprene rubber)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-40°C to 90°C",
+    "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "5": {
-    "name": "Leak drainage bag (Natural rubber)"
+    "name": "Leak drainage bag (Natural rubber)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-40°C to 90°C",
+    "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "6": {
-    "name": "Pipe sealing bag (Natural rubber)"
+    "name": "Pipe sealing bag (Natural rubber)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "1.5 Bar",
+    "Working Temperature": "-40°C to 70°C",
+    "flammable environment": "Yes"
   },
   "7": {
-    "name": "Emergency response containment vessel (ERCV) (Salvage Cylinder)"
-  },
-  "8": {
-    "name": "Pipe clamp"
+    "name": "Emergency response containment vessel (ERCV) (Salvage Cylinder)",
+    "Mitigation Limitations": [],
+    "Operating Pressure": "10 Bar",
+    "Working Temperature": "20°C to 50°C",
+    "flammable environment": "Yes"
   }
 }

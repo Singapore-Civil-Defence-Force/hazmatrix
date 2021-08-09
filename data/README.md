@@ -15,6 +15,19 @@
     - Store the equipments' name, mitigating limitation, operating pressure, working temperature and if it can be used in a flammable environment
     - Showned in 
     - Root object keyed with mitigation equipment ID
+    - Schema
+        ```js
+        {
+            mitigationEquipmentID: {
+                "name": String,
+                "Mitigation Limitations": Array<String>,
+                "Operating Pressure": String,
+                "Working Temperature": String,
+                // Could be Boolean | String, where Bool gets converted to Yes/No, but it just adds complexity to the UI
+                "flammable environment": String
+            },
+        }
+        ```
 - mitigation.json
     - Mapping from chemical ID to equipment ID
     - Root object keyed with chemical ID
