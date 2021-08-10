@@ -47,10 +47,10 @@ export default new VueRouter({
       component: () => import("@/views/Chemical.vue"),
     },
     {
-      path: "/equipment/:id",
+      path: "/equipment/mitigation/:id",
       props: true,
-      name: "equipment",
-      component: () => import("@/views/Equipment.vue"),
+      name: "mitigation-equipment",
+      component: () => import("@/views/MitigationEquipment.vue"),
     },
     {
       path: "/settings",

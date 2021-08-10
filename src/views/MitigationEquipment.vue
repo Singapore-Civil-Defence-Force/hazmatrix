@@ -104,9 +104,8 @@
 <script>
 import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 
-// @todo Doing mitigation equipment only for now
 export default {
-  name: "Equipment",
+  name: "MitigationEquipment",
 
   // Get chemical's id from router
   props: ["id"],

@@ -37,7 +37,10 @@
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
             <router-link
-              :to="{ name: 'equipment', params: { id: equipment.id } }"
+              :to="{
+                name: 'detection-equipment',
+                params: { id: equipment.id },
+              }"
               class="card-content content"
             >
               <h3>{{ all_detection_equipments[equipment.id].name }}</h3>
@@ -78,7 +81,10 @@
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
             <router-link
-              :to="{ name: 'equipment', params: { id: equipment.id } }"
+              :to="{
+                name: 'mitigation-equipment',
+                params: { id: equipment.id },
+              }"
               class="card-content content"
             >
               <h3>{{ all_mitigation_equipments[equipment.id].name }}</h3>
