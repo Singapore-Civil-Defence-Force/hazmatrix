@@ -3,6 +3,7 @@
     "id": "1",
     "name": "Draeger tubes",
     "operating temperature": "2°C to 25°C",
+    "flammable environment": "Yes",
 
     "keys": ["Detection limit", "No of Stroke"]
   },
@@ -10,6 +11,7 @@
     "id": "2",
     "name": "Polytector G999",
     "operating temperature": "-20°C to 50°C",
+    "flammable environment": "Yes",
 
     "keys": ["Config"]
   }

@@ -53,6 +53,12 @@ export default new VueRouter({
       component: () => import("@/views/MitigationEquipment.vue"),
     },
     {
+      path: "/equipment/detection/:id",
+      props: true,
+      name: "detection-equipment",
+      component: () => import("@/views/DetectionEquipment.vue"),
+    },
+    {
       path: "/settings",
       name: "settings",
       component: () => import("@/views/Settings.vue"),

@@ -104,6 +104,13 @@
 <script>
 import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 
+/* 
+  Right now, this shows a equipment, but does not show whether this equipment's status to the specific chemical
+    - e.g. pipe sealing bag is "Good" for acetic acid
+    - maybe chemical view can pass it's own chemical ID in as a query,
+      - and if there is a chemical ID, then show case extra section on how well this can be used to mitigate the situation
+*/
+
 export default {
   name: "MitigationEquipment",
 
@@ -121,7 +128,7 @@ export default {
       navigator.share({
         title: "Share this Equipment",
         text: this.equipment.name,
-        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/equipment/${this.id}`,
+        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/equipment/mitigation/${this.id}`,
       });
     },
   },
