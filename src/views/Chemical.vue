@@ -13,15 +13,17 @@
         <p class="subtitle">
           UN Number: <b>{{ chemical.un || "NA" }}</b>
         </p>
-
-        <!-- @todo Add a share button? -->
       </div>
 
       <div class="column">
-        <hr class="my-0" />
+        <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <details class="column">
+      <!-- Open the details drop down by default if there is no data to display -->
+      <details
+        class="column"
+        :open="!detection_equipments || detection_equipments.length < 1"
+      >
         <summary><b>Detection</b></summary>
 
         <!-- Show equipments if any -->
@@ -55,10 +57,14 @@
       </details>
 
       <div class="column">
-        <hr class="my-0" />
+        <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <details class="column">
+      <!-- Open the details drop down by default if there is no data to display -->
+      <details
+        class="column"
+        :open="!mitigation_equipments || mitigation_equipments.length < 1"
+      >
         <summary><b>Mitigation</b></summary>
 
         <!-- Show equipments if any -->
@@ -70,8 +76,6 @@
             class="card px-4 my-4"
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
-            <!-- @todo Add coloring just like the Mitigation matrix? -->
-            <!-- @todo Click into Equipment page? -->
             <router-link
               :to="{ name: 'equipment', params: { id: equipment.id } }"
               class="card-content content"
@@ -86,6 +90,41 @@
         <!-- Show `Nothing Available` if nothing instead of just blank -->
         <h3 v-else class="subtitle px-5 mt-4 mb-0">Nothing Available</h3>
       </details>
+
+      <div class="column">
+        <hr class="my-0" style="background-color: #dedede" />
+      </div>
+
+      <div class="column pb-0 mb-0">
+        <div class="columns">
+          <div class="column">
+            <button
+              class="button is-light is-fullwidth is-success"
+              @click="shareViaWebShare"
+            >
+              share
+            </button>
+          </div>
+
+          <div class="column">
+            <button
+              class="button is-light is-fullwidth"
+              @click="$router.back()"
+            >
+              back
+            </button>
+          </div>
+
+          <div class="column">
+            <router-link
+              class="button is-light is-fullwidth is-danger"
+              :to="{ name: 'home' }"
+            >
+              home
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -117,6 +156,16 @@ export default {
       // An array of equipments that can be used to mitigate the chemical with id of this.id
       mitigation_equipments: mitigation[this.id],
     };
+  },
+
+  methods: {
+    shareViaWebShare() {
+      navigator.share({
+        title: "Share this Chemical",
+        text: this.chemical.name,
+        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${this.id}`,
+      });
+    },
   },
 };
 </script>

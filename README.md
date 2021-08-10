@@ -1,7 +1,7 @@
 # HazMatrix
-HazMat Matrix quick reference handbook
+HazMat Matrix quick reference handbook.
 
-As the incident manager of emergencies involving hazardous materials, SCDF officers are required to be well versed with a wide variety of complex chemical detectors and mitigation equipments. This application aids them by providing quick and accurate information across hundreds of `Chemicals x Equipment` permutations to respond quickly and safely
+As the incident manager of emergencies involving hazardous materials, SCDF officers are required to be well versed with a wide variety of complex chemical detectors and mitigation equipments. This application aids them by providing quick and accurate information across hundreds of `Chemicals x Equipment` permutations to respond quickly and safely.
 
 ## Deployment
 - App is hosted using Github pages
