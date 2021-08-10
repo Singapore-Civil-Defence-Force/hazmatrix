@@ -29,9 +29,10 @@
         <!-- Show equipments if any -->
         <!-- @todo Remove this if all data is filled -->
         <div v-if="detection_equipments && detection_equipments.length > 0">
+          <!-- Using `i` as key instead of `equipment.id` because the same equipment can be used with different configs / values -->
           <div
-            v-for="equipment in detection_equipments"
-            :key="equipment.id"
+            v-for="(equipment, i) in detection_equipments"
+            :key="i"
             class="card px-4 my-4"
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->

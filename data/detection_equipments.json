@@ -1,34 +1,16 @@
 {
   "1": {
     "id": "1",
-    "name": "Polytector G999 (config 1)",
-    "operating temperature": "-20°C to 50°C"
-  },
-  "2": {
-    "id": "2",
-    "name": "Polytector G999 (config 2)",
-    "operating temperature": "-20°C to 50°C"
-  },
-  "3": {
-    "id": "3",
-    "name": "Polytector G999 (config 3)",
-    "operating temperature": "-20°C to 50°C"
-  },
-  "4": {
-    "id": "4",
-    "name": "Polytector G999 (config 4)",
-    "operating temperature": "-20°C to 50°C"
-  },
-  "5": {
-    "id": "5",
-    "name": "Polytector G999 (config 5)",
-    "operating temperature": "-20°C to 50°C"
-  },
-  "6": {
-    "id": "6",
     "name": "Draeger tubes",
     "operating temperature": "2°C to 25°C",
 
     "keys": ["Detection limit", "No of Stroke"]
+  },
+  "2": {
+    "id": "2",
+    "name": "Polytector G999",
+    "operating temperature": "-20°C to 50°C",
+
+    "keys": ["Config"]
   }
 }

@@ -28,6 +28,25 @@
             },
         }
         ```
+- detection.json
+    - Mapping from chemical ID to an array of object's containing appropriate detection equipment ID and notes for that specific chemical
+    - Root object keyed with chemical ID
+    - Draeger tubes are always placed before Polytector G999 as multiple configs of the G999 can work with some chemicals so putting Draeger tubes first makes it easier to fine
+    - Schema
+        ```js
+        {
+            chemicalID: [
+                {
+                    // Detection equipment ID
+                    "id": Number,
+                    
+                    // Can be values of any type as long as they can be interpolated to Strings
+                    // Each value maps to a specific element in the `keys` array of detection_equipment.json
+                    "values": Array<Any>,
+                },
+            ]
+        }
+        ```
 - mitigation.json
     - Mapping from chemical ID to equipment ID
     - Root object keyed with chemical ID
