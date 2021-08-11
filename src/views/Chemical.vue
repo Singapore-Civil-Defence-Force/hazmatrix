@@ -2,8 +2,6 @@
   <div class="px-4 pt-4" style="text-align: left">
     <!-- @todo Include the side nav bar component -->
 
-    <QRCodeModal />
-
     <!-- Allow multiple line in desktop / landscape mode -->
     <div class="columns is-multiline">
       <div class="column">
@@ -109,12 +107,13 @@
       <div class="column pb-0 mb-0">
         <div class="columns">
           <div class="column">
-            <button
-              class="button is-light is-fullwidth is-success"
-              @click="shareViaWebShare"
-            >
-              share
-            </button>
+            <Share
+              :webshare="{
+                title: 'Share this Chemical',
+                text: chemical.name,
+                url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${this.id}`,
+              }"
+            />
           </div>
 
           <div class="column">
@@ -147,12 +146,12 @@ import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 import detection from "../../data/detection.json";
 import mitigation from "../../data/mitigation.json";
 
-import QRCodeModal from "../components/QRCodeModal.vue";
+import Share from "../components/Share.vue";
 
 export default {
   name: "Chemical",
 
-  components: { QRCodeModal },
+  components: { Share },
 
   // Get chemical's id from router
   props: ["id"],
@@ -173,16 +172,6 @@ export default {
       // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
       mitigation_equipments: Object.values(mitigation[this.id] || {}),
     };
-  },
-
-  methods: {
-    shareViaWebShare() {
-      navigator.share({
-        title: "Share this Chemical",
-        text: this.chemical.name,
-        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${this.id}`,
-      });
-    },
   },
 };
 </script>
