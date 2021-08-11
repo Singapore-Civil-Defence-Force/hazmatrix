@@ -4,18 +4,16 @@
       <!-- Modal can be closed by clicking any part of the modal background -->
       <div class="modal-background" @click="showModal = false"></div>
 
-      <div class="modal-content">
-        <!-- @todo Remove the 4by3 modifier -->
-        <span class="image is-4by3">
-          <img :src="imgSrc" />
+      <!-- The whole modal content can be clicked to trigger the web share UI flow -->
+      <div class="modal-content" @click="shareViaWebShare">
+        <span class="image is-square">
+          <img :src="imageDataURI" />
         </span>
 
-        <!-- Share button to allow user to use webshare if needed -->
-        <!-- @todo Close modal automatically once done -->
+        <!-- Share button to let user know that they can click to use webshare if needed, even though the whole modal content is clickable -->
         <button
           class="button is-fullwidth is-success is-inverted"
           aria-label="share"
-          @click="shareViaWebShare"
           style="border-radius: 0px"
         >
           share via link
@@ -34,7 +32,7 @@
       <div class="column">
         <button
           class="button is-light is-fullwidth is-warning"
-          @click="showModal = true"
+          @click="showQRcode"
         >
           share - QR
         </button>
@@ -52,7 +50,7 @@
 </template>
 
 <script>
-// @todo Only generate the modal image data source when modal is opened, to prevent it from being pre-generated
+import QRCode from "qrcode";
 
 export default {
   name: "Share",
@@ -62,13 +60,31 @@ export default {
   data() {
     return {
       showModal: false,
-      imgSrc: "https://bulma.io/images/placeholders/1280x960.png",
+      imageDataURI: undefined,
     };
   },
 
   methods: {
     shareViaWebShare() {
+      // Ensure navigator.share is available first, quit if not available
+      if (!navigator.share) return alert("Web Share not supported on device");
+
+      // Start the share UI, but not awaiting for it, as platforms resolve this at different timings
       navigator.share(this.webshare);
+
+      // Since this can be triggered by clicking the QR code, close modal automatically once share UI flow is triggered
+      this.showModal = false;
+    },
+
+    // Open up modal and generate QR Code image on the fly
+    async showQRcode() {
+      this.showModal = true;
+
+      // Only generate image data source when modal opened to prevent pre-generating it and eating ram everytime this component is used
+      this.imageDataURI = await QRCode.toDataURL(this.webshare.url, {
+        // Use high error resistance rate of ~ 30%
+        errorCorrectionLevel: "H",
+      });
     },
   },
 };

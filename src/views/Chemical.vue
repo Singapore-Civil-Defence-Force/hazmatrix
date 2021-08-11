@@ -111,7 +111,7 @@
               :webshare="{
                 title: 'Share this Chemical',
                 text: chemical.name,
-                url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${this.id}`,
+                url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/chemical/${id}`,
               }"
             />
           </div>
