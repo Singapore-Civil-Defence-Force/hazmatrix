@@ -54,7 +54,9 @@ export default new VueRouter({
     },
     {
       path: "/equipment/detection/:id",
-      props: true,
+      // Props is an object with fields from both params and query parameters
+      // Important to ensure that they do not use the same key
+      props: (route) => ({ ...route.params, ...route.query }),
       name: "detection-equipment",
       component: () => import("@/views/DetectionEquipment.vue"),
     },
