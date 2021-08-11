@@ -1,62 +1,64 @@
 <template>
-  <div class="section center">
-    <!-- Only load/show scanning UI when requested -->
-    <!-- Close QR Code scanner once code has been detected -->
-    <QRCodeScanner v-if="scanQR" v-on:qrcode-detected="scanQR = false" />
-    <br />
+  <div class="center">
+    <div>
+      <!-- Only load/show scanning UI when requested -->
+      <!-- Close QR Code scanner once code has been detected -->
+      <QRCodeScanner v-if="scanQR" v-on:qrcode-detected="scanQR = false" />
+      <br />
 
-    <!-- Allow multiple line in desktop / landscape mode -->
-    <div class="columns is-multiline" style="width: 90vw">
-      <div class="column">
-        <button
-          v-if="scanQR"
-          class="button is-light is-fullwidth is-warning"
-          @click="scanQR = false"
-        >
-          Close QR Scanner
-        </button>
+      <!-- Allow multiple line in desktop / landscape mode -->
+      <div class="columns is-multiline" style="width: 90vw">
+        <div class="column">
+          <button
+            v-if="scanQR"
+            class="button is-light is-fullwidth is-warning"
+            @click="scanQR = false"
+          >
+            Close QR Scanner
+          </button>
 
-        <button
-          v-else
-          class="button is-light is-fullwidth is-warning"
-          @click="scanQR = true"
-        >
-          Scan QR
-        </button>
+          <button
+            v-else
+            class="button is-light is-fullwidth is-warning"
+            @click="scanQR = true"
+          >
+            Scan QR
+          </button>
+        </div>
+
+        <div class="column">
+          <router-link
+            :to="{ name: 'search' }"
+            class="button is-light is-fullwidth is-success"
+          >
+            Search
+          </router-link>
+        </div>
       </div>
 
-      <div class="column">
-        <router-link
-          :to="{ name: 'search' }"
-          class="button is-light is-fullwidth is-success"
-        >
-          Search
-        </router-link>
+      <!-- @todo Might want to give more space on top -->
+      <div class="columns is-mobile">
+        <div class="column">
+          <router-link
+            :to="{ name: 'settings' }"
+            class="button is-light is-fullwidth"
+          >
+            settings
+          </router-link>
+        </div>
+
+        <div class="column">
+          <router-link
+            :to="{ name: 'settings' }"
+            class="button is-light is-fullwidth"
+          >
+            next..
+          </router-link>
+        </div>
       </div>
+
+      <version />
     </div>
-
-    <!-- @todo Might want to give more space on top -->
-    <div class="columns is-mobile">
-      <div class="column">
-        <router-link
-          :to="{ name: 'settings' }"
-          class="button is-light is-fullwidth"
-        >
-          settings
-        </router-link>
-      </div>
-
-      <div class="column">
-        <router-link
-          :to="{ name: 'settings' }"
-          class="button is-light is-fullwidth"
-        >
-          next..
-        </router-link>
-      </div>
-    </div>
-
-    <version />
   </div>
 </template>
 
