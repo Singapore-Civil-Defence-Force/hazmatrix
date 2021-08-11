@@ -2,6 +2,8 @@
   <div class="px-4 pt-4" style="text-align: left">
     <!-- @todo Include the side nav bar component -->
 
+    <QRCodeModal />
+
     <!-- Allow multiple line in desktop / landscape mode -->
     <div class="columns is-multiline">
       <div class="column">
@@ -145,8 +147,12 @@ import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 import detection from "../../data/detection.json";
 import mitigation from "../../data/mitigation.json";
 
+import QRCodeModal from "../components/QRCodeModal.vue";
+
 export default {
   name: "Chemical",
+
+  components: { QRCodeModal },
 
   // Get chemical's id from router
   props: ["id"],
