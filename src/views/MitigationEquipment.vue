@@ -111,12 +111,14 @@
       <div class="column pb-0 mb-0">
         <div class="columns">
           <div class="column">
-            <button
-              class="button is-light is-fullwidth is-success"
-              @click="shareViaWebShare"
-            >
-              share
-            </button>
+            <!-- @todo Have to change this depending on whether there is chemical or not -->
+            <Share
+              :webshare="{
+                title: 'Share this Equipment',
+                text: equipment.name,
+                url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/equipment/mitigation/${id}`,
+              }"
+            />
           </div>
 
           <div class="column">
@@ -147,8 +149,12 @@ import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 import mitigation from "../../data/mitigation.json";
 import chemicals from "../../data/chemicals.json";
 
+import Share from "../components/Share.vue";
+
 export default {
   name: "MitigationEquipment",
+
+  components: { Share },
 
   // Get equipment and chemical id from router, where chemical ID is an optional query parameter
   props: ["id", "chemicalID"],
@@ -160,6 +166,7 @@ export default {
       : undefined;
 
     return {
+      // @todo Only load this async if there is a chemical ID and only put the name onto data object
       chemicals,
 
       // Get the specific mitigation equipment
@@ -167,17 +174,6 @@ export default {
 
       mitigation_notes,
     };
-  },
-
-  methods: {
-    shareViaWebShare() {
-      // @todo Have to change this depending on whether there is chemical or not
-      navigator.share({
-        title: "Share this Equipment",
-        text: this.equipment.name,
-        url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/equipment/mitigation/${this.id}`,
-      });
-    },
   },
 };
 </script>
