@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hazmatrix/precache-manifest.9225930dd024126b84f193855e6f7454.js"
+  "/hazmatrix/precache-manifest.c5129713b027e8798b857739fa1bcd3c.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "hazmatrix"});
