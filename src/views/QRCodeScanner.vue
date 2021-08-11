@@ -11,21 +11,22 @@
 <script>
 /*
   This component scans a QR code,
-  
-  On valid QR code link: Parse out and pass itemID back to parent component using the 'qrcode-detected' event
-  On invalid QR code link: Highlight QR code border in frame and show on frame the text version of the code
+    - On valid QR code link: Redirect to the specified view
+    - On invalid QR code link: Highlight QR code border in frame and show on frame the text version of the code
 */
 
+import config from "../config.js";
 import { QrcodeStream } from "vue-qrcode-reader";
+
+const { baseURL } = config;
+const baseUrlLength = baseURL.length;
 
 export default {
   components: { QrcodeStream },
 
   data() {
-    return {
-      // Defaults to auto to let the lib figure out which camera to use
-      camera: "auto",
-    };
+    // Camera value defaults to auto to let the library figure out which camera to use
+    return { camera: "auto" };
   },
 
   methods: {
@@ -51,12 +52,15 @@ export default {
         const qrcodeValue = detectedCode.rawValue;
 
         // Only parse and emit qrcode value if its of the correct format
-        if (
-          qrcodeValue.slice(0, 39) === "https://scdf-ims.web.app/#/home?itemID="
-        ) {
-          // Only emit value back to parent component if qr code is valid
-          // Parse out and emit back itemID only
-          this.$emit("qrcode-detected", qrcodeValue.slice(39));
+        if (qrcodeValue.slice(0, baseUrlLength) === baseURL) {
+          // Stop scanning by turning camera off
+          this.camera = "off";
+
+          // Navigate to new route path using router
+          this.$router.push({ path: qrcodeValue.slice(baseUrlLength) });
+
+          // Emit event to allow parent component to unmount/remove QR code scanner component using a v-if
+          this.$emit("qrcode-detected");
         } else {
           /* Highlight invalid QR Code in red */
           const [firstPoint, ...otherPoints] = detectedCode.cornerPoints;
