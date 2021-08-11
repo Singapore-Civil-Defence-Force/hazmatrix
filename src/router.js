@@ -47,18 +47,20 @@ export default new VueRouter({
       component: () => import("@/views/Chemical.vue"),
     },
     {
-      path: "/equipment/mitigation/:id",
-      props: true,
-      name: "mitigation-equipment",
-      component: () => import("@/views/MitigationEquipment.vue"),
-    },
-    {
       path: "/equipment/detection/:id",
       // Props is an object with fields from both params and query parameters
       // Important to ensure that they do not use the same key
       props: (route) => ({ ...route.params, ...route.query }),
       name: "detection-equipment",
       component: () => import("@/views/DetectionEquipment.vue"),
+    },
+    {
+      path: "/equipment/mitigation/:id",
+      // Props is an object with fields from both params and query parameters
+      // Important to ensure that they do not use the same key
+      props: (route) => ({ ...route.params, ...route.query }),
+      name: "mitigation-equipment",
+      component: () => import("@/views/MitigationEquipment.vue"),
     },
     {
       path: "/settings",

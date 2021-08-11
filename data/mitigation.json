@@ -1,28 +1,42 @@
 {
-  "1": [
-    {
+  "1": {
+    "1": {
       "id": "1",
       "note": "Conditionally resistant"
     },
-    {
+    "2": {
       "id": "2",
       "note": "Conditionally resistant"
     },
-    {
+    "3": {
       "id": "3",
       "note": "Conditionally resistant"
     },
-    {
+    "4": {
       "id": "4",
       "note": "Conditionally resistant"
     },
-    {
+    "5": {
       "id": "5",
       "note": "Resistant"
     },
-    {
+    "6": {
       "id": "6",
       "note": "Resistant"
     }
-  ]
+  },
+  "4": {
+    "8": {
+      "id": "8",
+      "note": "Compatible"
+    },
+    "9": {
+      "id": "9",
+      "note": "Compatible"
+    },
+    "10": {
+      "id": "10",
+      "note": "Compatible"
+    }
+  }
 }

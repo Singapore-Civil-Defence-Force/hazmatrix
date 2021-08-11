@@ -105,5 +105,44 @@
     "Operating Pressure": "10 Bar",
     "Working Temperature": "20°C to 50°C",
     "flammable environment": "Yes"
+  },
+  "8": {
+    "name": "Pipe Clamp (Clamp Ø size: Smaller than 5\")",
+    "Mitigation Limitations": [
+      "Clamp Ø size: 0.5\", 0.75\", 1\", 1.25\", 1.5\" 2\", 2.5\", 3\", 3.5\", 4\""
+    ],
+    "Operating Pressure": "10 Bar",
+    "Working Temperature": "20°C to 50°C",
+    "flammable environment": "Yes"
+  },
+  "9": {
+    "name": "Pipe Clamp (Clamp Ø size: 5\")",
+    "Mitigation Limitations": ["Clamp Ø size: 5\""],
+    "Operating Pressure": "10 Bar",
+    "Working Temperature": "20°C to 50°C",
+    "flammable environment": "Yes"
+  },
+  "10": {
+    "name": "TMP",
+    "Mitigation Limitations": [
+      [
+        "Clamp Ø size:",
+        [
+          "0.5\"",
+          "0.75\"",
+          "1\"",
+          "1.25\"",
+          "1.5\"",
+          "2\"",
+          "2.5\"",
+          "3\"",
+          "3.5\"",
+          "4\""
+        ]
+      ]
+    ],
+    "Operating Pressure": "10 Bar",
+    "Working Temperature": "20°C to 50°C",
+    "flammable environment": "Yes"
   }
 }

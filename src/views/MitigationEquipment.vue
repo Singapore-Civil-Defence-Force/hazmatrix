@@ -35,36 +35,77 @@
         <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <div class="column pb-0 mb-0">
-        <p class="subtitle">
-          Operating Pressure: <b>{{ equipment["Operating Pressure"] }}</b>
-        </p>
+      <div class="column content pb-0 mb-0">
+        <p class="subtitle">Operating Pressure</p>
+
+        <ul>
+          <li class="subtitle">
+            <b>{{ equipment["Operating Pressure"] }}</b>
+          </li>
+        </ul>
       </div>
 
       <div class="column">
         <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <div class="column pb-0 mb-0">
-        <p class="subtitle">
-          <!-- @todo Might want to show values on new line since some are long strings e.g "maximum of 100C" -->
-          Working Temperature: <b>{{ equipment["Working Temperature"] }}</b>
-        </p>
+      <div class="column content pb-0 mb-0">
+        <p class="subtitle">Working Temperature</p>
+
+        <ul>
+          <li class="subtitle">
+            <b>{{ equipment["Working Temperature"] }}</b>
+          </li>
+        </ul>
       </div>
 
       <div class="column">
         <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <div class="column pb-0 mb-0">
-        <p class="subtitle">
-          Can use in flammable environment:
-          <b>{{ equipment["flammable environment"] }}</b>
-        </p>
+      <div class="column content pb-0 mb-0">
+        <p class="subtitle">Can use in flammable environment</p>
+
+        <ul>
+          <li class="subtitle">
+            <b>{{ equipment["flammable environment"] }}</b>
+          </li>
+        </ul>
       </div>
 
       <div class="column">
         <hr class="my-0" style="background-color: #dedede" />
+      </div>
+
+      <div v-if="chemicalID">
+        <div class="column content pb-0 mb-0">
+          <p class="subtitle mb-1">
+            Notes for <b>{{ chemicals[chemicalID].name }}</b>
+          </p>
+
+          <ul>
+            <li>
+              <p class="subtitle">
+                Effectiveness: <b>{{ mitigation_notes.note }}</b>
+              </p>
+            </li>
+          </ul>
+
+          <!-- This should be empty for now, as there are no chemical/equipment specific notes unlike detection equipments data source -->
+          <!-- <ul>
+            <li
+              v-for="(key, i) in equipment.keys"
+              :key="i"
+              class="subtitle mb-1"
+            >
+              {{ key }}: <b>{{ mitigation_notes.values[i] }}</b>
+            </li>
+          </ul> -->
+        </div>
+
+        <div class="column">
+          <hr class="my-0" style="background-color: #dedede" />
+        </div>
       </div>
 
       <div class="column pb-0 mb-0">
@@ -103,28 +144,34 @@
 
 <script>
 import all_mitigation_equipments from "../../data/mitigation_equipments.json";
-
-/* 
-  Right now, this shows a equipment, but does not show whether this equipment's status to the specific chemical
-    - e.g. pipe sealing bag is "Good" for acetic acid
-    - maybe chemical view can pass it's own chemical ID in as a query,
-      - and if there is a chemical ID, then show case extra section on how well this can be used to mitigate the situation
-*/
+import mitigation from "../../data/mitigation.json";
+import chemicals from "../../data/chemicals.json";
 
 export default {
   name: "MitigationEquipment",
 
-  // Get chemical's id from router
-  props: ["id"],
+  // Get equipment and chemical id from router, where chemical ID is an optional query parameter
+  props: ["id", "chemicalID"],
 
   data() {
+    // Get notes for this specific mitigation equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
+    const mitigation_notes = this.chemicalID
+      ? mitigation[this.chemicalID][this.id]
+      : undefined;
+
     return {
+      chemicals,
+
+      // Get the specific mitigation equipment
       equipment: all_mitigation_equipments[this.id],
+
+      mitigation_notes,
     };
   },
 
   methods: {
     shareViaWebShare() {
+      // @todo Have to change this depending on whether there is chemical or not
       navigator.share({
         title: "Share this Equipment",
         text: this.equipment.name,

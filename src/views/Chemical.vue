@@ -85,6 +85,7 @@
               :to="{
                 name: 'mitigation-equipment',
                 params: { id: equipment.id },
+                query: { chemicalID: id },
               }"
               class="card-content content"
             >
@@ -163,7 +164,8 @@ export default {
       // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
       detection_equipments: Object.values(detection[this.id] || {}),
       // An array of equipments that can be used to mitigate the chemical with id of this.id
-      mitigation_equipments: mitigation[this.id],
+      // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
+      mitigation_equipments: Object.values(mitigation[this.id] || {}),
     };
   },
 
