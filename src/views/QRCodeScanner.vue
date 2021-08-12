@@ -25,23 +25,30 @@ export default {
   components: { QrcodeStream },
 
   data() {
-    // Camera value defaults to auto to let the library figure out which camera to use
-    return { camera: "auto" };
+    // Camera value defaults to auto to let the library figure out which camera to use if there is no last used camera type
+    const lastUsedCamera =
+      localStorage.getItem("vue-qrcode-reader:camera") || "auto";
+
+    return { camera: lastUsedCamera };
   },
 
   methods: {
+    // Switch current camera type and save it to localStorage, and the current camera type will be reused the next time too
     switchCamera() {
       // Simple camera switcher with options (auto, rear, front)
       switch (this.camera) {
         case "auto":
           // Default to rear when switching off auto mode
           this.camera = "rear";
+          localStorage.setItem("vue-qrcode-reader:camera", "rear");
           break;
         case "front":
           this.camera = "rear";
+          localStorage.setItem("vue-qrcode-reader:camera", "rear");
           break;
         case "rear":
           this.camera = "front";
+          localStorage.setItem("vue-qrcode-reader:camera", "front");
           break;
       }
     },
