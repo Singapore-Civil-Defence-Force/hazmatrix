@@ -111,12 +111,10 @@
       <div class="column pb-0 mb-0">
         <div class="columns">
           <div class="column">
-            <!-- @todo Have to change this depending on whether there is chemical or not -->
             <Share
-              :webshare="{
-                title: 'Share this Equipment',
+              :options="{
+                title: 'Share this Mitigation Equipment',
                 text: equipment.name,
-                url: `https://singapore-civil-defence-force.github.io/hazmatrix/#/equipment/mitigation/${id}`,
               }"
             />
           </div>

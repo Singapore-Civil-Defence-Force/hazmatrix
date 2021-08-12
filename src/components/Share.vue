@@ -51,16 +51,32 @@
 
 <script>
 import QRCode from "qrcode";
+import config from "../config.js";
+const { baseURL } = config;
 
 export default {
   name: "Share",
 
-  props: ["webshare"],
+  // Allow user's to override the default webshare options by passing in a webshare options object with some or all fields
+  props: ["options"],
 
   data() {
+    // Default webshare option's URL is constructed with current path and base URL, so component users don't need to manually craft the URL unless neccessary
+    const defaultWebshareOptions = {
+      title: "Share via HazMatrix",
+      text: "Share this view from HazMatrix",
+      url: baseURL + this.$route.fullPath,
+    };
+
     return {
       showModal: false,
       imageDataURI: undefined,
+
+      // Construct webshare options using default options and user options if any. Spread syntax allows the latter object to override fields of the same name
+      webshare: {
+        ...defaultWebshareOptions,
+        ...this.options,
+      },
     };
   },
 

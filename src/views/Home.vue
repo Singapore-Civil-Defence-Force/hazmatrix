@@ -1,13 +1,13 @@
 <template>
   <div class="center">
-    <div>
+    <div style="width: 90vw">
       <!-- Only load/show scanning UI when requested -->
       <!-- Close QR Code scanner once code has been detected -->
       <QRCodeScanner v-if="scanQR" v-on:qrcode-detected="scanQR = false" />
       <br />
 
       <!-- Allow multiple line in desktop / landscape mode -->
-      <div class="columns is-multiline" style="width: 90vw">
+      <div class="columns is-multiline">
         <div class="column">
           <button
             v-if="scanQR"
