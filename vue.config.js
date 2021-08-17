@@ -38,7 +38,7 @@ const gitValues = {
 
 module.exports = {
   // Only use /hazmatrix/ default baseURL/publicPath when building for production to deploy on Github pages
-  // Because the deployed site on Github pages is https://singapore-civil-defence-force.github.io/hazmatrix/
+  // Because the deployed site on Github pages is https://GITHUB_PAGES_DOMAIN/hazmatrix/
   publicPath: process.env.NODE_ENV === "production" ? "/hazmatrix/" : "/",
 
   // Need to serve over HTTPS to test the Web Share API for sharing links with other personnel
