@@ -62,11 +62,6 @@ export default new VueRouter({
       name: "mitigation-equipment",
       component: () => import("@/views/MitigationEquipment.vue"),
     },
-    {
-      path: "/settings",
-      name: "settings",
-      component: () => import("@/views/Settings.vue"),
-    },
 
     // NotFound Client side 404 route
     {
