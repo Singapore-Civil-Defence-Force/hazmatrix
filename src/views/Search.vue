@@ -76,14 +76,8 @@ import Fuse from "fuse.js";
 export default {
   name: "search",
 
-  // @todo Allow sharing of searches, before you choose a chemical, in fact every stage should be shareable
-  // props: ["num"],
-
-  // @todo Only if search view is shareable
-  // Run search method on component creation
-  // created() {
-  //   this.search();
-  // },
+  // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
+  props: ["query"],
 
   data() {
     return {
@@ -93,7 +87,8 @@ export default {
         keys: ["name", "un"],
       },
 
-      search_input: "",
+      // Defaults to the URL `search` query string if there is any
+      search_input: this.query || "",
     };
   },
 
