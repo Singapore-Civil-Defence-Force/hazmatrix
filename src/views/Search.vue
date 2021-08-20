@@ -124,7 +124,7 @@ export default {
       navigator.share({
         title: "Share this chemical",
         text: chemicalName,
-        url: `https://TFTDX.github.io/hazmatrix/#/chemical/${chemicalID}`,
+        url: `https://tftdx.github.io/hazmatrix/#/chemical/${chemicalID}`,
       });
     },
   },
