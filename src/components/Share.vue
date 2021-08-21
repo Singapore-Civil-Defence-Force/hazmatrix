@@ -16,7 +16,7 @@
           aria-label="share"
           style="border-radius: 0px"
         >
-          share via link
+          Share via link
         </button>
       </div>
 
@@ -34,7 +34,7 @@
           class="button is-light is-fullwidth is-warning"
           @click="showQRcode"
         >
-          share - QR
+          Share - QR
         </button>
       </div>
       <div class="column">
@@ -42,7 +42,7 @@
           class="button is-light is-fullwidth is-success"
           @click="shareViaWebShare"
         >
-          share - link
+          Share - link
         </button>
       </div>
     </div>
@@ -61,32 +61,35 @@ export default {
   props: ["options"],
 
   data() {
-    // Default webshare option's URL is constructed with current path and base URL, so component users don't need to manually craft the URL unless neccessary
-    const defaultWebshareOptions = {
-      title: "Share via HazMatrix",
-      text: "Share this view from HazMatrix",
-      url: baseURL + this.$route.fullPath,
-    };
-
     return {
       showModal: false,
       imageDataURI: undefined,
-
-      // Construct webshare options using default options and user options if any. Spread syntax allows the latter object to override fields of the same name
-      webshare: {
-        ...defaultWebshareOptions,
-        ...this.options,
-      },
     };
   },
 
   methods: {
+    // Get webshare options created using default options and user options if any
+    // This is a method as the props can be updated by parent component, so is used to get the latest webshare options ONLY WHEN NEEDED
+    getWebshare() {
+      return {
+        // Default webshare options
+        title: "Share via HazMatrix",
+        text: "Share this view from HazMatrix",
+
+        // Default webshare option's URL is constructed with current path and base URL, so component users don't need to manually craft the URL unless neccessary
+        url: baseURL + this.$route.fullPath,
+
+        // Spread syntax allows this latter object to override fields of the same name
+        ...this.options,
+      };
+    },
+
     shareViaWebShare() {
       // Ensure navigator.share is available first, quit if not available
       if (!navigator.share) return alert("Web Share not supported on device");
 
       // Start the share UI, but not awaiting for it, as platforms resolve this at different timings
-      navigator.share(this.webshare);
+      navigator.share(this.getWebshare());
 
       // Since this can be triggered by clicking the QR code, close modal automatically once share UI flow is triggered
       this.showModal = false;
@@ -97,7 +100,7 @@ export default {
       this.showModal = true;
 
       // Only generate image data source when modal opened to prevent pre-generating it and eating ram everytime this component is used
-      this.imageDataURI = await QRCode.toDataURL(this.webshare.url, {
+      this.imageDataURI = await QRCode.toDataURL(this.getWebshare().url, {
         // Use high error resistance rate of ~ 30%
         errorCorrectionLevel: "H",
       });
