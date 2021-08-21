@@ -40,7 +40,7 @@
         :options="{
           title: 'Share Search Results',
           text: `Share Search Results for '${search_input}'`,
-          url: `https://tftdx.github.io/hazmatrix/#/search?query=${search_input}`,
+          url: `${baseURL}/search?query=${search_input}`,
         }"
       />
 
@@ -87,6 +87,7 @@ import chemicals from "../../data/chemicals.json";
 import Fuse from "fuse.js";
 
 import Share from "../components/Share.vue";
+import { baseURL } from "../config.js";
 
 export default {
   name: "search",
@@ -106,6 +107,9 @@ export default {
 
       // Defaults to the URL `search` query string if there is any
       search_input: this.query || "",
+
+      // Place baseURL on data for methods and template to access this instead of hard coding the base URL
+      baseURL,
     };
   },
 
@@ -135,7 +139,7 @@ export default {
       navigator.share({
         title: "Share this chemical",
         text: chemicalName,
-        url: `https://tftdx.github.io/hazmatrix/#/chemical/${chemicalID}`,
+        url: `${this.baseURL}/chemical/${chemicalID}`,
       });
     },
   },

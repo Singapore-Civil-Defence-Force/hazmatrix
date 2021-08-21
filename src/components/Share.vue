@@ -51,8 +51,7 @@
 
 <script>
 import QRCode from "qrcode";
-import config from "../config.js";
-const { baseURL } = config;
+import { baseURL } from "../config.js";
 
 export default {
   name: "Share",
