@@ -4,6 +4,8 @@
 
     <!-- Allow multiple line in desktop / landscape mode -->
     <div class="cloumns is-multiline">
+      <!-- @todo Make Search input and share component stick to top -->
+
       <!-- is-full to fill up column space when in desktop / landscape mode -->
       <div class="column is-full">
         <label>
@@ -30,6 +32,17 @@
           </div>
         </label>
       </div>
+
+      <!-- Only show 'share search result' component if user entered anything in the search input -->
+      <Share
+        v-if="results.length !== 0"
+        class="card mb-5 mt-2 px-4"
+        :options="{
+          title: 'Share Search Results',
+          text: `Share Search Results for '${search_input}'`,
+          url: `https://tftdx.github.io/hazmatrix/#/search?query=${search_input}`,
+        }"
+      />
 
       <!-- Search results -->
       <div v-for="result in results" :key="result.item.name" class="column">
@@ -73,8 +86,12 @@
 import chemicals from "../../data/chemicals.json";
 import Fuse from "fuse.js";
 
+import Share from "../components/Share.vue";
+
 export default {
   name: "search",
+
+  components: { Share },
 
   // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
   props: ["query"],
@@ -115,7 +132,6 @@ export default {
     },
 
     shareViaWebShare(chemicalID, chemicalName) {
-      // @todo Await this to show in UI when sharing succeeded
       navigator.share({
         title: "Share this chemical",
         text: chemicalName,
