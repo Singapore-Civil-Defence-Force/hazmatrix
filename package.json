@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest ./docs",
-    "deploy-to-github": "node ./deploy-to-github-pages.js",
+    "deploy-to-github": "npx simple-github-pages-deploy",
     "deploy": "npm run build && npm run deploy-to-github",
     "lint": "vue-cli-service lint"
   },
@@ -35,6 +35,7 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.2.1",
     "sass-loader": "^10.0.1",
+    "simple-github-pages-deploy": "^0.2.1",
     "vue-template-compiler": "^2.6.12"
   },
   "husky": {
