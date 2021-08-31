@@ -24,17 +24,20 @@
 </template>
 
 <script>
-// Parent component that contains and switches between all the view components using view router's router-view
+/* Parent component that contains and switches between all the view components using view router's router-view */
+
+// Load the bulma styles in the top level component
+import "bulma/css/bulma.min.css";
 
 export default {
   name: "App",
 };
 </script>
 
-// Load the bulma styles in the top level component
-<style lang="sass" src="bulma" />
+<style>
+/* Alternative bulma import using CDN */
+/* @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"; */
 
-<style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -43,7 +46,7 @@ export default {
   color: #2c3e50;
 }
 
-// Shared class for all views.
+/* Shared class for all views. */
 .center {
   display: flex;
   flex-direction: column;
