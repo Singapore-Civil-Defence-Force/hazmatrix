@@ -50,3 +50,6 @@
 - mitigation.json
     - Mapping from chemical ID to equipment ID
     - Root object keyed with chemical ID
+- PPE.json
+    - Root object keyed with PPE ID
+    - Stores the short and full name of the various PPEs and the roles that should don it

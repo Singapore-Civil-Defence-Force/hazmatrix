@@ -19,6 +19,31 @@
         <hr class="my-0" style="background-color: #dedede" />
       </div>
 
+      <details class="column">
+        <summary><b>PPE</b></summary>
+
+        <div v-for="(PPE, i) in PPEs" :key="i" class="card px-4 my-4">
+          <!-- Display the card content in a router-link element to make the card's content section clickable -->
+          <router-link
+            :to="{
+              name: 'PPE',
+              params: { id: i },
+            }"
+            class="card-content content"
+          >
+            <h3>{{ PPE.short }}</h3>
+
+            <p v-for="(role, i) in PPE.roles" :key="i" class="subtitle mb-1">
+              Role: <b>{{ role }}</b>
+            </p>
+          </router-link>
+        </div>
+      </details>
+
+      <div class="column">
+        <hr class="my-0" style="background-color: #dedede" />
+      </div>
+
       <!-- Open the details drop down by default if there is no data to display -->
       <details
         class="column"
@@ -144,6 +169,7 @@ import all_detection_equipments from "../../data/detection_equipments.json";
 import all_mitigation_equipments from "../../data/mitigation_equipments.json";
 import detection from "../../data/detection.json";
 import mitigation from "../../data/mitigation.json";
+import PPEs from "../../data/PPE.json";
 
 import Share from "../components/Share.vue";
 
@@ -157,6 +183,8 @@ export default {
 
   data() {
     return {
+      PPEs,
+
       all_detection_equipments,
       all_mitigation_equipments,
 
