@@ -52,6 +52,12 @@ export default new VueRouter({
       name: "mitigation-equipment",
       component: () => import("@/views/MitigationEquipment.vue"),
     },
+    {
+      path: "/ppe/:id",
+      props: true,
+      name: "PPE",
+      component: () => import("@/views/PPE.vue"),
+    },
 
     // NotFound Client side 404 route
     {
