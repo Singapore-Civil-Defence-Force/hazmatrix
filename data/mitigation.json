@@ -2,27 +2,27 @@
   "1": {
     "1": {
       "id": "1",
-      "note": "Conditionally resistant"
+      "note": "Compatible"
     },
     "2": {
       "id": "2",
-      "note": "Conditionally resistant"
+      "note": "Conditionally Compatible"
     },
     "3": {
       "id": "3",
-      "note": "Conditionally resistant"
+      "note": "Conditionally Compatible"
     },
     "4": {
       "id": "4",
-      "note": "Conditionally resistant"
+      "note": "Conditionally Compatible"
     },
     "5": {
       "id": "5",
-      "note": "Resistant"
+      "note": "Last Resort"
     },
     "6": {
       "id": "6",
-      "note": "Resistant"
+      "note": "Last Resort"
     }
   },
   "4": {

@@ -100,10 +100,16 @@
         <!-- Show equipments if any -->
         <!-- @todo Remove this if all data is filled -->
         <div v-if="mitigation_equipments && mitigation_equipments.length > 0">
+          <!-- Color cards to easily differentiate the type of mitigation status -->
           <div
             v-for="equipment in mitigation_equipments"
             :key="equipment.id"
             class="card px-4 my-4"
+            :class="{
+              compatible: equipment.note === 'Compatible',
+              conditionally: equipment.note === 'Conditionally Compatible',
+              lastResort: equipment.note === 'Last Resort',
+            }"
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
             <router-link
@@ -202,3 +208,15 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.compatible {
+  background-color: #effaf5;
+}
+.conditionally {
+  background-color: #fffaeb;
+}
+.lastResort {
+  background-color: #feecf0;
+}
+</style>
