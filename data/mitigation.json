@@ -1,42 +1,349 @@
 {
   "1": {
-    "1": {
-      "id": "1",
-      "note": "Compatible"
-    },
-    "2": {
-      "id": "2",
-      "note": "Conditionally Compatible"
-    },
-    "3": {
-      "id": "3",
-      "note": "Conditionally Compatible"
-    },
-    "4": {
-      "id": "4",
-      "note": "Conditionally Compatible"
-    },
-    "5": {
-      "id": "5",
-      "note": "Last Resort"
-    },
-    "6": {
-      "id": "6",
-      "note": "Last Resort"
-    }
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
   },
-  "4": {
-    "8": {
-      "id": "8",
-      "note": "Compatible"
-    },
-    "9": {
-      "id": "9",
-      "note": "Compatible"
-    },
-    "10": {
-      "id": "10",
-      "note": "Compatible"
-    }
-  }
+  "2": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "3": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "4": {},
+  "5": { "7": { "id": 7, "note": "Compatible" } },
+  "6": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "7": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "8": {},
+  "9": { "7": { "id": 7, "note": "Compatible" } },
+  "10": {},
+  "11": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "12": { "7": { "id": 7, "note": "Compatible" } },
+  "13": {},
+  "14": { "7": { "id": 7, "note": "Compatible" } },
+  "15": {},
+  "16": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "17": {},
+  "18": {},
+  "19": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "20": { "7": { "id": 7, "note": "Compatible" } },
+  "21": { "7": { "id": 7, "note": "Compatible" } },
+  "22": { "7": { "id": 7, "note": "Compatible" } },
+  "23": { "7": { "id": 7, "note": "Compatible" } },
+  "24": {},
+  "25": { "7": { "id": 7, "note": "Compatible" } },
+  "26": {},
+  "27": {},
+  "28": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "29": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "30": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" },
+    "7": { "id": 7, "note": "Compatible" }
+  },
+  "31": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" },
+    "7": { "id": 7, "note": "Compatible" }
+  },
+  "32": { "7": { "id": 7, "note": "Compatible" } },
+  "33": { "7": { "id": 7, "note": "Compatible" } },
+  "34": { "7": { "id": 7, "note": "Compatible" } },
+  "35": { "7": { "id": 7, "note": "Compatible" } },
+  "36": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "37": {},
+  "38": {},
+  "39": { "7": { "id": 7, "note": "Compatible" } },
+  "40": { "7": { "id": 7, "note": "Compatible" } },
+  "41": { "7": { "id": 7, "note": "Compatible" } },
+  "42": { "7": { "id": 7, "note": "Compatible" } },
+  "43": {},
+  "44": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "45": {},
+  "46": { "7": { "id": 7, "note": "Compatible" } },
+  "47": {},
+  "48": { "7": { "id": 7, "note": "Compatible" } },
+  "49": { "7": { "id": 7, "note": "Compatible" } },
+  "50": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "51": { "7": { "id": 7, "note": "Compatible" } },
+  "52": { "7": { "id": 7, "note": "Compatible" } },
+  "53": { "7": { "id": 7, "note": "Compatible" } },
+  "54": { "7": { "id": 7, "note": "Compatible" } },
+  "55": { "7": { "id": 7, "note": "Compatible" } },
+  "56": {},
+  "57": { "7": { "id": 7, "note": "Compatible" } },
+  "58": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "59": {},
+  "60": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "61": {},
+  "62": {},
+  "63": { "7": { "id": 7, "note": "Compatible" } },
+  "64": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "65": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "66": {},
+  "67": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "68": { "7": { "id": 7, "note": "Compatible" } },
+  "69": { "7": { "id": 7, "note": "Compatible" } },
+  "70": {},
+  "71": { "7": { "id": 7, "note": "Compatible" } },
+  "72": { "7": { "id": 7, "note": "Compatible" } },
+  "73": { "7": { "id": 7, "note": "Compatible" } },
+  "74": { "7": { "id": 7, "note": "Compatible" } },
+  "75": { "7": { "id": 7, "note": "Compatible" } },
+  "76": {},
+  "77": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "78": {},
+  "79": {},
+  "80": {},
+  "81": {},
+  "82": {},
+  "83": {},
+  "84": {},
+  "85": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "86": { "7": { "id": 7, "note": "Compatible" } },
+  "87": {},
+  "88": { "7": { "id": 7, "note": "Compatible" } },
+  "89": {},
+  "90": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "91": {},
+  "92": {},
+  "93": {},
+  "94": {},
+  "95": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" },
+    "7": { "id": 7, "note": "Compatible" }
+  },
+  "96": {},
+  "97": { "7": { "id": 7, "note": "Compatible" } },
+  "98": { "7": { "id": 7, "note": "Compatible" } },
+  "99": { "7": { "id": 7, "note": "Compatible" } },
+  "100": {},
+  "101": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "102": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "103": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "104": { "7": { "id": 7, "note": "Compatible" } },
+  "105": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "106": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "107": {},
+  "108": {},
+  "109": {},
+  "110": { "7": { "id": 7, "note": "Compatible" } },
+  "111": { "7": { "id": 7, "note": "Compatible" } },
+  "112": { "7": { "id": 7, "note": "Compatible" } },
+  "113": { "7": { "id": 7, "note": "Compatible" } },
+  "114": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "115": {},
+  "116": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "117": {},
+  "118": { "7": { "id": 7, "note": "Compatible" } },
+  "119": { "7": { "id": 7, "note": "Compatible" } },
+  "120": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" },
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "121": {},
+  "122": {
+    "5": { "id": 5, "note": "Compatible" },
+    "6": { "id": 6, "note": "Compatible" }
+  },
+  "123": { "7": { "id": 7, "note": "Compatible" } },
+  "124": {
+    "1": { "id": 1, "note": "Compatible" },
+    "2": { "id": 2, "note": "Compatible" },
+    "3": { "id": 3, "note": "Compatible" },
+    "4": { "id": 4, "note": "Compatible" }
+  },
+  "125": { "7": { "id": 7, "note": "Compatible" } },
+  "126": { "7": { "id": 7, "note": "Compatible" } },
+  "127": {},
+  "128": { "7": { "id": 7, "note": "Compatible" } },
+  "129": {},
+  "130": { "7": { "id": 7, "note": "Compatible" } },
+  "131": { "7": { "id": 7, "note": "Compatible" } },
+  "132": { "7": { "id": 7, "note": "Compatible" } },
+  "133": {},
+  "134": {}
 }

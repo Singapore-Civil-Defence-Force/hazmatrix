@@ -1,37 +1,19 @@
 const Papa = require("papaparse");
-
 const { readFileSync, writeFileSync } = require("fs");
 
 const csvString = readFileSync("./test.csv", "utf8");
 
-// This will parse out the
-// 1. Chemical data (name / un number / chemical formula)
-// 2. Mitigation equipments and their corresponding mitigation limits
-// 3. Chemical to Mitigation Equipment mapping
 const csv = Papa.parse(csvString).data;
-
-// console.log(csv);
 
 const mitigationObj = {};
 const chemicalObj = {};
 
-// Chemical ID is based on row number of the CSV (starting from the first chemical)
-// Equipment ID is based on the element's index
+/*
+  Chemical ID is based on row number of the CSV (starting from the first chemical)
+  Equipment ID is based on the element's index
+*/
 
 for (const [chemicalID, row] of csv.entries()) {
-  //   console.log(row);
-
-  //   mitigationObj[chemicalID] =
-  //     // Slice array to keep the mapping between a chemical and the equipments
-  //     row
-  //       .slice(3)
-  //       // Create a mapping object of equipment ID and its mitigation status if any (not null)
-  //       .reduce(
-  //         (acc, mitigationStatus, equipmentID) =>
-  //           mitigationStatus ? { ...acc, [equipmentID]: mitigationStatus } : acc,
-  //         {}
-  //       );
-
   mitigationObj[chemicalID] =
     // Slice array to keep the mapping between a chemical and the equipments
     row
@@ -79,3 +61,4 @@ for (const [chemicalID, row] of csv.entries()) {
 }
 
 // writeFileSync("./test.json", JSON.stringify(mitigationObj));
+// writeFileSync("./ctest.json", JSON.stringify(chemicalObj));
