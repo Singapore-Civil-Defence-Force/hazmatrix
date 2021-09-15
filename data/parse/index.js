@@ -57,9 +57,21 @@ for (const [chemicalID, row] of csv.entries()) {
   chemicalObj[chemicalID] = {
     id: chemicalID,
     name: chemicalName,
-    formula: formula,
-    // Put undefined so that it will not be stringified, because an empty string will still be stringified
-    un: unNumbers || undefined,
+
+    // Defaults to undefined so that it will not be stringified, because an empty string will still be stringified
+    formula: formula || undefined,
+
+    un: unNumbers
+      ? // Only process the string if IT IS NOT ('' / null / undefined)
+        unNumbers
+          // Remove all spaces so that no spaces will be left when parsing into number
+          .replace(" ", "")
+          // Allow multiple un numbers separated by commas
+          .split(",")
+          // Parse all strings into numbers
+          .map((unNumberString) => parseInt(unNumberString))
+      : // Else use undefined so that it will not be stringified, because an empty string will still be stringified
+        undefined,
   };
 
   // Basically what is the most compact format i can store my data in, and also how to ensure that the data structure is the most efficient after parsed?
