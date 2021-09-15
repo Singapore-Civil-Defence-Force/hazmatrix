@@ -9,7 +9,7 @@
       <!-- is-full to fill up column space when in desktop / landscape mode -->
       <div class="column is-full">
         <label>
-          <b>Search (Chemical name or UN Number)</b>
+          <b>Search (Chemical name)</b>
 
           <div class="field has-addons">
             <div class="control is-expanded">
@@ -20,7 +20,7 @@
                 ref="searchField"
                 type="text"
                 v-model="search_input"
-                placeholder="E.g. Acetone or 1090"
+                placeholder="E.g. Acetic or Octa"
                 required
                 class="input"
                 style="width: 100%"
@@ -101,8 +101,11 @@ export default {
     return {
       search_options: {
         // @todo Allow search for formula?
-        // Search in `name` and in `un` number array
-        keys: ["name", "un"],
+        keys: ["name"],
+
+        // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
+        // Default: 0.6
+        threshold: 0.5,
       },
 
       // Defaults to the URL `search` query string if there is any
@@ -123,7 +126,7 @@ export default {
     results() {
       // Limit max number of returned search results to ensure not too many results are returned (esp for lower spec mobile devices),
       // especially at the start of the search where alot of results will be matched when only 1 - 4 characters are entered
-      return this.fuse.search(this.search_input, { limit: 20 });
+      return this.fuse.search(this.search_input, { limit: 12 });
     },
   },
 
