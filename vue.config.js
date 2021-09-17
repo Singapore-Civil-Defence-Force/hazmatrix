@@ -56,6 +56,14 @@ module.exports = {
     // https://medium.com/appscope/changing-the-ios-status-bar-of-your-progressive-web-app-9fc8fbe8e6ab
     // Not setting status bar style to black-translucent for now, as on our white background, you cant see the white characters
     // appleMobileWebAppStatusBarStyle: "black-translucent",
+
+    // Configure the workbox plugin
+    workboxPluginMode: "InjectManifest",
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: "src/service-worker.js",
+      // ...other Workbox options...
+    },
   },
 
   // configureWebpack(config) {

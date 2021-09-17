@@ -36,27 +36,6 @@
         </div>
       </div>
 
-      <!-- @todo Might want to give more space on top -->
-      <div class="columns is-mobile">
-        <div class="column">
-          <router-link
-            :to="{ name: 'settings' }"
-            class="button is-light is-fullwidth"
-          >
-            settings
-          </router-link>
-        </div>
-
-        <div class="column">
-          <router-link
-            :to="{ name: 'settings' }"
-            class="button is-light is-fullwidth"
-          >
-            next..
-          </router-link>
-        </div>
-      </div>
-
       <version />
     </div>
   </div>

@@ -4,29 +4,32 @@ import VueRouter from "vue-router";
 // Attach use of vue route to the vue object instance
 Vue.use(VueRouter);
 
+// There are no lazily loaded components with route level code-splitting to ensure all code is loaded on first open,
+// So that then entire app can be precached and allow app to be fully offline from next use.
+// Thus all the components are imported at top level first
+import Home from "@/views/Home.vue";
+import Search from "@/views/Search.vue";
+import Chemical from "@/views/Chemical.vue";
+import DetectionEquipment from "@/views/DetectionEquipment.vue";
+import MitigationEquipment from "@/views/MitigationEquipment.vue";
+import PPE from "@/views/PPE.vue";
+
 export default new VueRouter({
   // Scroll to top for all route navigations, and if there is a savedPosition it will result in native-like behavior when navigating with back/forward buttons
   scrollBehavior: (to, from, savedPosition) =>
     savedPosition ? savedPosition : { x: 0, y: 0 },
 
-  /**
-   * Since this app is just a reference to publicly available data, there is no private routes needed, thus all routes defined here
-   *
-   * @notice
-   * Routes uses lazily loaded components with route level code-splitting
-   * this generates a separate chunk (about.[hash].js) for this route
-   * which is lazy-loaded when the route is visited.
-   */
+  //  Since this app is just a reference to publicly available data, there is no private routes needed, thus all routes defined here
   routes: [
     {
       path: "/home",
       name: "home",
-      component: () => import("@/views/Home.vue"),
+      component: Home,
     },
     {
       path: "/search",
       name: "search",
-      component: () => import("@/views/Search.vue"),
+      component: Search,
       // Pass URL query parameters as prop to component
       props: (route) => route.query,
     },
@@ -34,7 +37,7 @@ export default new VueRouter({
       path: "/chemical/:id",
       props: true,
       name: "chemical",
-      component: () => import("@/views/Chemical.vue"),
+      component: Chemical,
     },
     {
       path: "/equipment/detection/:id",
@@ -42,7 +45,7 @@ export default new VueRouter({
       // Important to ensure that they do not use the same key
       props: (route) => ({ ...route.params, ...route.query }),
       name: "detection-equipment",
-      component: () => import("@/views/DetectionEquipment.vue"),
+      component: DetectionEquipment,
     },
     {
       path: "/equipment/mitigation/:id",
@@ -50,13 +53,13 @@ export default new VueRouter({
       // Important to ensure that they do not use the same key
       props: (route) => ({ ...route.params, ...route.query }),
       name: "mitigation-equipment",
-      component: () => import("@/views/MitigationEquipment.vue"),
+      component: MitigationEquipment,
     },
     {
       path: "/ppe/:id",
       props: true,
       name: "PPE",
-      component: () => import("@/views/PPE.vue"),
+      component: PPE,
     },
 
     // NotFound Client side 404 route

@@ -86,12 +86,13 @@
           <ul>
             <li>
               <p class="subtitle">
-                Effectiveness: <b>{{ mitigation_notes.note }}</b>
+                Status: <b>{{ mitigation_notes.status }}</b>
               </p>
             </li>
           </ul>
 
           <!-- This should be empty for now, as there are no chemical/equipment specific notes unlike detection equipments data source -->
+          <!-- Actually need this, because some things are conditionally resistant, and the conditions can be writen here -->
           <!-- <ul>
             <li
               v-for="(key, i) in equipment.keys"
