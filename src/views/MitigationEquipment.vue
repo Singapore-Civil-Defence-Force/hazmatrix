@@ -80,28 +80,30 @@
       <div v-if="chemicalID">
         <div class="column content pb-0 mb-0">
           <p class="subtitle mb-1">
-            Notes for <b>{{ chemicals[chemicalID].name }}</b>
+            Mitigation Status for <b>{{ chemicals[chemicalID].name }}</b>
           </p>
 
-          <ul>
-            <li>
-              <p class="subtitle">
-                Status: <b>{{ mitigation_notes.status }}</b>
-              </p>
+          <span v-if="Array.isArray(mitigation_status)">
+            <ul>
+              <li class="subtitle mb-0">Conditionally</li>
+              <ul>
+                <li v-for="(conditions, i) in mitigation_status" :key="i">
+                  {{ conditions }}
+                </li>
+              </ul>
+            </ul>
+          </span>
+          <ul v-else-if="mitigation_status === 1">
+            <li class="subtitle">
+              <b>Compatible</b>
             </li>
           </ul>
-
-          <!-- This should be empty for now, as there are no chemical/equipment specific notes unlike detection equipments data source -->
-          <!-- Actually need this, because some things are conditionally resistant, and the conditions can be writen here -->
-          <!-- <ul>
-            <li
-              v-for="(key, i) in equipment.keys"
-              :key="i"
-              class="subtitle mb-1"
-            >
-              {{ key }}: <b>{{ mitigation_notes.values[i] }}</b>
+          <ul v-else>
+            <li class="subtitle">
+              {{ mitigation_status }}
+              <b>Last Resort</b>
             </li>
-          </ul> -->
+          </ul>
         </div>
 
         <div class="column">
@@ -143,8 +145,8 @@ export default {
 
   data() {
     // Get notes for this specific mitigation equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
-    const mitigation_notes = this.chemicalID
-      ? mitigation[this.chemicalID][this.id]
+    const mitigation_status = this.chemicalID
+      ? mitigation[this.chemicalID][this.id].status
       : undefined;
 
     return {
@@ -154,7 +156,7 @@ export default {
       // Get the specific mitigation equipment
       equipment: all_mitigation_equipments[this.id],
 
-      mitigation_notes,
+      mitigation_status,
     };
   },
 };

@@ -1,5 +1,32 @@
 const Papa = require("papaparse");
 
+
+/*
+  Returns
+  1, if Compatible
+  0, if Last Resort
+
+  Array<String>, if Conditionally compatible, the string will be processed into an array of String conditions
+*/
+function getMitigationStatus(mitigationStatus) {
+  switch (mitigationStatus) {
+    case "Compatible":
+      return 1;
+    case "Last Resort":
+      return 0;
+
+    default:
+      if (mitigationStatus.includes("Conditionally"))
+        return mitigationStatus
+          .replace(/Conditionally|\[|\]|"|"/gi, "")
+          .split(",");
+      else
+        throw new Error(
+          `Invalid mitigation status '${mitigationStatus}' found in CSV`
+        );
+  }
+}
+
 module.exports = function parse(csvString) {
   const csv = Papa.parse(csvString).data;
 
@@ -25,7 +52,7 @@ module.exports = function parse(csvString) {
                   // Assuming that equipmentID is 0 indexed
                   [equipmentID]: {
                     id: equipmentID,
-                    status: mitigationStatus,
+                    status: getMitigationStatus(mitigationStatus),
                   },
                 }
               : acc,

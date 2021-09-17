@@ -122,7 +122,18 @@
             >
               <h3>{{ all_mitigation_equipments[equipment.id].name }}</h3>
 
-              <p class="subtitle mb-1">{{ equipment.status }}</p>
+              <span class="subtitle" v-if="Array.isArray(equipment.status)">
+                Conditionally
+                <ul>
+                  <li v-for="(conditions, i) in equipment.status" :key="i">
+                    {{ conditions }}
+                  </li>
+                </ul>
+              </span>
+              <p class="subtitle" v-else-if="equipment.status === 1">
+                Compatible
+              </p>
+              <p class="subtitle" v-else>Last Resort</p>
             </router-link>
           </div>
         </div>
