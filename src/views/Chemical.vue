@@ -135,35 +135,17 @@
         <hr class="my-0" style="background-color: #dedede" />
       </div>
 
-      <div class="column pb-0 mb-0">
-        <div class="columns">
-          <div class="column">
-            <Share
-              :options="{
-                title: 'Share this Chemical',
-                text: chemical.name,
-              }"
-            />
-          </div>
+      <div class="column">
+        <Share
+          :options="{
+            title: 'Share this Chemical',
+            text: chemical.name,
+          }"
+        />
+      </div>
 
-          <div class="column">
-            <button
-              class="button is-light is-fullwidth"
-              @click="$router.back()"
-            >
-              back
-            </button>
-          </div>
-
-          <div class="column">
-            <router-link
-              class="button is-light is-fullwidth is-danger"
-              :to="{ name: 'home' }"
-            >
-              home
-            </router-link>
-          </div>
-        </div>
+      <div class="column">
+        <NavBtn />
       </div>
     </div>
   </div>
@@ -178,11 +160,12 @@ import mitigation from "../../data/mitigation.json";
 import PPEs from "../../data/PPE.json";
 
 import Share from "../components/Share.vue";
+import NavBtn from "../components/NavBtn.vue";
 
 export default {
   name: "Chemical",
 
-  components: { Share },
+  components: { Share, NavBtn },
 
   // Get chemical's id from router
   props: ["id"],

@@ -55,35 +55,17 @@
         </div>
       </div>
 
-      <div class="column pb-0 mb-0">
-        <div class="columns">
-          <div class="column">
-            <Share
-              :options="{
-                title: 'Share this Detection Equipment',
-                text: equipment.name,
-              }"
-            />
-          </div>
+      <div class="column">
+        <Share
+          :options="{
+            title: 'Share this Detection Equipment',
+            text: equipment.name,
+          }"
+        />
+      </div>
 
-          <div class="column">
-            <button
-              class="button is-light is-fullwidth"
-              @click="$router.back()"
-            >
-              back
-            </button>
-          </div>
-
-          <div class="column">
-            <router-link
-              class="button is-light is-fullwidth is-danger"
-              :to="{ name: 'home' }"
-            >
-              home
-            </router-link>
-          </div>
-        </div>
+      <div class="column">
+        <NavBtn />
       </div>
     </div>
   </div>
@@ -95,11 +77,12 @@ import detection from "../../data/detection.json";
 import chemicals from "../../data/chemicals.json";
 
 import Share from "../components/Share.vue";
+import NavBtn from "../components/NavBtn.vue";
 
 export default {
   name: "DetectionEquipment",
 
-  components: { Share },
+  components: { Share, NavBtn },
 
   // Get equipment and chemical id from router, where chemical ID is an optional query parameter
   props: ["id", "chemicalID"],
