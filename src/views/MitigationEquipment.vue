@@ -100,7 +100,6 @@
           </ul>
           <ul v-else>
             <li class="subtitle">
-              {{ mitigation_status }}
               <b>Last Resort</b>
             </li>
           </ul>
