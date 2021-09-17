@@ -1,349 +1,739 @@
 {
+  "0": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
   "1": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Last Resort" },
+    "11": { "id": 11, "status": "Last Resort" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "2": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "3": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" }
   },
-  "4": {},
-  "5": { "7": { "id": 7, "note": "Compatible" } },
+  "4": { "6": { "id": 6, "status": "Compatible" } },
+  "5": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" }
+  },
   "6": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
   },
-  "7": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+  "7": { "13": { "id": 13, "status": "Compatible" } },
+  "8": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Last Resort" },
+    "11": { "id": 11, "status": "Last Resort" },
+    "12": {
+      "id": 12,
+      "status": "Conditionally [\"Compatible < 150°C\", \"Not compatible => 150°C\"]"
+    },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "8": {},
-  "9": { "7": { "id": 7, "note": "Compatible" } },
-  "10": {},
+  "9": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "10": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "11": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "6": { "id": 6, "status": "Compatible" },
+    "14": { "id": 14, "status": "–" }
   },
-  "12": { "7": { "id": 7, "note": "Compatible" } },
-  "13": {},
-  "14": { "7": { "id": 7, "note": "Compatible" } },
-  "15": {},
-  "16": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+  "12": {
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "17": {},
-  "18": {},
-  "19": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+  "13": { "6": { "id": 6, "status": "Compatible" } },
+  "14": {},
+  "15": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "20": { "7": { "id": 7, "note": "Compatible" } },
-  "21": { "7": { "id": 7, "note": "Compatible" } },
-  "22": { "7": { "id": 7, "note": "Compatible" } },
-  "23": { "7": { "id": 7, "note": "Compatible" } },
-  "24": {},
-  "25": { "7": { "id": 7, "note": "Compatible" } },
-  "26": {},
-  "27": {},
+  "16": { "13": { "id": 13, "status": "Compatible" } },
+  "17": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "18": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "19": { "6": { "id": 6, "status": "Compatible" } },
+  "20": { "6": { "id": 6, "status": "Compatible" } },
+  "21": { "6": { "id": 6, "status": "Compatible" } },
+  "22": { "6": { "id": 6, "status": "Compatible" } },
+  "23": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
+  "24": { "6": { "id": 6, "status": "Compatible" } },
+  "25": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "26": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "27": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "28": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "29": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "30": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" },
-    "7": { "id": 7, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "6": { "id": 6, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "31": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" },
-    "7": { "id": 7, "note": "Compatible" }
+    "6": { "id": 6, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "32": { "7": { "id": 7, "note": "Compatible" } },
-  "33": { "7": { "id": 7, "note": "Compatible" } },
-  "34": { "7": { "id": 7, "note": "Compatible" } },
-  "35": { "7": { "id": 7, "note": "Compatible" } },
+  "32": {
+    "6": { "id": 6, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" }
+  },
+  "33": { "6": { "id": 6, "status": "Compatible" } },
+  "34": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
+  "35": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
   "36": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" }
   },
-  "37": {},
-  "38": {},
-  "39": { "7": { "id": 7, "note": "Compatible" } },
-  "40": { "7": { "id": 7, "note": "Compatible" } },
-  "41": { "7": { "id": 7, "note": "Compatible" } },
-  "42": { "7": { "id": 7, "note": "Compatible" } },
-  "43": {},
+  "37": { "14": { "id": 14, "status": "Compatible" } },
+  "38": { "6": { "id": 6, "status": "Compatible" } },
+  "39": { "6": { "id": 6, "status": "Compatible" } },
+  "40": { "6": { "id": 6, "status": "Compatible" } },
+  "41": { "6": { "id": 6, "status": "Compatible" } },
+  "42": {
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" }
+  },
+  "43": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "44": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" }
   },
-  "45": {},
-  "46": { "7": { "id": 7, "note": "Compatible" } },
-  "47": {},
-  "48": { "7": { "id": 7, "note": "Compatible" } },
-  "49": { "7": { "id": 7, "note": "Compatible" } },
-  "50": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+  "45": {
+    "6": { "id": 6, "status": "Compatible" },
+    "16": { "id": 16, "status": "Compatible" }
   },
-  "51": { "7": { "id": 7, "note": "Compatible" } },
-  "52": { "7": { "id": 7, "note": "Compatible" } },
-  "53": { "7": { "id": 7, "note": "Compatible" } },
-  "54": { "7": { "id": 7, "note": "Compatible" } },
-  "55": { "7": { "id": 7, "note": "Compatible" } },
-  "56": {},
-  "57": { "7": { "id": 7, "note": "Compatible" } },
+  "46": {},
+  "47": { "6": { "id": 6, "status": "Compatible" } },
+  "48": { "6": { "id": 6, "status": "Compatible" } },
+  "49": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "50": { "6": { "id": 6, "status": "Compatible" } },
+  "51": { "6": { "id": 6, "status": "Compatible" } },
+  "52": { "6": { "id": 6, "status": "Compatible" } },
+  "53": { "6": { "id": 6, "status": "Compatible" } },
+  "54": { "6": { "id": 6, "status": "Compatible" } },
+  "55": {},
+  "56": { "6": { "id": 6, "status": "Compatible" } },
+  "57": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "58": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "59": {},
+  "59": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
   "60": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "61": {},
-  "62": {},
-  "63": { "7": { "id": 7, "note": "Compatible" } },
+  "62": { "6": { "id": 6, "status": "Compatible" } },
+  "63": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "64": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "65": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+  "65": { "13": { "id": 13, "status": "Compatible" } },
+  "66": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" }
   },
-  "66": {},
   "67": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "6": { "id": 6, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "68": { "7": { "id": 7, "note": "Compatible" } },
-  "69": { "7": { "id": 7, "note": "Compatible" } },
-  "70": {},
-  "71": { "7": { "id": 7, "note": "Compatible" } },
-  "72": { "7": { "id": 7, "note": "Compatible" } },
-  "73": { "7": { "id": 7, "note": "Compatible" } },
-  "74": { "7": { "id": 7, "note": "Compatible" } },
-  "75": { "7": { "id": 7, "note": "Compatible" } },
-  "76": {},
+  "68": { "6": { "id": 6, "status": "Compatible" } },
+  "69": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "70": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "71": { "6": { "id": 6, "status": "Compatible" } },
+  "72": {
+    "6": { "id": 6, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "73": {
+    "6": { "id": 6, "status": "Compatible" },
+    "12": {
+      "id": 12,
+      "status": "Conditionally [\"Compatible >150°C, \"Not compatible < 150°C\"]"
+    },
+    "14": { "id": 14, "status": "Last Resort" }
+  },
+  "74": { "6": { "id": 6, "status": "Compatible" } },
+  "75": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "76": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" }
+  },
   "77": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "78": {},
-  "79": {},
-  "80": {},
-  "81": {},
-  "82": {},
-  "83": {},
-  "84": {},
+  "78": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "79": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "80": {
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" }
+  },
+  "81": {
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" }
+  },
+  "82": {
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "83": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "84": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "85": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "86": { "7": { "id": 7, "note": "Compatible" } },
-  "87": {},
-  "88": { "7": { "id": 7, "note": "Compatible" } },
-  "89": {},
+  "86": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "87": { "6": { "id": 6, "status": "Compatible" } },
+  "88": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "89": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "90": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "91": {},
-  "92": {},
+  "91": {
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "92": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "93": {},
-  "94": {},
-  "95": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" },
-    "7": { "id": 7, "note": "Compatible" }
+  "94": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "6": { "id": 6, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "96": {},
-  "97": { "7": { "id": 7, "note": "Compatible" } },
-  "98": { "7": { "id": 7, "note": "Compatible" } },
-  "99": { "7": { "id": 7, "note": "Compatible" } },
-  "100": {},
+  "95": {},
+  "96": { "6": { "id": 6, "status": "Compatible" } },
+  "97": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" }
+  },
+  "98": { "6": { "id": 6, "status": "Compatible" } },
+  "99": { "14": { "id": 14, "status": "Compatible" } },
+  "100": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "101": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "102": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" }
   },
   "103": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" }
   },
-  "104": { "7": { "id": 7, "note": "Compatible" } },
+  "104": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" },
+    "16": { "id": 16, "status": "Compatible" }
+  },
   "105": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "7": { "id": 7, "status": "Compatible" },
+    "8": { "id": 8, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" },
+    "16": { "id": 16, "status": "Compatible" }
   },
   "106": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
   "107": {},
-  "108": {},
-  "109": {},
-  "110": { "7": { "id": 7, "note": "Compatible" } },
-  "111": { "7": { "id": 7, "note": "Compatible" } },
-  "112": { "7": { "id": 7, "note": "Compatible" } },
-  "113": { "7": { "id": 7, "note": "Compatible" } },
+  "108": {
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "109": {
+    "6": { "id": 6, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "110": { "6": { "id": 6, "status": "Compatible" } },
+  "111": { "6": { "id": 6, "status": "Compatible" } },
+  "112": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "113": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "114": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "115": {},
-  "116": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+  "115": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "117": {},
-  "118": { "7": { "id": 7, "note": "Compatible" } },
-  "119": { "7": { "id": 7, "note": "Compatible" } },
+  "116": {},
+  "117": { "6": { "id": 6, "status": "Compatible" } },
+  "118": { "6": { "id": 6, "status": "Compatible" } },
+  "119": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
   "120": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" },
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+    "9": { "id": 9, "status": "Last Resort" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" },
+    "16": { "id": 16, "status": "Compatible" }
   },
-  "121": {},
-  "122": {
-    "5": { "id": 5, "note": "Compatible" },
-    "6": { "id": 6, "note": "Compatible" }
+  "121": {
+    "4": { "id": 4, "status": "Compatible" },
+    "5": { "id": 5, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
   },
-  "123": { "7": { "id": 7, "note": "Compatible" } },
-  "124": {
-    "1": { "id": 1, "note": "Compatible" },
-    "2": { "id": 2, "note": "Compatible" },
-    "3": { "id": 3, "note": "Compatible" },
-    "4": { "id": 4, "note": "Compatible" }
+  "122": { "6": { "id": 6, "status": "Compatible" } },
+  "123": {
+    "0": { "id": 0, "status": "Compatible" },
+    "1": { "id": 1, "status": "Compatible" },
+    "2": { "id": 2, "status": "Compatible" },
+    "3": { "id": 3, "status": "Compatible" },
+    "14": { "id": 14, "status": "Last Resort" },
+    "16": { "id": 16, "status": "Compatible" }
   },
-  "125": { "7": { "id": 7, "note": "Compatible" } },
-  "126": { "7": { "id": 7, "note": "Compatible" } },
-  "127": {},
-  "128": { "7": { "id": 7, "note": "Compatible" } },
-  "129": {},
-  "130": { "7": { "id": 7, "note": "Compatible" } },
-  "131": { "7": { "id": 7, "note": "Compatible" } },
-  "132": { "7": { "id": 7, "note": "Compatible" } },
-  "133": {},
-  "134": {}
+  "124": { "6": { "id": 6, "status": "Compatible" } },
+  "125": { "6": { "id": 6, "status": "Compatible" } },
+  "126": {},
+  "127": { "6": { "id": 6, "status": "Compatible" } },
+  "128": {
+    "10": { "id": 10, "status": "Last Resort" },
+    "11": { "id": 11, "status": "Last Resort" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  },
+  "129": { "6": { "id": 6, "status": "Compatible" } },
+  "130": {
+    "6": { "id": 6, "status": "Compatible" },
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" }
+  },
+  "131": { "6": { "id": 6, "status": "Compatible" } },
+  "132": {
+    "9": { "id": 9, "status": "Compatible" },
+    "10": { "id": 10, "status": "Compatible" },
+    "11": { "id": 11, "status": "Compatible" },
+    "12": { "id": 12, "status": "Compatible" },
+    "13": { "id": 13, "status": "Compatible" },
+    "14": { "id": 14, "status": "Compatible" }
+  }
 }

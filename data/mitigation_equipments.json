@@ -1,5 +1,5 @@
 {
-  "1": {
+  "0": {
     "name": "Flange drainage bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "Flange connection: Ø < 21 cm",
@@ -9,7 +9,7 @@
     "Working Temperature": "-55°C to 85°C",
     "flammable environment": "Yes"
   },
-  "2": {
+  "1": {
     "name": "Leak sealing lance (Chloroprene rubber)",
     "Mitigation Limitations": [
       [
@@ -26,7 +26,7 @@
     "Working Temperature": "-55°C to 85°C",
     "flammable environment": "Yes"
   },
-  "3": {
+  "2": {
     "name": "Mini leak sealing bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "For container Ø 10-90 cm",
@@ -43,7 +43,7 @@
     "Working Temperature": "-40°C to 95°C",
     "flammable environment": "Yes"
   },
-  "4": {
+  "3": {
     "name": "Leak sealing bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "For container Ø > 50 cm",
@@ -57,7 +57,7 @@
     "Working Temperature": "-40°C to 90°C",
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
-  "5": {
+  "4": {
     "name": "Leak drainage bag (Natural rubber)",
     "Mitigation Limitations": [
       "For container Ø > 50 cm",
@@ -71,7 +71,7 @@
     "Working Temperature": "-40°C to 90°C",
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
-  "6": {
+  "5": {
     "name": "Pipe sealing bag (Natural rubber)",
     "Mitigation Limitations": [
       "For pipe/drain Ø 10-120 cm",
@@ -93,7 +93,7 @@
     "Working Temperature": "-40°C to 70°C",
     "flammable environment": "Yes"
   },
-  "7": {
+  "6": {
     "name": "Emergency response containment vessel (ERCV) (Salvage Cylinder)",
     "Mitigation Limitations": [
       "Cylinder size limit",
@@ -106,7 +106,7 @@
     "Working Temperature": "20°C to 50°C",
     "flammable environment": "Yes"
   },
-  "8": {
+  "7": {
     "name": "Pipe Clamp (Clamp Ø size: Smaller than 5\")",
     "Mitigation Limitations": [
       "Clamp Ø size: 0.5\", 0.75\", 1\", 1.25\", 1.5\" 2\", 2.5\", 3\", 3.5\", 4\""
@@ -115,34 +115,89 @@
     "Working Temperature": "20°C to 50°C",
     "flammable environment": "Yes"
   },
-  "9": {
+  "8": {
     "name": "Pipe Clamp (Clamp Ø size: 5\")",
     "Mitigation Limitations": ["Clamp Ø size: 5\""],
     "Operating Pressure": "10 Bar",
     "Working Temperature": "20°C to 50°C",
     "flammable environment": "Yes"
   },
-  "10": {
-    "name": "TMP",
+  "9": {
+    "name": "Chlorine Kit A - The Kit (Carbon Steel)",
     "Mitigation Limitations": [
-      [
-        "Clamp Ø size:",
-        [
-          "0.5\"",
-          "0.75\"",
-          "1\"",
-          "1.25\"",
-          "1.5\"",
-          "2\"",
-          "2.5\"",
-          "3\"",
-          "3.5\"",
-          "4\""
-        ]
-      ]
+      "Contain leaks from 45kg (31.87L)  and 68kg (47.85L) cylinders only",
+      "Note: Reactivity of different chemicals varies with temperature"
     ],
-    "Operating Pressure": "10 Bar",
-    "Working Temperature": "20°C to 50°C",
+    "Operating Pressure": "Pressure Relief by User Controlled Release",
+    "Working Temperature": "Maximum of 300 °C",
+    "flammable environment": "No"
+  },
+  "10": {
+    "name": "Chlorine Kit A - Viton Gasket",
+    "Mitigation Limitations": [
+      "Contain leaks from 45kg (31.87L)  and 68kg (47.85L) cylinders only",
+      "Note: Reactivity of different chemicals varies with temperature"
+    ],
+    "Operating Pressure": "Pressure Relief by User Controlled Release",
+    "Working Temperature": "Maximum of 200 °C",
+    "flammable environment": "No"
+  },
+  "11": {
+    "name": "Chlorine Kit B (Pre2014) Viton Gasket",
+    "Mitigation Limitations": [
+      "Contain leaks from vales, fusible plugs, and in the side wall of chlorine one ton  containers that conform to specification DOT 106A500X only"
+    ],
+    "Operating Pressure": "Pressure Relief by User Controlled Release",
+    "Working Temperature": "Maximum of 200 °C",
+    "flammable environment": "No"
+  },
+  "12": {
+    "name": "Chlorine Kit B (Pre2014) Garlock 3000",
+    "Mitigation Limitations": [
+      "Contain leaks from vales, fusible plugs, and in the side wall of chlorine one ton  containers that conform to specification DOT 106A500X only"
+    ],
+    "Operating Pressure": "Pressure Relief by User Controlled Release",
+    "Working Temperature": "75 °C to 370 °C",
+    "flammable environment": "No"
+  },
+  "13": {
+    "name": "Responder kit (urethane pad)",
+    "Mitigation Limitations": [
+      "Can only be used on small leaks or cracks on initial mitigation (Below chemical resistance for eu pad)"
+    ],
+    "Operating Pressure": "NA",
+    "Working Temperature": "NA",
     "flammable environment": "Yes"
+  },
+  "14": {
+    "name": "Typhoon vacuum cleaner (304 SS used for below ratings)",
+    "Mitigation Limitations": [
+      "Size: 68 x 56 x 91 cm",
+      "Tank capacity: 63 L",
+      "Domestic 3pin power supply",
+      "Stainless steel tanks"
+    ],
+    "Operating Pressure": "NA",
+    "Working Temperature": "NA",
+    "flammable environment": "No"
+  },
+  "15": {
+    "name": "Decanting pump",
+    "Mitigation Limitations": [
+      "Cannot be used in confined spaces as it uses electrical supply to power up",
+      "Cannot be used in a cyrogenic environment"
+    ],
+    "Operating Pressure": "NA",
+    "Working Temperature": "NA",
+    "flammable environment": "Yes (But not for Dust Environment)"
+  },
+  "16": {
+    "name": "Hazmat pump",
+    "Mitigation Limitations": [
+      "Cannot be used in confined space environment as it uses electrical supply is used to power up the appliance"
+    ],
+    "Operating Pressure": "NA",
+    "Working Temperature": "20°C to 70 °C",
+    "flammable environment": "No"
   }
 }

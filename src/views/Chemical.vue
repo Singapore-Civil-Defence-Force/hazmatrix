@@ -106,9 +106,9 @@
             :key="equipment.id"
             class="card px-4 my-4"
             :class="{
-              compatible: equipment.note === 'Compatible',
-              conditionally: equipment.note === 'Conditionally Compatible',
-              lastResort: equipment.note === 'Last Resort',
+              compatible: equipment.status === 'Compatible',
+              conditionally: equipment.status === 'Conditionally Compatible',
+              lastResort: equipment.status === 'Last Resort',
             }"
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
@@ -122,7 +122,7 @@
             >
               <h3>{{ all_mitigation_equipments[equipment.id].name }}</h3>
 
-              <p class="subtitle mb-1">{{ equipment.note }}</p>
+              <p class="subtitle mb-1">{{ equipment.status }}</p>
             </router-link>
           </div>
         </div>

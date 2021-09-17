@@ -22,16 +22,16 @@ module.exports = function parse(csvString) {
             mitigationStatus
               ? {
                   ...acc,
-                  [equipmentID + 1]: {
-                    id: equipmentID + 1,
-                    note: mitigationStatus,
+                  // Assuming that equipmentID is 0 indexed
+                  [equipmentID]: {
+                    id: equipmentID,
+                    status: mitigationStatus,
                   },
                 }
               : acc,
           {}
         );
 
-    // @todo MAKE sure the chemical ID's line up correctly, now it does not
     // Slice array to keep the Chemical's data
     const [chemicalName, formula, unNumbers] = row.slice(0, 3);
     chemical[chemicalID] = {
