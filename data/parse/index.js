@@ -17,13 +17,15 @@ function getMitigationStatus(mitigationStatus) {
 
     default:
       if (mitigationStatus.includes("Conditionally"))
+        // Trim leading spaces after replacement and split. See output of split to understand
         return mitigationStatus
-          .replace(/Conditionally|\[|\]|"|"/gi, "")
-          .split(",");
-      else
-        throw new Error(
-          `Invalid mitigation status '${mitigationStatus}' found in CSV`
-        );
+          .replace(/Conditionally |\[|\]|"|"/gi, "")
+          .split(",")
+          .map((condition) => condition.trim());
+
+      throw new Error(
+        `Invalid mitigation status '${mitigationStatus}' found in CSV`
+      );
   }
 }
 

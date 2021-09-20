@@ -77,7 +77,7 @@
     "11": { "id": 11, "status": 0 },
     "12": {
       "id": 12,
-      "status": [" Compatible < 150°C", " Not compatible => 150°C"]
+      "status": ["Compatible < 150°C", "Not compatible => 150°C"]
     },
     "14": { "id": 14, "status": 1 }
   },
@@ -387,7 +387,7 @@
     "6": { "id": 6, "status": 1 },
     "12": {
       "id": 12,
-      "status": [" Compatible >150°C", " Not compatible < 150°C"]
+      "status": ["Compatible > 150°C", "Not compatible < 150°C"]
     },
     "14": { "id": 14, "status": 0 }
   },
@@ -708,7 +708,5 @@
     "12": { "id": 12, "status": 1 },
     "13": { "id": 13, "status": 1 },
     "14": { "id": 14, "status": 1 }
-  },
-  "133": {},
-  "134": {}
+  }
 }
