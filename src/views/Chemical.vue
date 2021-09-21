@@ -34,7 +34,7 @@
             <h3>{{ PPE.short }}</h3>
 
             <p v-for="(role, i) in PPE.roles" :key="i" class="subtitle mb-1">
-              Role: <b>{{ role }}</b>
+              For: <b>{{ role }}</b>
             </p>
           </router-link>
         </div>
@@ -106,9 +106,9 @@
             :key="equipment.id"
             class="card px-4 my-4"
             :class="{
-              compatible: equipment.status === 'Compatible',
-              conditionally: equipment.status === 'Conditionally Compatible',
-              lastResort: equipment.status === 'Last Resort',
+              compatible: equipment.status === 1,
+              lastResort: equipment.status === 0,
+              conditionally: Array.isArray(equipment.status),
             }"
           >
             <!-- Display the card content in a router-link element to make the card's content section clickable -->
