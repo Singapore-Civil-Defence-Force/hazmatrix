@@ -1,6 +1,34 @@
 const Papa = require("papaparse");
 
 
+// Parse the Meta Data into mitigation equipment JSON
+function mitigationEquipmentJSON(metaData) {
+  // Extract out the rows individually, hardcoding all the rows now as they most probably will not change
+  const [
+    equipmentNames,
+    mitigatingLimitations,
+    operatingPressures,
+    workingTemperatures,
+    flammables,
+  ] =
+    // Remove the second and third column for every row because they are empty, refer to the excel file where they are just merged
+    metaData.map((row) => [row[0], ...row.slice(3)]);
+
+  // Return object
+  const rObj = {};
+  // Create the return object from the second element, as first element is the inner object key
+  for (const [row, equipmentName] of equipmentNames.slice(1).entries())
+    rObj[row] = {
+      [equipmentNames[0]]: equipmentName,
+      [mitigatingLimitations[0]]: mitigatingLimitations[row],
+      [operatingPressures[0]]: operatingPressures[row],
+      [workingTemperatures[0]]: workingTemperatures[row],
+      [flammables[0]]: flammables[row],
+    };
+
+  return rObj;
+}
+
 /*
   Returns
   1, if Compatible
@@ -32,6 +60,14 @@ function getMitigationStatus(mitigationStatus) {
 module.exports = function parse(csvString) {
   const csv = Papa.parse(csvString).data;
 
+  // The number of rows before the start of the first acid, where the first few rows are used for equipment data
+  const numOfRowsBeforeAcid = 5;
+
+  // Parse Meta Data into mitigation equipment JSON
+  const mitigationEquipment = mitigationEquipmentJSON(
+    csv.slice(0, numOfRowsBeforeAcid)
+  );
+
   const mitigation = {};
   const chemical = {};
 
@@ -40,7 +76,7 @@ module.exports = function parse(csvString) {
     Equipment ID is based on the element's index
   */
 
-  for (const [chemicalID, row] of csv.entries()) {
+  for (const [chemicalID, row] of csv.slice(numOfRowsBeforeAcid).entries()) {
     mitigation[chemicalID] =
       // Slice array to keep the mapping between a chemical and the equipments
       row
@@ -84,7 +120,7 @@ module.exports = function parse(csvString) {
     };
   }
 
-  return { mitigation, chemical };
+  return { mitigationEquipment, mitigation, chemical };
 
   // Basically what is the most compact format i can store my data in, and also how to ensure that the data structure is the most efficient after parsed?
   // maybe instead of  [equipmentID]: mitigationStatus  the value is stored as either 0 (for compatible), 1 (for last resort), String (for conditonally compatible, this one just put the whole string in?)
