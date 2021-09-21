@@ -1,6 +1,3 @@
-const Papa = require("papaparse");
-
-
 // Parse the Meta Data into mitigation equipment JSON
 function mitigationEquipmentJSON(metaData) {
   // Extract out the rows individually, hardcoding all the rows now as they most probably will not change
@@ -14,16 +11,26 @@ function mitigationEquipmentJSON(metaData) {
     // Remove the second and third column for every row because they are empty, refer to the excel file where they are just merged
     metaData.map((row) => [row[0], ...row.slice(3)]);
 
+  // eslint-disable-next-line no-irregular-whitespace
+  // Prevents '﻿name' from appearing in mitigation equipment JSON
+  // This is because the starting character in the CSV file is this, thus need to remove it first
+  // https://apps.timwhitlock.info/unicode/inspect?s=%EF%BB%BF
+  // https://en.wikipedia.org/wiki/Zero-width_space
+  equipmentNames[0] = equipmentNames[0].replaceAll("\uFEFF", "");
+
   // Return object
   const rObj = {};
+
   // Create the return object from the second element, as first element is the inner object key
-  for (const [row, equipmentName] of equipmentNames.slice(1).entries())
-    rObj[row] = {
-      [equipmentNames[0]]: equipmentName,
-      [mitigatingLimitations[0]]: mitigatingLimitations[row],
-      [operatingPressures[0]]: operatingPressures[row],
-      [workingTemperatures[0]]: workingTemperatures[row],
-      [flammables[0]]: flammables[row],
+  // The key for rObj is always col - 1, because col starts from 1 but we want equipmentID to start from 0,
+  // which the other data file, mitigations.json expects mitigation_equipment ID's to be 0 indexed.
+  for (let col = 1, len = equipmentNames.length - 1; col < len; col++)
+    rObj[col - 1] = {
+      [equipmentNames[0]]: equipmentNames[col],
+      [mitigatingLimitations[0]]: mitigatingLimitations[col],
+      [operatingPressures[0]]: operatingPressures[col],
+      [workingTemperatures[0]]: workingTemperatures[col],
+      [flammables[0]]: flammables[col],
     };
 
   return rObj;
