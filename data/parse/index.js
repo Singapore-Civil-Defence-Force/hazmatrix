@@ -57,9 +57,12 @@ function getMitigationStatus(mitigationStatus) {
   }
 }
 
-module.exports = function parse(csvString) {
-  const csv = Papa.parse(csvString).data;
-
+/**
+ * Process the parsed CSV array into data file format
+ * @param {Array<Array<String>>} csv Call this parse function with the parsed CSV string array, `parse(Papa.parse(csvString).data)`
+ * @returns {{ mitigationEquipment, mitigation, chemical }} Data file contents for mitigationEquipment, mitigation, chemical
+ */
+module.exports = function parse(csv) {
   // The number of rows before the start of the first acid, where the first few rows are used for equipment data
   const numOfRowsBeforeAcid = 5;
 
