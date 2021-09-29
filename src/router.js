@@ -9,6 +9,7 @@ Vue.use(VueRouter);
 // Thus all the components are imported at top level first
 import Home from "@/views/Home.vue";
 import Search from "@/views/Search.vue";
+import SearchEquipment from "@/views/SearchEquipment.vue";
 import Chemical from "@/views/Chemical.vue";
 import DetectionEquipment from "@/views/DetectionEquipment.vue";
 import MitigationEquipment from "@/views/MitigationEquipment.vue";
@@ -30,6 +31,13 @@ export default new VueRouter({
       path: "/search",
       name: "search",
       component: Search,
+      // Pass URL query parameters as prop to component
+      props: (route) => route.query,
+    },
+    {
+      path: "/search-equipment",
+      name: "search-equipment",
+      component: SearchEquipment,
       // Pass URL query parameters as prop to component
       props: (route) => route.query,
     },

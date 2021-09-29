@@ -11,7 +11,7 @@
         <div class="column">
           <button
             v-if="scanQR"
-            class="button is-light is-fullwidth is-warning"
+            class="button is-light is-fullwidth is-warning py-6"
             @click="scanQR = false"
           >
             Close QR Scanner
@@ -19,7 +19,7 @@
 
           <button
             v-else
-            class="button is-light is-fullwidth is-warning"
+            class="button is-light is-fullwidth is-warning py-6"
             @click="scanQR = true"
           >
             Scan QR
@@ -29,9 +29,18 @@
         <div class="column">
           <router-link
             :to="{ name: 'search' }"
-            class="button is-light is-fullwidth is-success"
+            class="button is-light is-fullwidth is-success py-6"
           >
-            Search
+            Chemical
+          </router-link>
+        </div>
+
+        <div class="column">
+          <router-link
+            :to="{ name: 'search-equipment' }"
+            class="button is-light is-fullwidth is-warning py-6"
+          >
+            Equipment
           </router-link>
         </div>
       </div>
