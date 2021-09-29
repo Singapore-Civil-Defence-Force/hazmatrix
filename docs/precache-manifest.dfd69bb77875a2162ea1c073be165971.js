@@ -4,52 +4,40 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/CNAME"
   },
   {
-    "revision": "1355d2a83537ec95b8426fdc8a8ca28e",
+    "revision": "2d6cd4f24aa15ebd55ab2d0bbfd66f49",
     "url": "/apple-touch-icon-precomposed.png"
   },
   {
-    "revision": "1355d2a83537ec95b8426fdc8a8ca28e",
+    "revision": "2d6cd4f24aa15ebd55ab2d0bbfd66f49",
     "url": "/apple-touch-icon.png"
   },
   {
-    "revision": "0aa5bc913ba90c96ee55",
-    "url": "/css/app.65fb9efc.css"
+    "revision": "b789ee33600954a5f245",
+    "url": "/css/app.c5a74d2a.css"
   },
   {
     "revision": "ba3baf29af0cde4d42d0",
     "url": "/css/chunk-vendors.5ff59d39.css"
   },
   {
-    "revision": "acfd8b78a0076c9c7f88d4ac85521cd2",
-    "url": "/img/battenberg.acfd8b78.png"
-  },
-  {
     "revision": "c966900237eef848d4aeb18b0ad64371",
     "url": "/img/camera-switch.c9669002.svg"
   },
   {
-    "revision": "850eb0e8d3ccb82b9896649004a408f8",
+    "revision": "c0ca6c1b14ac11f0d1ad83ad8c29d1d1",
     "url": "/img/favicon-16x16.png"
   },
   {
-    "revision": "4a584fcfb8415fac542fc04e76c0d076",
+    "revision": "5702336883d00385072d6bf261d5f016",
     "url": "/img/favicon-32x32.png"
   },
   {
-    "revision": "9be3b4926b9c2eba9f65ee7e1cae5351",
-    "url": "/img/logo.9be3b492.jpg"
-  },
-  {
-    "revision": "4d6df437229c6b8124f0c03fcbeba87d",
-    "url": "/img/mstile-150x150.png"
-  },
-  {
-    "revision": "353d1ca23f8abb7213e2301188410316",
+    "revision": "8f4b01b53f1143391d7f90720e01a25e",
     "url": "/index.html"
   },
   {
-    "revision": "0aa5bc913ba90c96ee55",
-    "url": "/js/app.b3a192d5.js"
+    "revision": "b789ee33600954a5f245",
+    "url": "/js/app.27ba0a6f.js"
   },
   {
     "revision": "ba3baf29af0cde4d42d0",
