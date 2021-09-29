@@ -7,9 +7,10 @@
           - e.g. keep the page scroll location so that it feels more natural after going back with a back button.
         
         - Only cache maximum of 4 views to prevent using too much memory and crashing site especially on less powerful mobile devices
+        
+        - :key forces vue to create new version of a cached component if the route param(s) are different
     -->
     <keep-alive max="4">
-      <!-- key to force vue to create new version of a cached component if the routes/params is different -->
       <router-view :key="$route.fullPath" />
     </keep-alive>
 
