@@ -4,6 +4,19 @@
     class="level"
     style="font-size: 0.7em; position: fixed; bottom: 1em; max-width: 30em"
   >
+    <!-- @todo
+      Pre-fill the form with version number and build time info
+      https://guide.form.gov.sg/AdvancedGuide.html#pre-fill
+    -->
+    <a
+      class="has-text-link is-size-6"
+      href="https://go.gov.sg/hazmatopsmatrix"
+      target="_blank"
+    >
+      Feedback Form
+    </a>
+    <br />
+
     Version: {{ gitBranch + " " + commitHash.slice(0, 6).toString() }}
     <br />
     Build Time: {{ buildTime }}
