@@ -10,7 +10,12 @@ const config = {
   // Base URL of app, change this if hosting URL changes
   // Base URL only includes `#` because this base URL is mainly used for validating a HazMatrix share link,
   // so the starting / path is not included so that it is still there even after stripping out the baseURL to use for sharing
-  baseURL: "https://hazmatrix.tftdx.com/#",
+  baseURL:
+    // Uses the CNAME env var injected during build time for the actual domain.
+    // This ensures that the baseURL used aligns with the hostname set in the CNAME file for github pages jekyll deployment.
+    process.env.NODE_ENV === "production"
+      ? `https://${process.env.CNAME}/#`
+      : "http://localhost:8080/#",
 };
 
 // Export the entire config object as the default export, so that modules can import the whole thing with,
