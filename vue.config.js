@@ -80,6 +80,14 @@ module.exports = {
         ...gitValues,
         // CI/CD build server might not be in SG, so store date as ISO string, to create a new Date object when viewing to show time in user's locale
         buildTime: new Date(),
+
+        // Pass in the content in the CNAME file so that the baseURL can be created properly
+        CNAME: require("fs")
+          .readFileSync(
+            require("path").resolve(__dirname, "./public/CNAME"),
+            "utf8"
+          )
+          .trim(),
       })
     );
   },
