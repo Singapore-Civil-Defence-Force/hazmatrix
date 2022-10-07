@@ -1,5 +1,6 @@
+<!-- Parent component that contains and switches between all the view components using view router's router-view -->
 <template>
-  <div id="app">
+  <div>
     <!-- Using keep-alive to cache the pages to
         - optimize their rendering time when navigating back and forth a set of views
         - keep UI and state of view between navigations,
@@ -15,6 +16,7 @@
     </keep-alive>
 
     <!-- @todo Conditionally cache views on a route by route basis -->
+    <!-- Alternative way: https://vuejs.org/guide/built-ins/keep-alive.html#include-exclude -->
     <!--
       <keep-alive v-if="$route.meta.keepAlive" max="4">
         <router-view :key="$route.fullPath" />
@@ -24,17 +26,7 @@
   </div>
 </template>
 
-<script>
-/* Parent component that contains and switches between all the view components using view router's router-view */
-
-// Load the bulma styles in the top level component
-import "bulma/css/bulma.min.css";
-
-export default {
-  name: "App",
-};
-</script>
-
+<!-- Unscoped styles that applies to the entire application -->
 <style>
 /* Alternative bulma import using CDN */
 /* @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"; */

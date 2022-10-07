@@ -1,16 +1,10 @@
-<template functional>
+<template>
   <div id="loader" class="center">
     <b style="font-size: 1.4em">... LOADING ...</b>
     <br />
     <div id="spinner" />
   </div>
 </template>
-
-<script>
-export default {
-  name: "loader",
-};
-</script>
 
 <style scoped>
 /* Overwrite the center class to make text-align center and also force cover entire view-port */
