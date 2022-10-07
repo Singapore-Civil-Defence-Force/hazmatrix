@@ -15,6 +15,6 @@
     */
     // "strict": true,
     // "noImplicitThis": true,
-    // "resolveJsonModule": true, // Allow direct import of .json files and enable type checking
+    "resolveJsonModule": true // Allow direct import of .json files and enable type checking
   }
 }
