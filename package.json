@@ -3,49 +3,41 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest ./docs",
-    "deploy-to-github": "npx simple-github-pages-deploy",
-    "deploy": "npm run build && npm run deploy-to-github",
-    "lint": "vue-cli-service lint"
+    "serve": "npx vite --port 8080",
+    "serve:localnetwork": "npx vite --port 8080 --host",
+    "lint": "npx eslint ./src/ --ext .vue,.js,.ts,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.vue\"",
+    "preview": "npx vite preview --port 8080",
+    "typecheck": "npx vue-tsc --noEmit",
+    "build": "npx vite build",
+    "build:delete": "npx rimraf ./dist",
+    "build:full": "npm run typecheck && npm run build:delete && npm run build",
+    "build:gh-pages": "npm run typecheck && npm run build:delete && npx vite build --mode github-pages",
+    "deploy:gh-pages": "npx gh-pages -d dist"
   },
   "dependencies": {
-    "bulma": "^0.9.3",
-    "core-js": "^3.6.5",
-    "fuse.js": "^6.4.6",
-    "qrcode": "^1.4.4",
-    "register-service-worker": "^1.7.2",
-    "vue": "^2.6.12",
-    "vue-qrcode-reader": "^3.0.3",
-    "vue-router": "^3.5.1"
+    "bulma": "^0.9.4",
+    "pinia": "^2.0.22",
+    "pinia-plugin-persistedstate": "^2.2.0",
+    "simpler-fetch": "^8.0.0",
+    "vue": "^3.2.39",
+    "vue-router": "^4.1.5"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.4",
-    "@vue/cli-plugin-eslint": "^4.5.4",
-    "@vue/cli-plugin-pwa": "^4.5.4",
-    "@vue/cli-plugin-router": "~4.5.4",
-    "@vue/cli-service": "^4.5.4",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.8.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-vue": "^6.2.2",
-    "husky": "^5.1.3",
-    "lint-staged": "^10.5.4",
-    "node-sass": "^4.14.1",
-    "prettier": "^2.2.1",
-    "sass-loader": "^10.0.1",
-    "simple-github-pages-deploy": "^0.2.1",
-    "vue-template-compiler": "^2.6.12"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint"
-    ]
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@types/node": "^18.7.18",
+    "@vitejs/plugin-basic-ssl": "^0.1.2",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.1",
+    "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.23.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3",
+    "vite": "^3.1.2",
+    "vite-plugin-pwa": "^0.12.8",
+    "vue-tsc": "^0.40.13"
   }
 }

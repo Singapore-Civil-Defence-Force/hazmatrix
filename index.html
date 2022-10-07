@@ -1,23 +1,28 @@
 <!DOCTYPE html>
+<!-- Bulma class added to allow navbar to be sticky in Navbar.vue -->
+<!-- <html lang="en" class="has-navbar-fixed-top"> -->
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- This has a maximum scale to make the app feel more like a native app -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title>
-    HazMatrix
-  </title>
+  <meta name="author" content="JJ">
 
-  <!-- Load font awesome kit -->
-  <!-- Get your own kit code from https://fontawesome.com/ to use the kit code version rather then loading all icons -->
-  <!-- <script src="https://kit.fontawesome.com/KIT_CODE_HERE.js" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" crossorigin="anonymous"></script> -->
+  <meta name="title" content="HazMatrix">
+  <title>HazMatrix</title>
 
   <!-- https://www.w3.org/TR/appmanifest/#using-a-link-element-to-link-to-a-manifest -->
   <!-- USUAL NONE STANDARD WAY <link rel="manifest" href="manifest.json"> -->
   <link rel="manifest" href="manifest.webmanifest" type="application/manifest+json">
+
+  <!--
+    Only uncomment this if you want to load Bulma from a CDN instead.
+    Delete bulma import from main.ts and delete the bulma dependency first.
+  -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css"> -->
+
+  <link rel="icon" href="/favicon.ico" />
 
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
@@ -115,12 +120,14 @@
 </head>
 
 <body>
-  <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-        Please enable it to continue.</strong>
-  </noscript>
   <div id="app"></div>
-  <!-- built files will be auto injected -->
+  <script type="module" src="/src/main.ts"></script>
+
+  <noscript>
+    <strong>
+      We're sorry but <b>HazMatrix</b> doesn't work without JavaScript enabled. Please enable it to continue.
+    </strong>
+  </noscript>
 </body>
 
 </html>
