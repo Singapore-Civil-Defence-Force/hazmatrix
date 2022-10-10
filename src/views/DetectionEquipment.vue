@@ -1,3 +1,30 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+import all_detection_equipments from "../../data/detection_equipments.json";
+import detection from "../../data/detection.json";
+// import chemicals from "../../data/chemicals.json";
+
+import Share from "../components/Share.vue";
+import NavBtn from "../components/NavBtn.vue";
+
+// Get equipment and chemical id from router, where chemical ID is an optional query parameter
+const { id, chemicalID } = defineProps<{ id: string; chemicalID: string }>();
+
+// @todo Only load this async if there is a chemical ID and only put the name onto data object
+const chemicals = ref<string | undefined>(undefined);
+
+// @todo Type this
+// Get the specific detection equipment
+const equipment = ref(all_detection_equipments[id]);
+
+// @todo Type this
+// Get notes for this specific detection equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
+const detection_notes = ref<any | undefined>(
+  chemicalID ? detection[chemicalID][id] : undefined
+);
+</script>
+
 <template>
   <div class="px-4 pt-4" style="text-align: left">
     <div class="columns is-multiline">
@@ -70,38 +97,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import all_detection_equipments from "../../data/detection_equipments.json";
-import detection from "../../data/detection.json";
-import chemicals from "../../data/chemicals.json";
-
-import Share from "../components/Share.vue";
-import NavBtn from "../components/NavBtn.vue";
-
-export default {
-  name: "DetectionEquipment",
-
-  components: { Share, NavBtn },
-
-  // Get equipment and chemical id from router, where chemical ID is an optional query parameter
-  props: ["id", "chemicalID"],
-
-  data() {
-    // Get notes for this specific detection equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
-    const detection_notes = this.chemicalID
-      ? detection[this.chemicalID][this.id]
-      : undefined;
-
-    return {
-      // @todo Only load this async if there is a chemical ID and only put the name onto data object
-      chemicals,
-
-      // Get the specific detection equipment
-      equipment: all_detection_equipments[this.id],
-
-      detection_notes,
-    };
-  },
-};
-</script>
