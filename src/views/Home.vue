@@ -1,5 +1,16 @@
+<script setup lang="ts">
+import { ref } from "vue";
+
+// @todo Only import QR Code Scanner when needed?
+import QRCodeScanner from "./QRCodeScanner";
+import version from "./Version";
+
+const scanQR = ref<boolean>(false);
+</script>
+
 <template>
   <div class="center">
+    <!-- Stretch everything out to fill the screen as much as possible -->
     <div style="width: 90vw">
       <!-- Only load/show scanning UI when requested -->
       <!-- Close QR Code scanner once code has been detected -->
@@ -49,21 +60,3 @@
     </div>
   </div>
 </template>
-
-<script>
-// @todo Only import QR Code Scanner when needed?
-import QRCodeScanner from "./QRCodeScanner";
-import version from "./Version";
-
-export default {
-  name: "home",
-
-  components: { version, QRCodeScanner },
-
-  data() {
-    return {
-      scanQR: false,
-    };
-  },
-};
-</script>
