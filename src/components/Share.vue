@@ -1,3 +1,57 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+
+import QRCode from "qrcode";
+import { baseURL } from "../config.js";
+
+// Allow user's to override the default webshare options by passing in a webshare options object with some or all fields
+const { options } = defineProps<{ options: object }>();
+
+const showModal = ref<boolean>(false);
+const imageDataURI = ref<string | undefined>(undefined);
+
+/**
+ * Default webshare option's URL is constructed with current path and base URL,
+ * so component users don't need to manually craft the URL unless neccessary
+ */
+const sharingUrl = baseURL + useRoute().fullPath;
+
+// Get webshare options created using default options and user options if any
+// This is a method as the props can be updated by parent component, so is used to get the latest webshare options ONLY WHEN NEEDED
+const getWebshare = () => ({
+  // Default webshare options
+  title: "Share via HazMatrix",
+  text: "Share this view from HazMatrix",
+  url: sharingUrl,
+
+  // Spread syntax allows this latter object to override fields of the same name
+  ...options,
+});
+
+function shareViaWebShare() {
+  // Ensure navigator.share is available first, quit if not available
+  if (!navigator.share) return alert("Web Share not supported on device");
+
+  // Start the share UI, but not awaiting for it, as platforms resolve this at different timings
+  navigator.share(getWebshare());
+
+  // Since this can be triggered by clicking the QR code, close modal automatically once share UI flow is triggered
+  showModal.value = false;
+}
+
+// Open up modal and generate QR Code image on the fly
+async function showQRcode() {
+  showModal.value = true;
+
+  // Only generate image data source when modal opened to prevent pre-generating it and eating ram everytime this component is used
+  imageDataURI.value = await QRCode.toDataURL(getWebshare().url, {
+    // Use high error resistance rate of ~ 30%
+    errorCorrectionLevel: "H",
+  });
+}
+</script>
+
 <template>
   <div>
     <div class="modal" :class="{ 'is-active': showModal }">
@@ -48,62 +102,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import QRCode from "qrcode";
-import { baseURL } from "../config.js";
-
-export default {
-  name: "Share",
-
-  // Allow user's to override the default webshare options by passing in a webshare options object with some or all fields
-  props: ["options"],
-
-  data() {
-    return {
-      showModal: false,
-      imageDataURI: undefined,
-    };
-  },
-
-  methods: {
-    // Get webshare options created using default options and user options if any
-    // This is a method as the props can be updated by parent component, so is used to get the latest webshare options ONLY WHEN NEEDED
-    getWebshare() {
-      return {
-        // Default webshare options
-        title: "Share via HazMatrix",
-        text: "Share this view from HazMatrix",
-
-        // Default webshare option's URL is constructed with current path and base URL, so component users don't need to manually craft the URL unless neccessary
-        url: baseURL + this.$route.fullPath,
-
-        // Spread syntax allows this latter object to override fields of the same name
-        ...this.options,
-      };
-    },
-
-    shareViaWebShare() {
-      // Ensure navigator.share is available first, quit if not available
-      if (!navigator.share) return alert("Web Share not supported on device");
-
-      // Start the share UI, but not awaiting for it, as platforms resolve this at different timings
-      navigator.share(this.getWebshare());
-
-      // Since this can be triggered by clicking the QR code, close modal automatically once share UI flow is triggered
-      this.showModal = false;
-    },
-
-    // Open up modal and generate QR Code image on the fly
-    async showQRcode() {
-      this.showModal = true;
-
-      // Only generate image data source when modal opened to prevent pre-generating it and eating ram everytime this component is used
-      this.imageDataURI = await QRCode.toDataURL(this.getWebshare().url, {
-        // Use high error resistance rate of ~ 30%
-        errorCorrectionLevel: "H",
-      });
-    },
-  },
-};
-</script>
