@@ -1,3 +1,57 @@
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+import chemicals from "../../data/chemicals.json";
+import Fuse from "fuse.js";
+
+import Share from "../components/Share.vue";
+import { baseURL } from "../config";
+
+// This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
+const { query } = defineProps<{ query: string }>();
+
+// Fixed search options for now, but might allow user to customize this in the future
+const search_options = {
+  // @todo Allow search for formula?
+  keys: ["name"],
+
+  // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
+  // Default: 0.6
+  threshold: 0.5,
+};
+
+// Defaults to the URL `search` query string if there is any
+const search_input = ref<string>(query || "");
+
+// Declare a ref to hold the DOM element reference to `searchField`
+const searchField = ref<HTMLInputElement | null>(null);
+
+// Update fuse object when search options is updated
+const fuse = computed(() => new Fuse(Object.values(chemicals), search_options));
+
+// Continously search as user input changes
+// Limit max number of returned search results to ensure not too many results are returned (esp for lower spec mobile devices),
+// especially at the start of the search where alot of results will be matched when only 1 - 4 characters are entered
+const results = computed(() =>
+  fuse.value.search(search_input.value, { limit: 12 })
+);
+
+// Clear the search input box and re-focus on the search field
+function clearSearchInput() {
+  search_input.value = "";
+  searchField.value!.focus();
+}
+
+const shareViaWebShare = (chemicalID: string, chemicalName: string) =>
+  navigator.share({
+    title: "Share this chemical",
+    text: chemicalName,
+    url: `${baseURL}/chemical/${chemicalID}`,
+  });
+
+// @todo Fn to report missing equipment
+</script>
+
 <template>
   <div style="text-align: left">
     <!-- @todo Include the side nav bar component -->
@@ -81,70 +135,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import chemicals from "../../data/chemicals.json";
-import Fuse from "fuse.js";
-
-import Share from "../components/Share.vue";
-import { baseURL } from "../config.js";
-
-export default {
-  name: "search",
-
-  components: { Share },
-
-  // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
-  props: ["query"],
-
-  data() {
-    return {
-      search_options: {
-        // @todo Allow search for formula?
-        keys: ["name"],
-
-        // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
-        // Default: 0.6
-        threshold: 0.5,
-      },
-
-      // Defaults to the URL `search` query string if there is any
-      search_input: this.query || "",
-
-      // Place baseURL on data for methods and template to access this instead of hard coding the base URL
-      baseURL,
-    };
-  },
-
-  computed: {
-    // Update fuse object when search options is updated
-    fuse() {
-      return new Fuse(Object.values(chemicals), this.search_options);
-    },
-
-    // Continously search as user input changes
-    results() {
-      // Limit max number of returned search results to ensure not too many results are returned (esp for lower spec mobile devices),
-      // especially at the start of the search where alot of results will be matched when only 1 - 4 characters are entered
-      return this.fuse.search(this.search_input, { limit: 12 });
-    },
-  },
-
-  // @todo Fn to report missing chemical
-  methods: {
-    // Clear the search input box and re-focus on the search field
-    clearSearchInput() {
-      this.search_input = "";
-      this.$refs.searchField.focus();
-    },
-
-    shareViaWebShare(chemicalID, chemicalName) {
-      navigator.share({
-        title: "Share this chemical",
-        text: chemicalName,
-        url: `${this.baseURL}/chemical/${chemicalID}`,
-      });
-    },
-  },
-};
-</script>
