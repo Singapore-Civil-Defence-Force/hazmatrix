@@ -1,3 +1,48 @@
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+// @todo This only searches for mitigation equipment and not detection equipment
+import equipment from "../../data/mitigation_equipments.json";
+import Fuse from "fuse.js";
+
+import Share from "../components/Share.vue";
+
+import { baseURL } from "../config";
+
+// This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
+const { query } = defineProps<{ query: string }>();
+
+// Fixed search options for now, but might allow user to customize this in the future
+const search_options = {
+  keys: ["name"],
+
+  // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
+  // Default: 0.6
+  threshold: 0.5,
+};
+
+// Defaults to the URL `search` query string if there is any
+const search_input = ref<string>(query || "");
+
+// Declare a ref to hold the DOM element reference to `searchField`
+const searchField = ref<HTMLInputElement | null>(null);
+
+// Update fuse object when search options is updated
+const fuse = computed(() => new Fuse(Object.values(equipment), search_options));
+
+// Continously search as user input changes
+// Search result is not limited as the total number of equipments is also not alot
+const results = computed(() => fuse.value.search(search_input.value));
+
+// Clear the search input box and re-focus on the search field
+function clearSearchInput() {
+  search_input.value = "";
+  searchField.value!.focus();
+}
+
+// @todo Fn to report missing equipment
+</script>
+
 <template>
   <div style="text-align: left">
     <!-- Allow multiple line in desktop / landscape mode -->
@@ -64,61 +109,3 @@
     </div>
   </div>
 </template>
-
-<script>
-// @todo This only searches for mitigation equipment and not detection equipment
-import equipment from "../../data/mitigation_equipments.json";
-import Fuse from "fuse.js";
-
-import Share from "../components/Share.vue";
-import { baseURL } from "../config.js";
-
-export default {
-  name: "search-equipment",
-
-  components: { Share },
-
-  // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
-  props: ["query"],
-
-  data() {
-    return {
-      search_options: {
-        keys: ["name"],
-
-        // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
-        // Default: 0.6
-        threshold: 0.5,
-      },
-
-      // Defaults to the URL `search` query string if there is any
-      search_input: this.query || "",
-
-      // Place baseURL on data for methods and template to access this instead of hard coding the base URL
-      baseURL,
-    };
-  },
-
-  computed: {
-    // Update fuse object when search options is updated
-    fuse() {
-      return new Fuse(Object.values(equipment), this.search_options);
-    },
-
-    // Continously search as user input changes
-    results() {
-      // Search result is not limited as the total number of equipments is also not alot
-      return this.fuse.search(this.search_input);
-    },
-  },
-
-  // @todo Fn to report missing equipment
-  methods: {
-    // Clear the search input box and re-focus on the search field
-    clearSearchInput() {
-      this.search_input = "";
-      this.$refs.searchField.focus();
-    },
-  },
-};
-</script>
