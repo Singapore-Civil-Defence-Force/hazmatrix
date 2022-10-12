@@ -1,3 +1,58 @@
+<script setup lang="ts">
+import chemicals from "../../data/chemicals.json";
+import all_detection_equipments from "../../data/detection_equipments.json";
+import all_mitigation_equipments from "../../data/mitigation_equipments.json";
+import detection from "../../data/detection.json";
+import mitigation from "../../data/mitigation.json";
+import PPEs from "../../data/PPE.json";
+
+import Share from "../components/Share.vue";
+import NavBtn from "../components/NavBtn.vue";
+
+// Get chemical's id from router
+const { id } = defineProps<{ id: string }>();
+
+// Get the chemical directly with id as the key
+// @todo Throw error and handle this if chemical is not found
+const chemical = chemicals[id];
+
+// An array of equipments that can be used to detect the chemical with id of this.id
+// @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
+const detection_equipments = Object.values(detection[id] || {});
+
+// An array of equipments that can be used to mitigate the chemical with id of this.id
+// @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
+const mitigation_equipments = Object.values(mitigation[id] || {}).sort(
+  // Sorting using the status values only, therefore destructure out to name them
+  function ({ status: first }, { status: second }): number {
+    // If both are numbers (compatible or last resort)
+    if (typeof first === "number" && typeof second === "number")
+      // 1 : 0 return first
+      // 0 : 1 return second
+      return second - first;
+
+    // If both 'conditionally compatible', return 0 to do nothing
+    if (Array.isArray(first) && Array.isArray(second)) return 0;
+
+    // If first is conditional
+    if (Array.isArray(first))
+      // Second is either 1 or 0
+      // If second is 1, then return 1 to sort second before first
+      // If second is 0, then return -1 to sort first before second
+      return second ? 1 : -1;
+
+    // If second is conditional
+    if (Array.isArray(second))
+      // first is either 1 or 0
+      // If first is 1, then return -1 to sort first before second
+      // If first is 0, then return 1 to sort second before first
+      return first ? -1 : 1;
+
+    throw new Error("@todo NEED TO RETURN NUMBER");
+  }
+);
+</script>
+
 <template>
   <div class="px-4 pt-4" style="text-align: left">
     <!-- @todo Include the side nav bar component -->
@@ -161,74 +216,6 @@
     </div>
   </div>
 </template>
-
-<script>
-import chemicals from "../../data/chemicals.json";
-import all_detection_equipments from "../../data/detection_equipments.json";
-import all_mitigation_equipments from "../../data/mitigation_equipments.json";
-import detection from "../../data/detection.json";
-import mitigation from "../../data/mitigation.json";
-import PPEs from "../../data/PPE.json";
-
-import Share from "../components/Share.vue";
-import NavBtn from "../components/NavBtn.vue";
-
-export default {
-  name: "Chemical",
-
-  components: { Share, NavBtn },
-
-  // Get chemical's id from router
-  props: ["id"],
-
-  data() {
-    return {
-      PPEs,
-
-      all_detection_equipments,
-      all_mitigation_equipments,
-
-      // Get the chemical directly with id as the key
-      // @todo Throw error and handle this if chemical is not found
-      chemical: chemicals[this.id],
-
-      // An array of equipments that can be used to detect the chemical with id of this.id
-      // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
-      detection_equipments: Object.values(detection[this.id] || {}),
-
-      // An array of equipments that can be used to mitigate the chemical with id of this.id
-      // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
-      mitigation_equipments: Object.values(mitigation[this.id] || {}).sort(
-        // Sorting using the status values only, therefore destructure out to name them
-        function ({ status: first }, { status: second }) {
-          // If both are numbers (compatible or last resort)
-          if (typeof first === "number" && typeof second === "number")
-            // 1 : 0 return first
-            // 0 : 1 return second
-            return second - first;
-
-          // If both 'conditionally compatible', return 0 to do nothing
-          if (Array.isArray(first) && Array.isArray(second)) return 0;
-
-          // If first is conditional
-          if (Array.isArray(first))
-            // Second is either 1 or 0
-            // If second is 1, then return 1 to sort second before first
-            // If second is 0, then return -1 to sort first before second
-            return second ? 1 : -1;
-
-          // If second is conditional
-          if (Array.isArray(second))
-            // first is either 1 or 0
-            // If first is 1, then return -1 to sort first before second
-            // If first is 0, then return 1 to sort second before first
-            return first ? -1 : 1;
-        }
-      ),
-    };
-  },
-};
-</script>
 
 <style scoped>
 .compatible {
