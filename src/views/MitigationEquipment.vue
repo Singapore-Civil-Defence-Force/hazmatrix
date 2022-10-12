@@ -1,3 +1,25 @@
+<script setup lang="ts">
+import all_mitigation_equipments from "../../data/mitigation_equipments.json";
+import mitigation from "../../data/mitigation.json";
+
+// @todo Only load this async if there is a chemical ID and only put the name onto data object
+import chemicals from "../../data/chemicals.json";
+
+import Share from "../components/Share.vue";
+import NavBtn from "../components/NavBtn.vue";
+
+// Get equipment and chemical id from router, where chemical ID is an optional query parameter
+const { id, chemicalID } = defineProps<{ id: string; chemicalID?: string }>();
+
+// Get the specific mitigation equipment
+const equipment = all_mitigation_equipments[id];
+
+// Get notes for this specific mitigation equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
+const mitigation_status = chemicalID
+  ? mitigation[chemicalID][id].status
+  : undefined;
+</script>
+
 <template>
   <div class="px-4 pt-4" style="text-align: left">
     <div class="columns is-multiline">
@@ -125,38 +147,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import all_mitigation_equipments from "../../data/mitigation_equipments.json";
-import mitigation from "../../data/mitigation.json";
-import chemicals from "../../data/chemicals.json";
-
-import Share from "../components/Share.vue";
-import NavBtn from "../components/NavBtn.vue";
-
-export default {
-  name: "MitigationEquipment",
-
-  components: { Share, NavBtn },
-
-  // Get equipment and chemical id from router, where chemical ID is an optional query parameter
-  props: ["id", "chemicalID"],
-
-  data() {
-    // Get notes for this specific mitigation equipment when used with a chemical, only if a chemical ID is passed in via a query parameter
-    const mitigation_status = this.chemicalID
-      ? mitigation[this.chemicalID][this.id].status
-      : undefined;
-
-    return {
-      // @todo Only load this async if there is a chemical ID and only put the name onto data object
-      chemicals,
-
-      // Get the specific mitigation equipment
-      equipment: all_mitigation_equipments[this.id],
-
-      mitigation_status,
-    };
-  },
-};
-</script>
