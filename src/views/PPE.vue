@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import PPEs from "../../data/PPE.json";
+
+// Get PPE's id from router
+const { id } = defineProps<{ id: string }>();
+
+const PPE = PPEs[id];
+</script>
+
 <template>
   <div class="center">
     <h1 class="title px-6">
@@ -5,20 +14,3 @@
     </h1>
   </div>
 </template>
-
-<script>
-import PPEs from "../../data/PPE.json";
-
-export default {
-  name: "PPE",
-
-  // Get PPE's id from router
-  props: ["id"],
-
-  data() {
-    return {
-      PPE: PPEs[this.id],
-    };
-  },
-};
-</script>
