@@ -2,8 +2,8 @@
 import { ref } from "vue";
 
 // @todo Only import QR Code Scanner when needed?
-import QRCodeScanner from "./QRCodeScanner";
-import version from "./Version";
+import QRCodeScanner from "./QRCodeScanner.vue";
+import version from "./Version.vue";
 
 const scanQR = ref<boolean>(false);
 </script>
