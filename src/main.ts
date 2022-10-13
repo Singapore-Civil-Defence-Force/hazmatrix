@@ -26,10 +26,11 @@ import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import router from "./router";
 import App from "./App.vue";
 
-// @todo Include the directive
+import autofocusDirective from "./directives/autofocus";
 
 // Create new vue app
 createApp(App)
   .use(router)
   .use(createPinia().use(piniaPluginPersistedstate))
+  .directive("autofocus", autofocusDirective)
   .mount("#app");
