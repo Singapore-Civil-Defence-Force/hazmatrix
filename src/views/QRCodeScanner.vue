@@ -11,7 +11,7 @@ import { useRouter } from "vue-router";
 import { baseURL } from "../config";
 import { QrcodeStream } from "vue-qrcode-reader";
 
-const emit = defineEmits(["qrcode-detected"]);
+const emit = defineEmits(["qrcode-detected", "close-camera"]);
 
 const router = useRouter();
 
@@ -136,11 +136,23 @@ async function logErrors(promise: Promise<MediaTrackCapabilities>) {
 </script>
 
 <template>
-  <div>
-    <QrcodeStream :track="paintOutline" :camera="camera" @init="logErrors">
-      <button @click="switchCamera">
-        <img src="../assets/camera-switch.svg" alt="switch camera" />
-      </button>
-    </QrcodeStream>
+  <div class="modal is-active">
+    <!-- Modal can be closed by clicking any part of the modal background -->
+    <div class="modal-background" @click="emit('close-camera')"></div>
+
+    <div class="modal-content">
+      <QrcodeStream :track="paintOutline" :camera="camera" @init="logErrors">
+        <button @click="switchCamera">
+          <img src="../assets/camera-switch.svg" alt="switch camera" />
+        </button>
+      </QrcodeStream>
+    </div>
+
+    <!-- Modal can be closed by clicking the top right X -->
+    <button
+      class="modal-close is-large"
+      aria-label="close"
+      @click="emit('close-camera')"
+    />
   </div>
 </template>
