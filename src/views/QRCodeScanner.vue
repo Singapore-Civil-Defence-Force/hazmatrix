@@ -8,14 +8,13 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
-import config from "../config";
+import { baseURL } from "../config";
 import { QrcodeStream } from "vue-qrcode-reader";
 
 const emit = defineEmits(["qrcode-detected"]);
 
 const router = useRouter();
 
-const { baseURL } = config;
 const baseUrlLength = baseURL.length;
 
 const Cameras = ["auto", "rear", "front", "off"] as const;
