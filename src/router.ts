@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 // So that then entire app can be precached and allow app to be fully offline from next use.
 // Thus all the components are imported at top level first
 import Home from "./views/Home.vue";
+import FoamCalculator from "./views/FoamCalculator.vue";
 import Search from "./views/Search.vue";
 import SearchEquipment from "./views/SearchEquipment.vue";
 import Chemical from "./views/Chemical.vue";
@@ -38,6 +39,11 @@ export default createRouter({
       path: "/",
       name: "home",
       component: Home,
+    },
+    {
+      path: "/foam",
+      name: "foam-calculator",
+      component: FoamCalculator,
     },
     {
       path: "/search",

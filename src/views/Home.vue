@@ -54,6 +54,15 @@ const scanQR = ref<boolean>(false);
             Equipment
           </router-link>
         </div>
+
+        <div class="column">
+          <router-link
+            :to="{ name: 'foam-calculator' }"
+            class="button is-light is-fullwidth is-success py-6"
+          >
+            Foam Calculator
+          </router-link>
+        </div>
       </div>
 
       <version />
