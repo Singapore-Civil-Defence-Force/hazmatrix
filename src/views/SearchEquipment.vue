@@ -44,68 +44,68 @@ function clearSearchInput() {
 </script>
 
 <template>
-  <div style="text-align: left">
-    <!-- Allow multiple line in desktop / landscape mode -->
-    <div class="cloumns is-multiline">
-      <!-- @todo Make Search input and share component stick to top -->
+  <!-- Allow multiple line in desktop / landscape mode -->
+  <div class="cloumns is-multiline has-text-left">
+    <!-- @todo Make Search input and share component stick to top -->
 
-      <!-- is-full to fill up column space when in desktop / landscape mode -->
-      <div class="column is-full">
-        <label>
-          <b>Search (Equipment name)</b>
+    <!-- is-full to fill up column space when in desktop / landscape mode -->
+    <div class="column is-full">
+      <label>
+        <b>Search (Equipment name)</b>
 
-          <div class="field has-addons">
-            <div class="control is-expanded">
-              <input
-                v-autofocus
-                ref="searchField"
-                type="text"
-                v-model="search_input"
-                placeholder="E.g. Leak sealing lance"
-                required
-                class="input"
-                style="width: 100%"
-              />
-            </div>
-            <div class="control">
-              <button class="button" @click="clearSearchInput">clear</button>
-            </div>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <input
+              v-autofocus
+              ref="searchField"
+              type="text"
+              v-model="search_input"
+              placeholder="E.g. Leak sealing lance"
+              required
+              class="input"
+            />
           </div>
-        </label>
-      </div>
-
-      <!-- Only show 'share search result' component if user entered anything in the search input -->
-      <Share
-        v-if="results.length !== 0"
-        class="card mb-5 mt-2 px-4"
-        :options="{
-          title: 'Share Search Results',
-          text: `Share Search Results for '${search_input}'`,
-          url: `${baseURL}/search-equipment?query=${search_input}`,
-        }"
-      />
-
-      <!-- Search results -->
-      <div v-for="result in results" :key="result.item.name" class="column">
-        <div class="card px-4">
-          <!-- Display card content in a router-link element to make the card's content section clickable -->
-          <router-link
-            :to="{
-              name: 'mitigation-equipment',
-              params: { id: result.item.id },
-            }"
-            class="card-content content"
-          >
-            <h2>{{ result.item.name }}</h2>
-          </router-link>
+          <div class="control">
+            <button class="button" @click="clearSearchInput">clear</button>
+          </div>
         </div>
-      </div>
+      </label>
+    </div>
 
-      <!-- Show no results UI if no results and search input is not empty -->
-      <div v-if="results.length === 0 && search_input !== ''" class="center">
-        Nothing matched your input
-        <!-- @todo Allow user to report this as an issue to get this new item added or something -->
+    <!-- Only show 'share search result' component if user entered anything in the search input -->
+    <Share
+      v-if="results.length !== 0"
+      class="card mb-5 mt-2 px-4"
+      :options="{
+        title: 'Share Search Results',
+        text: `Share Search Results for '${search_input}'`,
+        url: `${baseURL}/search-equipment?query=${search_input}`,
+      }"
+    />
+
+    <!-- Search results -->
+    <div v-for="result in results" :key="result.item.name" class="column">
+      <div class="card px-4">
+        <!-- Display card content in a router-link element to make the card's content section clickable -->
+        <router-link
+          :to="{
+            name: 'mitigation-equipment',
+            params: { id: result.item.id },
+          }"
+          class="card-content content"
+        >
+          <h2>{{ result.item.name }}</h2>
+        </router-link>
       </div>
+    </div>
+
+    <!-- Show no results UI if no results and search input is not empty -->
+    <div
+      v-if="results.length === 0 && search_input !== ''"
+      class="has-text-centered"
+    >
+      Nothing matched your input
+      <!-- @todo Allow user to report this as an issue to get this new item added or something -->
     </div>
   </div>
 </template>

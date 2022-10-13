@@ -8,9 +8,19 @@ const PPE = PPEs[id];
 </script>
 
 <template>
+  <!-- @todo Show a picture of the PPE -->
   <div class="center">
     <h1 class="title px-6">
       {{ PPE.full }}
     </h1>
   </div>
 </template>
+
+<style scoped>
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+</style>

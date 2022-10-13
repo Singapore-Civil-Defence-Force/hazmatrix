@@ -54,7 +54,7 @@ const mitigation_equipments = Object.values(mitigation[id] || {}).sort(
 </script>
 
 <template>
-  <div class="px-4 pt-4" style="text-align: left">
+  <div class="has-text-left px-4 pt-4">
     <!-- @todo Include the side nav bar component -->
 
     <!-- Allow multiple line in desktop / landscape mode -->

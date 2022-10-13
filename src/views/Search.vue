@@ -53,85 +53,83 @@ const shareViaWebShare = (chemicalID: string, chemicalName: string) =>
 </script>
 
 <template>
-  <div style="text-align: left">
-    <!-- @todo Include the side nav bar component -->
+  <!-- Allow multiple line in desktop / landscape mode -->
+  <div class="cloumns is-multiline has-text-left">
+    <!-- @todo Make Search input and share component stick to top -->
 
-    <!-- Allow multiple line in desktop / landscape mode -->
-    <div class="cloumns is-multiline">
-      <!-- @todo Make Search input and share component stick to top -->
+    <!-- is-full to fill up column space when in desktop / landscape mode -->
+    <div class="column is-full">
+      <label>
+        <b>Search (Chemical name)</b>
 
-      <!-- is-full to fill up column space when in desktop / landscape mode -->
-      <div class="column is-full">
-        <label>
-          <b>Search (Chemical name)</b>
-
-          <div class="field has-addons">
-            <div class="control is-expanded">
-              <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
-              <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
-              <input
-                v-autofocus
-                ref="searchField"
-                type="text"
-                v-model="search_input"
-                placeholder="E.g. Acetic or Octa"
-                required
-                class="input"
-                style="width: 100%"
-              />
-            </div>
-            <div class="control">
-              <button class="button" @click="clearSearchInput">clear</button>
-            </div>
+        <div class="field has-addons">
+          <div class="control is-expanded">
+            <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
+            <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
+            <input
+              v-autofocus
+              ref="searchField"
+              type="text"
+              v-model="search_input"
+              placeholder="E.g. Acetic or Octa"
+              required
+              class="input"
+            />
           </div>
-        </label>
-      </div>
-
-      <!-- Only show 'share search result' component if user entered anything in the search input -->
-      <Share
-        v-if="results.length !== 0"
-        class="card mb-5 mt-2 px-4"
-        :options="{
-          title: 'Share Search Results',
-          text: `Share Search Results for '${search_input}'`,
-          url: `${baseURL}/search?query=${search_input}`,
-        }"
-      />
-
-      <!-- Search results -->
-      <div v-for="result in results" :key="result.item.name" class="column">
-        <div class="card px-4">
-          <!-- Display the card content in a router-link element to make the card's content section clickable -->
-          <router-link
-            :to="{ name: 'chemical', params: { id: result.item.id } }"
-            class="card-content content"
-          >
-            <h1>{{ result.item.name }}</h1>
-
-            <p class="subtitle mb-1">
-              Formula: <b>{{ result.item.formula || "NA" }}</b>
-            </p>
-            <p class="subtitle">
-              UN Number: <b>{{ result.item.un || "NA" }}</b>
-            </p>
-          </router-link>
-
-          <footer
-            class="card-footer"
-            @click="shareViaWebShare(result.item.id, result.item.name)"
-          >
-            <span class="card-footer-item" style="cursor: pointer; color: pink">
-              Share
-            </span>
-          </footer>
+          <div class="control">
+            <button class="button" @click="clearSearchInput">clear</button>
+          </div>
         </div>
-      </div>
+      </label>
+    </div>
 
-      <!-- Show no results UI if no results and search input is not empty -->
-      <div v-if="results.length === 0 && search_input !== ''" class="center">
-        Nothing matched your input
-        <!-- @todo Allow user to report this as an issue to get this new item added or something -->
+    <!-- Only show 'share search result' component if user entered anything in the search input -->
+    <Share
+      v-if="results.length !== 0"
+      class="card mb-5 mt-2 px-4"
+      :options="{
+        title: 'Share Search Results',
+        text: `Share Search Results for '${search_input}'`,
+        url: `${baseURL}/search?query=${search_input}`,
+      }"
+    />
+
+    <!-- Search results -->
+    <div v-for="result in results" :key="result.item.name" class="column">
+      <div class="card px-4">
+        <!-- Display the card content in a router-link element to make the card's content section clickable -->
+        <router-link
+          :to="{ name: 'chemical', params: { id: result.item.id } }"
+          class="card-content content"
+        >
+          <h1>{{ result.item.name }}</h1>
+
+          <p class="subtitle mb-1">
+            Formula: <b>{{ result.item.formula || "NA" }}</b>
+          </p>
+          <p class="subtitle">
+            UN Number: <b>{{ result.item.un || "NA" }}</b>
+          </p>
+        </router-link>
+
+        <footer
+          class="card-footer"
+          @click="shareViaWebShare(result.item.id, result.item.name)"
+        >
+          <span class="card-footer-item is-clickable has-text-danger">
+            Share
+          </span>
+        </footer>
       </div>
+    </div>
+
+    <!-- Show no results UI if no results and search input is not empty -->
+    <div
+      v-if="results.length === 0 && search_input !== ''"
+      class="has-text-centered"
+    >
+      Nothing matched your input
+      <!-- @todo Allow user to report this as an issue to get this new item added or something -->
     </div>
   </div>
 </template>

@@ -21,7 +21,7 @@ const mitigation_status = chemicalID
 </script>
 
 <template>
-  <div class="px-4 pt-4" style="text-align: left">
+  <div class="has-text-left px-4 pt-4">
     <div class="columns is-multiline">
       <div class="column">
         <p class="title is-4">{{ equipment.name }}</p>
