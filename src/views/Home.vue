@@ -5,66 +5,67 @@ import { ref } from "vue";
 import QRCodeScanner from "./QRCodeScanner.vue";
 import version from "./Version.vue";
 
+// Variable used as a flag to show/hide the QR code scanner
 const scanQR = ref<boolean>(false);
 </script>
 
 <template>
-  <div class="center">
-    <!-- Stretch everything out to fill the screen as much as possible -->
-    <div style="width: 90vw">
-      <!-- Only load/show scanning UI when requested -->
-      <!-- Close QR Code scanner once code has been detected -->
-      <QRCodeScanner v-if="scanQR" v-on:qrcode-detected="scanQR = false" />
-      <br />
+  <div class="columns is-multiline mx-1">
+    <!-- Only load/show QR Code Scanner modal when requested -->
+    <div v-if="scanQR" class="column is-full">
+      <!-- Close QR Code scanner once code has been detected or if user closed the camera -->
+      <QRCodeScanner
+        v-on:close-camera="scanQR = false"
+        v-on:qrcode-detected="scanQR = false"
+      />
+    </div>
 
-      <!-- Allow multiple line in desktop / landscape mode -->
-      <div class="columns is-multiline">
-        <div class="column">
-          <button
-            v-if="scanQR"
-            class="button is-light is-fullwidth is-warning py-6"
-            @click="scanQR = false"
-          >
-            Close QR Scanner
-          </button>
+    <div class="column is-full">
+      <button
+        v-if="scanQR"
+        class="button is-light is-fullwidth is-warning py-6"
+        @click="scanQR = false"
+      >
+        Close QR Scanner
+      </button>
 
-          <button
-            v-else
-            class="button is-light is-fullwidth is-warning py-6"
-            @click="scanQR = true"
-          >
-            Scan QR
-          </button>
-        </div>
+      <button
+        v-else
+        class="button is-light is-fullwidth is-warning py-6"
+        @click="scanQR = true"
+      >
+        Scan QR
+      </button>
+    </div>
 
-        <div class="column">
-          <router-link
-            :to="{ name: 'search' }"
-            class="button is-light is-fullwidth is-success py-6"
-          >
-            Chemical
-          </router-link>
-        </div>
+    <div class="column is-full">
+      <router-link
+        :to="{ name: 'search' }"
+        class="button is-light is-fullwidth is-success py-6"
+      >
+        Chemical
+      </router-link>
+    </div>
 
-        <div class="column">
-          <router-link
-            :to="{ name: 'search-equipment' }"
-            class="button is-light is-fullwidth is-warning py-6"
-          >
-            Equipment
-          </router-link>
-        </div>
+    <div class="column is-full">
+      <router-link
+        :to="{ name: 'search-equipment' }"
+        class="button is-light is-fullwidth is-warning py-6"
+      >
+        Equipment
+      </router-link>
+    </div>
 
-        <div class="column">
-          <router-link
-            :to="{ name: 'foam-calculator' }"
-            class="button is-light is-fullwidth is-success py-6"
-          >
-            Foam Calculator
-          </router-link>
-        </div>
-      </div>
+    <div class="column is-full">
+      <router-link
+        :to="{ name: 'foam-calculator' }"
+        class="button is-light is-fullwidth is-success py-6"
+      >
+        Foam Calculator
+      </router-link>
+    </div>
 
+    <div class="column is-full">
       <version />
     </div>
   </div>
