@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
-// @todo Tank size diameter, half for radius
-const tankSize = ref<number | undefined>(undefined);
-
 type FoamConcentrateLevels = 0.01 | 0.03 | 0.06;
 type FoamConcentrateLevelsInPercentage = "1%" | "3%" | "6%";
-
 const foamConcentrate = ref<FoamConcentrateLevels>(0.03);
 const foamConcentrateLevels: Array<{
   level: FoamConcentrateLevels;
@@ -17,11 +13,23 @@ const foamConcentrateLevels: Array<{
   { level: 0.06, display: "6%" },
 ];
 
+// Tank size is the diameter, therefore need to halve it first for radius
+const tankSize = ref<number | undefined>(undefined);
+
 // Defaults to 65 mins
 const applicationTime = ref<number>(65);
 
+/** Ensure all the input is valid before showing the results page */
+const inputValidated = computed(
+  () =>
+    tankSize.value !== undefined &&
+    tankSize.value > 0 &&
+    applicationTime.value &&
+    applicationTime.value > 0
+);
+
 // @todo return 0 or NaN?
-// Formula uses 3.142 instead of Pi
+// Formula uses 3.142 instead of Math.PI
 const fssf = computed(() =>
   tankSize.value ? Math.ceil(3.142 * (tankSize.value / 2) ** 2) : 0
 );
@@ -39,26 +47,40 @@ const applicationRate = computed(() => {
   return 10.17;
 });
 
-const total_foam_solution = computed(
-  () => applicationRate.value * applicationTime.value * fssf.value
+const totalFoamSolution = computed(() =>
+  Math.ceil(applicationRate.value * applicationTime.value * fssf.value)
 );
-const waterRequired = computed(() => total_foam_solution.value * 0.97 * 2);
-const fcvr = computed(() => total_foam_solution.value * 0.03 * 2);
+const waterRequired = computed(() =>
+  // Note that `1-foamConcentrate.value` might not be super precise due to floating point math
+  Math.ceil(totalFoamSolution.value * (1 - foamConcentrate.value) * 2)
+);
+const fcvr = computed(() =>
+  Math.ceil(totalFoamSolution.value * foamConcentrate.value * 2)
+);
 </script>
 
 <template>
-  <div class="center">
-    <!-- Stretch everything out to fill the screen as much as possible -->
-    <div style="width: 90vw">
-      <!-- @todo Add a back and home button -->
+  <!-- @todo Make this container on big screens -->
+  <div class="columns is-multiline has-text-left m-2 mb-6">
+    <div class="column is-full">
+      <div class="columns is-multiline is-vcentered is-mobile">
+        <div class="column">
+          <p class="is-size-5 has-text-warning-dark">Foam Calculator</p>
+        </div>
+        <div class="column is-narrow">
+          <button class="button is-light" @click="$router.back">Back</button>
+        </div>
+      </div>
+    </div>
 
-      <!-- Allow multiple line in desktop / landscape mode -->
+    <div class="column is-full box mx-3">
       <div class="columns is-multiline">
         <!-- @todo Add units at end of input and make this right aligned -->
         <div class="column is-full">
           <label for="tank-size">
-            <b>Tank Size (in meters)</b>
+            Tank Size (the diameter in meters)
 
+            <!-- @todo autofocus not working -->
             <input
               v-autofocus
               type="number"
@@ -81,7 +103,7 @@ const fcvr = computed(() => total_foam_solution.value * 0.03 * 2);
             /> -->
 
           <label for="foam-concentrate">
-            <b>Foam Concentrate</b>
+            Foam Concentrate
 
             <div class="select is-fullwidth">
               <select v-model="foamConcentrate">
@@ -101,7 +123,7 @@ const fcvr = computed(() => total_foam_solution.value * 0.03 * 2);
         <!-- @todo Add units at end of input and make this right aligned -->
         <div class="column is-full">
           <label for="tank-size">
-            <b>Required Foam Discharge Time</b>
+            Required Foam Discharge Time
 
             <!-- This defaults to 65 mins -->
             <input
@@ -114,44 +136,45 @@ const fcvr = computed(() => total_foam_solution.value * 0.03 * 2);
           </label>
         </div>
       </div>
+    </div>
 
+    <div v-if="inputValidated" class="column is-full mx-3">
       <div class="columns is-multiline">
-        <!-- Make this bolded as this is the main thing -->
-        <div class="column is-full">
-          <!-- foam concentrate volume required -->
-          Volume of foam concentrate required (inclusive of 100% backup supply)
+        <div class="column is-full pb-0">
+          <b class="has-text-warning-dark">Results</b>
+        </div>
+
+        <div class="column is-full box">
+          <b>Volume of Foam Concentrate required</b>
+          <br />
+          (inclusive of 100% backup supply)
           <br />
           {{ fcvr }}
         </div>
 
-        <div class="column is-full">
-          total amount of water required
+        <div class="column is-full box">
+          Total amount of <b>Water</b> required
           <br />
           {{ waterRequired }}
         </div>
 
-        <div class="column is-full">
-          <!-- full surface application density / application rate -->
+        <div class="column is-full box">
           Application Rate
           <br />
           {{ applicationRate }}
         </div>
 
-        <div class="column is-full">
-          <!-- full surface square footage: step 1 (surface area at top of tank) -->
-          <!-- full surface square footage (nearest integer) -->
-          Tank top Surface Area
+        <div class="column is-full box">
+          Tank top <b>Surface Area</b>
           <br />
           {{ fssf }}m<sup>2</sup>
         </div>
 
-        <div class="column is-full">
-          total_foam_solution
+        <div class="column is-full box">
+          Total <b>Foam Solution</b> required
           <br />
-          {{ total_foam_solution }}
+          {{ totalFoamSolution }}
         </div>
-
-        <!-- Add result sharing link -->
       </div>
     </div>
   </div>
