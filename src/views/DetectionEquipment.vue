@@ -26,18 +26,48 @@ const detection_notes = ref<any | undefined>(
 </script>
 
 <template>
-  <div class="has-text-left px-4 pt-4">
-    <div class="columns is-multiline">
-      <div class="column">
-        <p class="title is-4">{{ equipment.name }}</p>
-      </div>
+  <div class="columns is-multiline has-text-left px-4 pt-4">
+    <div class="column">
+      <p class="title is-4">{{ equipment.name }}</p>
+    </div>
 
+    <div class="column content pb-0 mb-0">
+      <p class="subtitle">Operating Temperature</p>
+
+      <ul>
+        <li class="subtitle">
+          <b>{{ equipment["operating temperature"] }}</b>
+        </li>
+      </ul>
+    </div>
+
+    <div class="column">
+      <hr class="my-0" style="background-color: #dedede" />
+    </div>
+
+    <div class="column content pb-0 mb-0">
+      <p class="subtitle">Can use in flammable environment</p>
+
+      <ul>
+        <li class="subtitle">
+          <b>{{ equipment["flammable environment"] }}</b>
+        </li>
+      </ul>
+    </div>
+
+    <div class="column">
+      <hr class="my-0" style="background-color: #dedede" />
+    </div>
+
+    <div v-if="chemicalID">
       <div class="column content pb-0 mb-0">
-        <p class="subtitle">Operating Temperature</p>
+        <p class="subtitle mb-1">
+          Notes for <b>{{ chemicals[chemicalID].name }}</b>
+        </p>
 
         <ul>
-          <li class="subtitle">
-            <b>{{ equipment["operating temperature"] }}</b>
+          <li v-for="(key, i) in equipment.keys" :key="i" class="subtitle mb-1">
+            {{ key }}: <b>{{ detection_notes.values[i] }}</b>
           </li>
         </ul>
       </div>
@@ -45,55 +75,19 @@ const detection_notes = ref<any | undefined>(
       <div class="column">
         <hr class="my-0" style="background-color: #dedede" />
       </div>
+    </div>
 
-      <div class="column content pb-0 mb-0">
-        <p class="subtitle">Can use in flammable environment</p>
+    <div class="column">
+      <Share
+        :options="{
+          title: 'Share this Detection Equipment',
+          text: equipment.name,
+        }"
+      />
+    </div>
 
-        <ul>
-          <li class="subtitle">
-            <b>{{ equipment["flammable environment"] }}</b>
-          </li>
-        </ul>
-      </div>
-
-      <div class="column">
-        <hr class="my-0" style="background-color: #dedede" />
-      </div>
-
-      <div v-if="chemicalID">
-        <div class="column content pb-0 mb-0">
-          <p class="subtitle mb-1">
-            Notes for <b>{{ chemicals[chemicalID].name }}</b>
-          </p>
-
-          <ul>
-            <li
-              v-for="(key, i) in equipment.keys"
-              :key="i"
-              class="subtitle mb-1"
-            >
-              {{ key }}: <b>{{ detection_notes.values[i] }}</b>
-            </li>
-          </ul>
-        </div>
-
-        <div class="column">
-          <hr class="my-0" style="background-color: #dedede" />
-        </div>
-      </div>
-
-      <div class="column">
-        <Share
-          :options="{
-            title: 'Share this Detection Equipment',
-            text: equipment.name,
-          }"
-        />
-      </div>
-
-      <div class="column">
-        <NavBtn />
-      </div>
+    <div class="column">
+      <NavBtn />
     </div>
   </div>
 </template>
