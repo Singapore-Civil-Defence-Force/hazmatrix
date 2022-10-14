@@ -6,7 +6,8 @@ import QRCode from "qrcode";
 import { baseURL } from "../config.js";
 
 // Allow user's to override the default webshare options by passing in a webshare options object with some or all fields
-const { options } = defineProps<{ options: object }>();
+// Not destructuring out to ensure that the options object stay reactive
+const props = defineProps<{ options: object }>();
 
 const showModal = ref<boolean>(false);
 const imageDataURI = ref<string | undefined>(undefined);
@@ -26,7 +27,8 @@ const getWebshare = () => ({
   url: sharingUrl,
 
   // Spread syntax allows this latter object to override fields of the same name
-  ...options,
+  // Using props.options instead of options directly to ensure it stays reactive
+  ...props.options,
 });
 
 function shareViaWebShare() {
