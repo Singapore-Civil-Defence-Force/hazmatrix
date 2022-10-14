@@ -3,16 +3,13 @@ import { ref } from "vue";
 
 import all_detection_equipments from "../../data/detection_equipments.json";
 import detection from "../../data/detection.json";
-// import chemicals from "../../data/chemicals.json";
+import chemicals from "../../data/chemicals.json";
 
 import Share from "../components/Share.vue";
 import NavBtn from "../components/NavBtn.vue";
 
 // Get equipment and chemical id from router, where chemical ID is an optional query parameter
 const { id, chemicalID } = defineProps<{ id: string; chemicalID: string }>();
-
-// @todo Only load this async if there is a chemical ID and only put the name onto data object
-const chemicals = ref<string | undefined>(undefined);
 
 // @todo Type this
 // Get the specific detection equipment
