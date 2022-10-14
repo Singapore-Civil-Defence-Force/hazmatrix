@@ -1,9 +1,44 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
+import { baseURL } from "../config";
+import Share from "../components/Share.vue";
+
+// Accept URL query params as props to allow the results of this page to be shareable
+const props = defineProps<{
+  sharedFoamConcentrate?: string;
+  sharedTankSize?: string;
+  sharedApplicationTime?: string;
+}>();
+
 type FoamConcentrateLevels = 0.01 | 0.03 | 0.06;
 type FoamConcentrateLevelsInPercentage = "1%" | "3%" | "6%";
-const foamConcentrate = ref<FoamConcentrateLevels>(0.03);
+
+/**
+ * Function to get foamConcentrateLevel accurately and precisely,
+ * using the props as default value.
+ *
+ * Alternative is to use this type predicate, but the problem is that,
+ * if the parseFloat is not precise, then this will return default value
+ * instead, and return a wrong value shared to others.
+ *
+ * const isFoamConcentrateLevel = (val: number): FoamConcentrateLevels =>
+ *   val === 0.01 || val === 0.03 || val === 0.06 ? val : 0.03;
+ */
+function foamConcentrateLevelConversion(): FoamConcentrateLevels {
+  switch (props.sharedFoamConcentrate) {
+    case "0.01":
+      return 0.01;
+    case "0.03":
+      return 0.03;
+    case "0.06":
+      return 0.06;
+
+    default:
+      return 0.03;
+  }
+}
+const foamConcentrate = ref(foamConcentrateLevelConversion());
 const foamConcentrateLevels: Array<{
   level: FoamConcentrateLevels;
   display: FoamConcentrateLevelsInPercentage;
@@ -14,10 +49,14 @@ const foamConcentrateLevels: Array<{
 ];
 
 // Tank size is the diameter, therefore need to halve it first for radius
-const tankSize = ref<number | undefined>(undefined);
+const tankSize = ref<number | undefined>(
+  props.sharedTankSize ? parseInt(props.sharedTankSize) : undefined
+);
 
 // Defaults to 65 mins
-const applicationTime = ref<number>(65);
+const applicationTime = ref<number>(
+  props.sharedApplicationTime ? parseInt(props.sharedApplicationTime) : 65
+);
 
 /** Ensure all the input is valid before showing the results page */
 const inputValidated = computed(
@@ -77,7 +116,9 @@ const formatNumber = (num: number | bigint) =>
           <p class="is-size-5 has-text-warning-dark">Foam Calculator</p>
         </div>
         <div class="column is-narrow">
-          <button class="button is-light" @click="$router.back">Back</button>
+          <router-link :to="{ name: 'home' }" class="button is-light">
+            Home
+          </router-link>
         </div>
       </div>
     </div>
@@ -238,6 +279,17 @@ const formatNumber = (num: number | bigint) =>
           <div class="has-text-right">
             {{ formatNumber(totalFoamSolution) }} Lt
           </div>
+        </div>
+
+        <div class="column is-full p-0">
+          <Share
+            :options="{
+              title: 'Share the foam calculator results',
+              url:
+                baseURL +
+                `/foam?sharedFoamConcentrate=${foamConcentrate}&sharedTankSize=${tankSize}&sharedApplicationTime=${applicationTime}`,
+            }"
+          />
         </div>
       </div>
     </div>
