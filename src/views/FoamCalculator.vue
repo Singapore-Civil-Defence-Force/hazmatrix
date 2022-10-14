@@ -54,9 +54,18 @@ const waterRequired = computed(() =>
   // Note that `1-foamConcentrate.value` might not be super precise due to floating point math
   Math.ceil(totalFoamSolution.value * (1 - foamConcentrate.value) * 2)
 );
-const fcvr = computed(() =>
+const foamConcentrateVolume = computed(() =>
   Math.ceil(totalFoamSolution.value * foamConcentrate.value * 2)
 );
+
+/**
+ * Format numbers so that large numbers are more readable with commas.
+ * Not using the 'SG' locale as that uses periods for seperation of 1000s.
+ * Using a hardcoded 'en' locale to ensure that regardless of device locale,
+ * the output will always be the same/consistent using commas for 1000 seperation.
+ */
+const formatNumber = (num: number | bigint) =>
+  Intl.NumberFormat("en").format(num);
 </script>
 
 <template>
@@ -75,25 +84,38 @@ const fcvr = computed(() =>
 
     <div class="column is-full box mx-3">
       <div class="columns is-multiline">
-        <!-- @todo Add units at end of input and make this right aligned -->
         <div class="column is-full">
           <label for="tank-size">
             Tank Size (the diameter in meters)
 
             <!-- @todo autofocus not working -->
-            <input
-              v-autofocus
-              type="number"
-              v-model="tankSize"
-              placeholder="E.g. 20"
-              required
-              class="input"
-            />
+            <div class="field has-addons">
+              <p class="control is-expanded">
+                <input
+                  v-autofocus
+                  type="number"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  min="1"
+                  v-model="tankSize"
+                  placeholder="E.g. 100"
+                  required
+                  class="input has-text-right"
+                />
+              </p>
+              <p class="control">
+                <a class="button is-static">meters</a>
+              </p>
+            </div>
           </label>
         </div>
 
         <div class="column is-full">
-          <!-- @todo Allow manual input with auto suggested defaults -->
+          <!--
+            Alternative is to allow manual input with auto suggested defaults,
+            so that in case the percentage changes in the future the app does
+            not need to be updated before they can use those number.
+          -->
           <!-- <input
               type="string"
               v-model="foamConcentrate"
@@ -106,7 +128,13 @@ const fcvr = computed(() =>
             Foam Concentrate
 
             <div class="select is-fullwidth">
-              <select v-model="foamConcentrate">
+              <!--
+                Note that this right text-alignment will not work on safari
+                Reference:
+                https://stackoverflow.com/questions/11182559/text-align-is-not-working-on-safari-select
+                https://bugs.webkit.org/show_bug.cgi?id=40216
+              -->
+              <select v-model="foamConcentrate" class="has-text-right">
                 <option
                   v-for="({ level, display }, key) in foamConcentrateLevels"
                   :value="level"
@@ -120,25 +148,51 @@ const fcvr = computed(() =>
           </label>
         </div>
 
-        <!-- @todo Add units at end of input and make this right aligned -->
         <div class="column is-full">
           <label for="tank-size">
             Required Foam Discharge Time
 
-            <!-- This defaults to 65 mins -->
-            <input
-              type="number"
-              v-model="applicationTime"
-              placeholder="E.g. 65"
-              required
-              class="input"
-            />
+            <div class="field has-addons">
+              <p class="control is-expanded">
+                <!-- This defaults to 65 mins -->
+                <!--
+                  On click this will select all for user to type over, if not, the cursor
+                  might be placed at the front of the number, which means user have to
+                  move the cursor to the back before they can clear the original input.
+                -->
+                <input
+                  type="number"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  min="1"
+                  v-model="applicationTime"
+                  placeholder="E.g. 65"
+                  required
+                  class="input has-text-right"
+                  onclick="this.select();"
+                />
+              </p>
+              <p class="control">
+                <a class="button is-static">minutes</a>
+              </p>
+            </div>
           </label>
         </div>
       </div>
     </div>
 
-    <div v-if="inputValidated" class="column is-full mx-3">
+    <!--
+      Show simple note to user when no results is displayed in case
+      they are confused how to get the results to show
+    -->
+    <div v-if="!inputValidated" class="column is-full">
+      <div class="box has-text-grey">
+        Results will appear after entering all input
+      </div>
+    </div>
+
+    <!-- Only show the results section once input has been validated -->
+    <div v-else class="column is-full mx-3">
       <div class="columns is-multiline">
         <div class="column is-full pb-0">
           <b class="has-text-warning-dark">Results</b>
@@ -148,34 +202,54 @@ const fcvr = computed(() =>
           <b>Volume of Foam Concentrate required</b>
           <br />
           (inclusive of 100% backup supply)
-          <br />
-          {{ fcvr }}
+          <hr class="m-1" />
+          <div class="has-text-right">
+            {{ formatNumber(foamConcentrateVolume) }} Lt
+          </div>
         </div>
 
         <div class="column is-full box">
-          Total amount of <b>Water</b> required
-          <br />
-          {{ waterRequired }}
+          Total amount of
+          <span class="has-text-weight-semibold">Water</span> required
+          <hr class="m-1" />
+          <div class="has-text-right">{{ formatNumber(waterRequired) }} Lt</div>
         </div>
 
         <div class="column is-full box">
           Application Rate
-          <br />
-          {{ applicationRate }}
+          <hr class="m-1" />
+          <div class="has-text-right">
+            {{ applicationRate }} Lt/min/m<sup>2</sup>
+          </div>
         </div>
 
         <div class="column is-full box">
-          Tank top <b>Surface Area</b>
-          <br />
-          {{ fssf }}m<sup>2</sup>
+          Tank top <span class="has-text-weight-semibold">Surface Area</span>
+          <hr class="m-1" />
+          <div class="has-text-right">
+            {{ formatNumber(fssf) }} m<sup>2</sup>
+          </div>
         </div>
 
         <div class="column is-full box">
-          Total <b>Foam Solution</b> required
-          <br />
-          {{ totalFoamSolution }}
+          Total
+          <span class="has-text-weight-semibold">Foam Solution</span> required
+          <hr class="m-1" />
+          <div class="has-text-right">
+            {{ formatNumber(totalFoamSolution) }} Lt
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+/*
+  Color input pink if it is invalid --> e.g. when telephone number does not match the specified pattern
+  Will only activate if the placeholder is not currently being shown, meaning will not show before user type anything
+*/
+input:not(:placeholder-shown):invalid {
+  background-color: lightpink;
+}
+</style>
