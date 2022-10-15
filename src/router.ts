@@ -44,6 +44,8 @@ export default createRouter({
       path: "/foam",
       name: "foam-calculator",
       component: FoamCalculator,
+      // Pass URL query parameters as prop to component
+      props: (route) => route.query,
     },
     {
       path: "/search",

@@ -14,4 +14,4 @@ export const baseURL =
   // This ensures that the baseURL used aligns with the hostname set in the CNAME file for github pages jekyll deployment.
   process.env.NODE_ENV === "production"
     ? `https://${process.env.CNAME}/#`
-    : "http://localhost:8080/#";
+    : "https://localhost:8080/#";
