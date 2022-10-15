@@ -14,3 +14,12 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+// Add type declaration for global constants that are set using the `define` prop in vite.config.ts
+// E.g. `__vite_inject.buildTime`
+declare const __vite_inject: {
+  readonly buildTime: string;
+  readonly commitHash: string;
+  readonly gitBranch: string;
+  readonly CNAME: string;
+};
