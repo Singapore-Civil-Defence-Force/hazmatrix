@@ -70,7 +70,7 @@ const inputValidated = computed(
 
 // @todo return 0 or NaN?
 // Formula uses 3.142 instead of Math.PI
-const fssf = computed(() =>
+const surfaceArea = computed(() =>
   tankSize.value ? Math.ceil(3.142 * (tankSize.value / 2) ** 2) : 0
 );
 
@@ -88,7 +88,7 @@ const applicationRate = computed(() => {
 });
 
 const totalFoamSolution = computed(() =>
-  Math.ceil(applicationRate.value * applicationTime.value * fssf.value)
+  Math.ceil(applicationRate.value * applicationTime.value * surfaceArea.value)
 );
 const waterRequired = computed(() =>
   // Note that `1-foamConcentrate.value` might not be super precise due to floating point math
@@ -276,7 +276,9 @@ const formatNumber = (num: number | bigint) =>
           Tank top <span class="has-text-weight-semibold">Surface Area</span>
           <hr class="m-1" />
           <div class="has-text-right">
-            <CopyOnClick>{{ formatNumber(fssf) }} m<sup>2</sup></CopyOnClick>
+            <CopyOnClick>
+              {{ formatNumber(surfaceArea) }} m<sup>2</sup>
+            </CopyOnClick>
           </div>
         </div>
 
