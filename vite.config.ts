@@ -47,10 +47,16 @@ export default defineConfig(({ mode }) => {
      * Replace these strings with the appropriate values during build time.
      * Update `.eslintrc.cjs` and `env.d.ts` whenever new values are added to get typing and lint support
      *
+     *
      * ****IMPORTANT NOTE****
-     * Reference: https://vitejs.dev/config/shared-options.html#define
      * All the string values MUST be wrapped in a `JSON.stringify()` call as string values will be used
      * as raw expressions starting from vite v2. JSON.stringify will convert it to be explicitly quoted.
+     *
+     * Reference:
+     * - https://vitejs.dev/config/shared-options.html#define
+     * - https://github.com/vitejs/vite/issues/6235
+     * - https://github.com/vitejs/vite/issues/2058
+     * - https://github.com/vitejs/vite/commit/30deabf4aaf7acafdf854f8950355b48be46d9db
      */
     define: {
       "__vite_inject.commitHash": JSON.stringify(gitValues.commitHash),
