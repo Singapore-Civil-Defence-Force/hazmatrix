@@ -11,6 +11,7 @@ import Chemical from "./views/Chemical.vue";
 import DetectionEquipment from "./views/DetectionEquipment.vue";
 import MitigationEquipment from "./views/MitigationEquipment.vue";
 import PPE from "./views/PPE.vue";
+import NotFound from "./views/404.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -95,7 +96,7 @@ export default createRouter({
       // Wild card so any invalid name comes here
       path: "/:pathMatch(.*)*",
       name: "404",
-      component: () => import("./views/404.vue"),
+      component: NotFound,
 
       // Alternative is to just redirect back to home page directly
       // However doing so means user would not be able to report issues like this
