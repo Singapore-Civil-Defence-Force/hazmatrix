@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 
 import { baseURL } from "../config";
 import Share from "../components/Share.vue";
+import CopyOnClick from "../components/CopyOnClick.vue";
 
 // Accept URL query params as props to allow the results of this page to be shareable
 const props = defineProps<{
@@ -237,6 +238,7 @@ const formatNumber = (num: number | bigint) =>
       <div class="columns is-multiline">
         <div class="column is-full pb-0">
           <b class="has-text-warning-dark">Results</b>
+          <span class="ml-2 has-text-grey">(Click to Copy)</span>
         </div>
 
         <div class="column is-full box">
@@ -245,7 +247,9 @@ const formatNumber = (num: number | bigint) =>
           (inclusive of 100% backup supply)
           <hr class="m-1" />
           <div class="has-text-right">
-            {{ formatNumber(foamConcentrateVolume) }} Lt
+            <CopyOnClick>
+              {{ formatNumber(foamConcentrateVolume) }} Lt
+            </CopyOnClick>
           </div>
         </div>
 
@@ -253,14 +257,18 @@ const formatNumber = (num: number | bigint) =>
           Total amount of
           <span class="has-text-weight-semibold">Water</span> required
           <hr class="m-1" />
-          <div class="has-text-right">{{ formatNumber(waterRequired) }} Lt</div>
+          <div class="has-text-right">
+            <CopyOnClick> {{ formatNumber(waterRequired) }} Lt </CopyOnClick>
+          </div>
         </div>
 
         <div class="column is-full box">
           Application Rate
           <hr class="m-1" />
           <div class="has-text-right">
-            {{ applicationRate }} Lt/min/m<sup>2</sup>
+            <CopyOnClick>
+              {{ applicationRate }} Lt/min/m<sup>2</sup>
+            </CopyOnClick>
           </div>
         </div>
 
@@ -268,7 +276,7 @@ const formatNumber = (num: number | bigint) =>
           Tank top <span class="has-text-weight-semibold">Surface Area</span>
           <hr class="m-1" />
           <div class="has-text-right">
-            {{ formatNumber(fssf) }} m<sup>2</sup>
+            <CopyOnClick>{{ formatNumber(fssf) }} m<sup>2</sup></CopyOnClick>
           </div>
         </div>
 
@@ -277,7 +285,9 @@ const formatNumber = (num: number | bigint) =>
           <span class="has-text-weight-semibold">Foam Solution</span> required
           <hr class="m-1" />
           <div class="has-text-right">
-            {{ formatNumber(totalFoamSolution) }} Lt
+            <CopyOnClick>
+              {{ formatNumber(totalFoamSolution) }} Lt
+            </CopyOnClick>
           </div>
         </div>
 
