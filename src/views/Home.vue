@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 // @todo Only import QR Code Scanner when needed?
-import QRCodeScanner from "./QRCodeScanner.vue";
+import QRCodeScanner from "../components/QRCodeScanner.vue";
 import version from "../components/Version.vue";
 
 // Variable used as a flag to show/hide the QR code scanner
