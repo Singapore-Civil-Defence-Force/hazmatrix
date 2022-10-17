@@ -95,9 +95,11 @@ export default createRouter({
       // Wild card so any invalid name comes here
       path: "/:pathMatch(.*)*",
       name: "404",
-      // @todo Might add a 404 view instead of just redirecting back to home page
-      // component: () => import("./views/404.vue"),
-      redirect: { name: "home" },
+      component: () => import("./views/404.vue"),
+
+      // Alternative is to just redirect back to home page directly
+      // However doing so means user would not be able to report issues like this
+      // redirect: { name: "home" },
     },
   ],
 });
