@@ -8,7 +8,7 @@ import Share from "../components/Share.vue";
 import { baseURL } from "../config";
 
 // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
-const { query } = defineProps<{ query: string }>();
+const { query } = defineProps<{ query?: string }>();
 
 // Fixed search options for now, but might allow user to customize this in the future
 const search_options = {
