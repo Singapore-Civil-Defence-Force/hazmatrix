@@ -16,19 +16,6 @@ const version =
 <template>
   <!-- Fixed styles to ensure that the build time string it not too long and extend pass the mobile components -->
   <div class="has-text-left" style="font-size: 0.7em; max-width: 30em">
-    <!-- @todo
-      Pre-fill the form with version number and build time info
-      https://guide.form.gov.sg/AdvancedGuide.html#pre-fill
-    -->
-    <a
-      class="has-text-link is-size-6"
-      href="https://go.gov.sg/scdf-hazmatrix"
-      target="_blank"
-    >
-      Feedback Form
-    </a>
-    <br />
-
     Version: {{ version }}
     <br />
 
