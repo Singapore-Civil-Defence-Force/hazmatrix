@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-// @todo Only import QR Code Scanner when needed?
 import QRCodeScanner from "../components/QRCodeScanner.vue";
-import version from "../components/Version.vue";
+import Version from "../components/Version.vue";
 
 // Variable used as a flag to show/hide the QR code scanner
 const scanQR = ref<boolean>(false);
@@ -70,9 +69,9 @@ const scanQR = ref<boolean>(false);
         About / Help
       </router-link>
     </div>
-
-    <div class="column is-full">
-      <version />
-    </div>
   </div>
+
+  <footer class="footer py-4">
+    <Version />
+  </footer>
 </template>
