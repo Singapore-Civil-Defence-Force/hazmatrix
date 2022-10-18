@@ -11,6 +11,7 @@ import Chemical from "./views/Chemical.vue";
 import DetectionEquipment from "./views/DetectionEquipment.vue";
 import MitigationEquipment from "./views/MitigationEquipment.vue";
 import PPE from "./views/PPE.vue";
+import About from "./views/About.vue";
 import NotFound from "./views/404.vue";
 
 export default createRouter({
@@ -89,6 +90,11 @@ export default createRouter({
       props: true,
       name: "PPE",
       component: PPE,
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
     },
 
     // NotFound Client side 404 route

@@ -66,6 +66,12 @@ const scanQR = ref<boolean>(false);
     </div>
 
     <div class="column is-full">
+      <router-link :to="{ name: 'about' }" class="button is-light is-fullwidth">
+        About / Help
+      </router-link>
+    </div>
+
+    <div class="column is-full">
       <version />
     </div>
   </div>
