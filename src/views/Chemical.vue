@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Chemical, Chemicals } from "../types";
+
 import chemicals from "../../data/chemicals.json";
 import all_detection_equipments from "../../data/detection_equipments.json";
 import all_mitigation_equipments from "../../data/mitigation_equipments.json";
@@ -13,8 +15,13 @@ import NavBtn from "../components/NavBtn.vue";
 const { id } = defineProps<{ id: string }>();
 
 // Get the chemical directly with id as the key
-// @todo Throw error and handle this if chemical is not found
-const chemical = chemicals[id];
+// This typing assumes that a valid chemical is always available for the given ID
+const chemical = (<Chemicals>chemicals)[id];
+
+// @todo Handle chemical not found error
+if (chemical === undefined) {
+  throw new Error(`INTERNAL ERR: Chemical is not defined for id '${id}'`);
+}
 
 // An array of equipments that can be used to detect the chemical with id of this.id
 // @todo There might be no equipment for this chemical, therefore fallback to empty object to prevent method from throwing. Remove once data source is filled
