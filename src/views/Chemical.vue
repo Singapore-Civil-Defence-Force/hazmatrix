@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Chemical, Chemicals } from "../types";
+import type { Chemicals } from "../types";
 
 import chemicals from "../../data/chemicals.json";
 import all_detection_equipments from "../../data/detection_equipments.json";
@@ -13,6 +13,16 @@ import NavBtn from "../components/NavBtn.vue";
 
 // Get chemical's id from router
 const { id } = defineProps<{ id: string }>();
+
+// Runtime prop validation, however this is only useful in development,
+// as this will just show vue warnings in console without actually fixing anything.
+// const { id } = defineProps({
+//   id: {
+//     type: String,
+//     required: true,
+//     validator: (id: string) => id in chemicals,
+//   },
+// });
 
 // Get the chemical directly with id as the key
 // This typing assumes that a valid chemical is always available for the given ID
