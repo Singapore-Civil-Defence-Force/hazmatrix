@@ -1,5 +1,6 @@
 {
   "0": {
+    "id": "0",
     "name": "Flange drainage bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "Flange connection: Ø < 21 cm",
@@ -10,6 +11,7 @@
     "flammable environment": "Yes"
   },
   "1": {
+    "id": "1",
     "name": "Leak sealing lance (Chloroprene rubber)",
     "Mitigation Limitations": [
       [
@@ -27,6 +29,7 @@
     "flammable environment": "Yes"
   },
   "2": {
+    "id": "2",
     "name": "Mini leak sealing bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "For container Ø 10-90 cm",
@@ -44,6 +47,7 @@
     "flammable environment": "Yes"
   },
   "3": {
+    "id": "3",
     "name": "Leak sealing bag (Chloroprene rubber)",
     "Mitigation Limitations": [
       "For container Ø > 50 cm",
@@ -58,6 +62,7 @@
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "4": {
+    "id": "4",
     "name": "Leak drainage bag (Natural rubber)",
     "Mitigation Limitations": [
       "For container Ø > 50 cm",
@@ -72,6 +77,7 @@
     "flammable environment": "Yes (Only when using with Vetter's original set)"
   },
   "5": {
+    "id": "5",
     "name": "Pipe sealing bag (Natural rubber)",
     "Mitigation Limitations": [
       "For pipe/drain Ø 10-120 cm",
@@ -94,6 +100,7 @@
     "flammable environment": "Yes"
   },
   "6": {
+    "id": "6",
     "name": "Emergency response containment vessel (ERCV) (Salvage Cylinder)",
     "Mitigation Limitations": [
       "Cylinder size limit",
@@ -107,6 +114,7 @@
     "flammable environment": "Yes"
   },
   "7": {
+    "id": "7",
     "name": "Pipe Clamp (Clamp Ø size: Smaller than 5\")",
     "Mitigation Limitations": [
       "Clamp Ø size: 0.5\", 0.75\", 1\", 1.25\", 1.5\" 2\", 2.5\", 3\", 3.5\", 4\""
@@ -116,6 +124,7 @@
     "flammable environment": "Yes"
   },
   "8": {
+    "id": "8",
     "name": "Pipe Clamp (Clamp Ø size: 5\")",
     "Mitigation Limitations": ["Clamp Ø size: 5\""],
     "Operating Pressure": "10 Bar",
@@ -123,6 +132,7 @@
     "flammable environment": "Yes"
   },
   "9": {
+    "id": "9",
     "name": "Chlorine Kit A - The Kit (Carbon Steel)",
     "Mitigation Limitations": [
       "Contain leaks from 45kg (31.87L)  and 68kg (47.85L) cylinders only",
@@ -133,6 +143,7 @@
     "flammable environment": "No"
   },
   "10": {
+    "id": "10",
     "name": "Chlorine Kit A - Viton Gasket",
     "Mitigation Limitations": [
       "Contain leaks from 45kg (31.87L)  and 68kg (47.85L) cylinders only",
@@ -143,6 +154,7 @@
     "flammable environment": "No"
   },
   "11": {
+    "id": "11",
     "name": "Chlorine Kit B (Pre2014) Viton Gasket",
     "Mitigation Limitations": [
       "Contain leaks from vales, fusible plugs, and in the side wall of chlorine one ton  containers that conform to specification DOT 106A500X only"
@@ -152,6 +164,7 @@
     "flammable environment": "No"
   },
   "12": {
+    "id": "12",
     "name": "Chlorine Kit B (Pre2014) Garlock 3000",
     "Mitigation Limitations": [
       "Contain leaks from vales, fusible plugs, and in the side wall of chlorine one ton  containers that conform to specification DOT 106A500X only"
@@ -161,6 +174,7 @@
     "flammable environment": "No"
   },
   "13": {
+    "id": "13",
     "name": "Responder kit (urethane pad)",
     "Mitigation Limitations": [
       "Can only be used on small leaks or cracks on initial mitigation (Below chemical resistance for eu pad)"
@@ -170,6 +184,7 @@
     "flammable environment": "Yes"
   },
   "14": {
+    "id": "14",
     "name": "Typhoon vacuum cleaner (304 SS used for below ratings)",
     "Mitigation Limitations": [
       "Size: 68 x 56 x 91 cm",
@@ -182,6 +197,7 @@
     "flammable environment": "No"
   },
   "15": {
+    "id": "15",
     "name": "Decanting pump",
     "Mitigation Limitations": [
       "Cannot be used in confined spaces as it uses electrical supply to power up",
@@ -192,6 +208,7 @@
     "flammable environment": "Yes (But not for Dust Environment)"
   },
   "16": {
+    "id": "16",
     "name": "Hazmat pump",
     "Mitigation Limitations": [
       "Cannot be used in confined space environment as it uses electrical supply is used to power up the appliance"
