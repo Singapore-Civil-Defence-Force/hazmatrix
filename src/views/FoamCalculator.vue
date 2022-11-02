@@ -245,10 +245,12 @@ const formatNumber = (num: number | bigint) =>
           <b>Volume of Foam Concentrate required</b>
           <br />
           (inclusive of 100% backup supply)
-          <hr class="m-1" />
+          <hr class="m-1 mb-2" />
           <div class="has-text-right">
             <CopyOnClick>
-              {{ formatNumber(foamConcentrateVolume) }} Lt
+              <span class="is-size-4">
+                {{ formatNumber(foamConcentrateVolume) }} Lt
+              </span>
             </CopyOnClick>
           </div>
         </div>
@@ -256,39 +258,49 @@ const formatNumber = (num: number | bigint) =>
         <div class="column is-full box">
           Total amount of
           <span class="has-text-weight-semibold">Water</span> required
-          <hr class="m-1" />
+          <hr class="m-1 mb-2" />
           <div class="has-text-right">
-            <CopyOnClick> {{ formatNumber(waterRequired) }} Lt </CopyOnClick>
+            <CopyOnClick>
+              <span class="is-size-4">
+                {{ formatNumber(waterRequired) }} Lt
+              </span>
+            </CopyOnClick>
           </div>
         </div>
 
         <div class="column is-full box">
           Total
           <span class="has-text-weight-semibold">Foam Solution</span> required
-          <hr class="m-1" />
+          <hr class="m-1 mb-2" />
           <div class="has-text-right">
             <CopyOnClick>
-              {{ formatNumber(totalFoamSolution) }} Lt
+              <span class="is-size-4">
+                {{ formatNumber(totalFoamSolution) }} Lt
+              </span>
             </CopyOnClick>
           </div>
         </div>
 
         <div class="column is-full box">
           Application Rate
-          <hr class="m-1" />
+          <hr class="m-1 mb-2" />
           <div class="has-text-right">
             <CopyOnClick>
-              {{ applicationRate }} Lt/min/m<sup>2</sup>
+              <span class="is-size-4">
+                {{ applicationRate }} Lt/min/m<sup>2</sup>
+              </span>
             </CopyOnClick>
           </div>
         </div>
 
         <div class="column is-full box">
           Tank top <span class="has-text-weight-semibold">Surface Area</span>
-          <hr class="m-1" />
+          <hr class="m-1 mb-2" />
           <div class="has-text-right">
             <CopyOnClick>
-              {{ formatNumber(surfaceArea) }} m<sup>2</sup>
+              <span class="is-size-4">
+                {{ formatNumber(surfaceArea) }} m<sup>2</sup>
+              </span>
             </CopyOnClick>
           </div>
         </div>
