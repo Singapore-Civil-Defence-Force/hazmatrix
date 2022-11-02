@@ -90,12 +90,12 @@ const mitigation_equipments = Object.values(mitigation[id] || {}).sort(
     <details class="column">
       <summary><b>PPE</b></summary>
 
-      <div v-for="(PPE, i) in PPEs" :key="i" class="card px-4 my-4">
+      <div v-for="PPE in PPEs" :key="PPE.id" class="card px-4 my-4">
         <!-- Display the card content in a router-link element to make the card's content section clickable -->
         <router-link
           :to="{
             name: 'PPE',
-            params: { id: i },
+            params: { id: PPE.id },
           }"
           class="card-content content"
         >
