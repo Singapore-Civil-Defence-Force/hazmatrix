@@ -263,6 +263,17 @@ const formatNumber = (num: number | bigint) =>
         </div>
 
         <div class="column is-full box">
+          Total
+          <span class="has-text-weight-semibold">Foam Solution</span> required
+          <hr class="m-1" />
+          <div class="has-text-right">
+            <CopyOnClick>
+              {{ formatNumber(totalFoamSolution) }} Lt
+            </CopyOnClick>
+          </div>
+        </div>
+
+        <div class="column is-full box">
           Application Rate
           <hr class="m-1" />
           <div class="has-text-right">
@@ -278,17 +289,6 @@ const formatNumber = (num: number | bigint) =>
           <div class="has-text-right">
             <CopyOnClick>
               {{ formatNumber(surfaceArea) }} m<sup>2</sup>
-            </CopyOnClick>
-          </div>
-        </div>
-
-        <div class="column is-full box">
-          Total
-          <span class="has-text-weight-semibold">Foam Solution</span> required
-          <hr class="m-1" />
-          <div class="has-text-right">
-            <CopyOnClick>
-              {{ formatNumber(totalFoamSolution) }} Lt
             </CopyOnClick>
           </div>
         </div>
