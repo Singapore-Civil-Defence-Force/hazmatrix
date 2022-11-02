@@ -2,7 +2,6 @@
 import { ref } from "vue";
 
 import QRCodeScanner from "../components/QRCodeScanner.vue";
-import Version from "../components/Version.vue";
 
 // Variable used as a flag to show/hide the QR code scanner
 const scanQR = ref<boolean>(false);
@@ -22,7 +21,7 @@ const scanQR = ref<boolean>(false);
     <div class="column is-full">
       <button
         v-if="scanQR"
-        class="button is-light is-fullwidth is-warning py-6"
+        class="button is-light is-fullwidth is-warning py-6 is-size-4"
         @click="scanQR = false"
       >
         Close QR Scanner
@@ -30,17 +29,17 @@ const scanQR = ref<boolean>(false);
 
       <button
         v-else
-        class="button is-light is-fullwidth is-warning py-6"
+        class="button is-light is-fullwidth is-warning py-6 is-size-4"
         @click="scanQR = true"
       >
-        Scan QR
+        Scan HazMatrix QR code
       </button>
     </div>
 
     <div class="column is-full">
       <router-link
         :to="{ name: 'search' }"
-        class="button is-light is-fullwidth is-success py-6"
+        class="button is-light is-fullwidth is-success py-6 is-size-4"
       >
         Chemical
       </router-link>
@@ -49,7 +48,7 @@ const scanQR = ref<boolean>(false);
     <div class="column is-full">
       <router-link
         :to="{ name: 'search-equipment' }"
-        class="button is-light is-fullwidth is-warning py-6"
+        class="button is-light is-fullwidth is-warning py-6 is-size-4"
       >
         Equipment
       </router-link>
@@ -58,7 +57,7 @@ const scanQR = ref<boolean>(false);
     <div class="column is-full">
       <router-link
         :to="{ name: 'foam-calculator' }"
-        class="button is-light is-fullwidth is-success py-6"
+        class="button is-light is-fullwidth is-success py-6 is-size-4"
       >
         Foam Calculator
       </router-link>
@@ -70,8 +69,4 @@ const scanQR = ref<boolean>(false);
       </router-link>
     </div>
   </div>
-
-  <footer class="footer py-4">
-    <Version />
-  </footer>
 </template>
