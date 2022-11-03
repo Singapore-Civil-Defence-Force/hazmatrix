@@ -21,8 +21,6 @@ oof.setBaseURL(
 );
 
 import { createApp } from "vue";
-import { createPinia } from "pinia";
-import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import router from "./router";
 import App from "./App.vue";
 
@@ -31,6 +29,5 @@ import autofocusDirective from "./directives/autofocus";
 // Create new vue app
 createApp(App)
   .use(router)
-  .use(createPinia().use(piniaPluginPersistedstate))
   .directive("autofocus", autofocusDirective)
   .mount("#app");
