@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSlots } from "vue";
+import { notif } from "../notif";
 
 const slots = useSlots();
 
@@ -11,7 +12,7 @@ const props = defineProps<{
 /**
  * Write a string to the user's clipboard
  */
-function copy() {
+async function copy() {
   // Allow user to copy the slot content directly
   // But this requires a runtime check to ensure that either a string is
   // passed in or the slot is defined since it cant be done statically.
@@ -21,8 +22,13 @@ function copy() {
 
   if (!copyString) alert("RUNTIME ERR: CopyOnClick copy string is empty!");
 
-  // @todo Notify user on successful copy
-  navigator.clipboard.writeText(copyString || "");
+  await navigator.clipboard.writeText(copyString || "").catch(function () {
+    // Notify user on failed copy
+    notif.showNotif("Failed to copy!");
+  });
+
+  // Notify user on successful copy
+  notif.showNotif("Copied!");
 }
 </script>
 

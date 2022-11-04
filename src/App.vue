@@ -1,5 +1,36 @@
+<script setup lang="ts">
+import { notif } from "./notif";
+</script>
+
 <!-- Parent component that contains and switches between all the view components using view router's router-view -->
 <template>
+  <!--
+    Overlaying notification banner component.
+
+    Use a fixed position and apply overlay style so that the notification will
+    not take up space on the normal plane and push everything else down.
+   -->
+  <div
+    v-if="notif.notif"
+    style="position: fixed; top: 1rem; z-index: 100; width: 100%"
+  >
+    <div class="container mx-4">
+      <!-- Only apply the box shadow to the notification bar itself -->
+      <div
+        class="notification is-primary is-light"
+        style="box-shadow: 0 0.3rem 1rem rgb(0 0 0 / 0.4)"
+      >
+        <button class="delete" @click="notif.clearNotif()"></button>
+
+        <!-- Word wrap CSS added to deal with unusually long slugs on small screens -->
+        <span style="word-wrap: break-word">{{ notif.notifContent }}</span>
+
+        <!-- Alternative allowing HTML content to be shown -->
+        <!-- <span class="word-wrap" v-html="store.notifContent" /> -->
+      </div>
+    </div>
+  </div>
+
   <!--
     Using keep-alive to cache the pages to
     - optimize their rendering time when navigating back and forth a set of views
