@@ -109,8 +109,9 @@
       background: transparent;
     }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
+    /* Normalizing CSS */
     body {
+      /* Hide scrollbar for IE, Edge and Firefox */
       /* IE and Edge */
       -ms-overflow-style: none;
       /* Firefox */
@@ -124,6 +125,14 @@
       -moz-osx-font-smoothing: grayscale;
       text-align: center;
       color: #2c3e50;
+
+      /* Prevent text selection to make it feel more native like */
+      /* Safari */
+      -webkit-user-select: none;
+      /* IE 10 and IE 11 */
+      -ms-user-select: none;
+      /* Standard syntax */
+      user-select: none;
     }
   </style>
 </head>
