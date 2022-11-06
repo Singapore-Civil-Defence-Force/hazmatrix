@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import Version from "../components/Version.vue";
+
+// Use the full commit hash as the version string to prefill the feedback form
+const version = __vite_inject.commitHash;
 </script>
 
 <template>
@@ -10,6 +13,10 @@ import Version from "../components/Version.vue";
         This HazMatrix (Hazmat Operation Matix) application is developed by
         <a href="https://github.com/Jaimeloeuf">JJ</a>
       </p>
+    </div>
+
+    <div class="column is-full">
+      <hr class="m-0" />
     </div>
 
     <div class="column is-full">
@@ -25,7 +32,7 @@ import Version from "../components/Version.vue";
         href="https://go.gov.sg/scdf-hazmatrix"
         target="_blank"
       >
-        Form
+        Feedback Form
       </a>
     </div>
 
