@@ -133,3 +133,23 @@ const shareViaWebShare = (chemicalID: string, chemicalName: string) =>
     </div>
   </div>
 </template>
+
+<style scoped>
+/*
+  Removes the highlight on tap seen on iOS devices
+
+  Using this property to ensure that click behaviour is the same across
+  different mobile devices, by normalizing the behaviour on iOS Safari.
+
+  This has to be set directly in the component, as the CSS rule cannot
+  be inherited for some reason from top level scope in index.html
+
+  References:
+  https://css-tricks.com/snippets/css/remove-gray-highlight-when-tapping-links-in-mobile-safari/
+  https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-tap-highlight-color
+  https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/AdjustingtheTextSize/AdjustingtheTextSize.html#//apple_ref/doc/uid/TP40006510-SW5
+*/
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
