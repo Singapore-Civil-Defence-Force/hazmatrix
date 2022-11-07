@@ -40,9 +40,6 @@ export default defineConfig(({ mode }) => {
       basicSSL(),
     ],
 
-    // @todo Test if this works
-    base: mode === "github-pages" ? "/HazMatrix/" : "/",
-
     /**
      * Replace these strings with the appropriate values during build time.
      * Update `.eslintrc.cjs` and `env.d.ts` whenever new values are added to get typing and lint support

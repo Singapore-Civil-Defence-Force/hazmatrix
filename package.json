@@ -12,8 +12,7 @@
     "build": "npx vite build",
     "build:delete": "npx rimraf ./dist",
     "build:full": "npm run typecheck && npm run build:delete && npm run build",
-    "build:gh-pages": "npm run typecheck && npm run build:delete && npx vite build --mode github-pages",
-    "deploy:gh-pages": "npx gh-pages -d dist"
+    "deploy": "npx gh-pages -d dist"
   },
   "dependencies": {
     "bulma": "^0.9.4",
