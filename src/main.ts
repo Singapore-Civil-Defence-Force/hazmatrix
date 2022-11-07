@@ -6,10 +6,5 @@ import { createApp } from "vue";
 import router from "./router";
 import App from "./App.vue";
 
-import autofocusDirective from "./directives/autofocus";
-
 // Create new vue app
-createApp(App)
-  .use(router)
-  .directive("autofocus", autofocusDirective)
-  .mount("#app");
+createApp(App).use(router).mount("#app");
