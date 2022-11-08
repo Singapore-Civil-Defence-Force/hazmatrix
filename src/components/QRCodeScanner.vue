@@ -66,8 +66,9 @@ function paintOutline(detectedCodes: Array<any>, ctx: any) {
       // Stop scanning by turning camera off
       camera.value = "off";
 
-      // Navigate to new route path using router
-      router.push({ path: qrcodeValue.slice(baseUrlLength) });
+      // Navigate to new route path using router, keeping the URL query params if any
+      // https://stackoverflow.com/a/71793278
+      router.push(qrcodeValue.slice(baseUrlLength));
 
       // Emit event to allow parent component to unmount/remove QR code scanner component using a v-if
       emit("qrcode-detected");
