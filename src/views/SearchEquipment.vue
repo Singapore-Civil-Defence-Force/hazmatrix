@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onActivated } from "vue";
 
 // @todo This only searches for mitigation equipment and not detection equipment
 import equipment from "../../data/mitigation_equipments.json";
@@ -26,6 +26,9 @@ const search_input = ref<string>(query || "");
 
 // Declare a ref to hold the DOM element reference to `searchField`
 const searchField = ref<HTMLInputElement | null>(null);
+
+// Autofocus on search input on view visible
+onActivated(() => searchField.value!.focus());
 
 // Update fuse object when search options is updated
 const fuse = computed(() => new Fuse(Object.values(equipment), search_options));
@@ -56,7 +59,6 @@ function clearSearchInput() {
         <div class="field has-addons">
           <div class="control is-expanded">
             <input
-              v-autofocus
               ref="searchField"
               type="text"
               v-model="search_input"

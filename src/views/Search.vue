@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onActivated } from "vue";
 
 import chemicals from "../../data/chemicals.json";
 import Fuse from "fuse.js";
@@ -25,6 +25,9 @@ const search_input = ref<string>(query || "");
 
 // Declare a ref to hold the DOM element reference to `searchField`
 const searchField = ref<HTMLInputElement | null>(null);
+
+// Autofocus on search input on view visible
+onActivated(() => searchField.value!.focus());
 
 // Update fuse object when search options is updated
 const fuse = computed(() => new Fuse(Object.values(chemicals), search_options));
@@ -64,10 +67,7 @@ const shareViaWebShare = (chemicalID: string, chemicalName: string) =>
 
         <div class="field has-addons">
           <div class="control is-expanded">
-            <!-- @todo Auto focus not working when the site first loads, not sure if because of local HTTPS invalid cert issue -->
-            <!-- @todo NO, it is not working for the deployed version too, it just doesnt work on IOS safari, to test on other mobile devices.. chrome desktop works -->
             <input
-              v-autofocus
               ref="searchField"
               type="text"
               v-model="search_input"

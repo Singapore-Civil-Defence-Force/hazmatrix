@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, onActivated } from "vue";
 
 import { baseURL } from "../config";
 import Share from "../components/Share.vue";
 import CopyOnClick from "../components/CopyOnClick.vue";
+
+// Declare a ref to hold the DOM element reference to `searchField`
+const tanksizeInput = ref<HTMLInputElement | null>(null);
+
+// Autofocus on tanksize input on view visible
+onActivated(() => tanksizeInput.value!.focus());
 
 // Accept URL query params as props to allow the results of this page to be shareable
 const props = defineProps<{
@@ -130,11 +136,10 @@ const formatNumber = (num: number | bigint) =>
           <label for="tank-size">
             Tank Size (the diameter in meters)
 
-            <!-- @todo autofocus not working -->
             <div class="field has-addons">
               <p class="control is-expanded">
                 <input
-                  v-autofocus
+                  ref="tanksizeInput"
                   type="number"
                   inputmode="numeric"
                   pattern="[0-9]*"
