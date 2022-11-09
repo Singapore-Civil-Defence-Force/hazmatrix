@@ -32,20 +32,23 @@ type FoamConcentrateLevelsInPercentage = "1%" | "3%" | "6%";
  * const isFoamConcentrateLevel = (val: number): FoamConcentrateLevels =>
  *   val === 0.01 || val === 0.03 || val === 0.06 ? val : 0.03;
  */
-function foamConcentrateLevelConversion(): FoamConcentrateLevels {
-  switch (props.sharedFoamConcentrate) {
-    case "0.01":
-      return 0.01;
-    case "0.03":
-      return 0.03;
-    case "0.06":
-      return 0.06;
 
-    default:
-      return 0.03;
-  }
-}
-const foamConcentrate = ref(foamConcentrateLevelConversion());
+// Parse out foamConcentrate value using an anonymous function to use the switch statement
+const foamConcentrate = ref(
+  (() => {
+    switch (props.sharedFoamConcentrate) {
+      case "0.01":
+        return 0.01;
+      case "0.03":
+        return 0.03;
+      case "0.06":
+        return 0.06;
+
+      default:
+        return 0.03;
+    }
+  })()
+);
 const foamConcentrateLevels: Array<{
   level: FoamConcentrateLevels;
   display: FoamConcentrateLevelsInPercentage;
