@@ -1,17 +1,49 @@
 const { readFileSync, writeFileSync } = require("fs");
-const Papa = require("papaparse");
 
-const csvString = readFileSync("./test.csv", "utf8");
+/**
+ * Utility function to read the file synchronously and parse it with papaparse
+ */
+const getFile = (fileName) =>
+  require("papaparse").parse(readFileSync(fileName, "utf8")).data;
 
-const parser = require("./index");
+/**
+ * Utility function to stringify the object and save it into the file synchronously.
+ * This function will auto add relative path and the JSON file extension.
+ */
+const saveToDataFile = (data, dataFileName) =>
+  writeFileSync(`./${dataFileName}.json`, JSON.stringify(data));
 
-const { mitigationEquipment, mitigation, chemical } = parser(
-  Papa.parse(csvString).data
-);
+/*
+  Expected sample input from CLI:
 
-writeFileSync(
-  "./mitigation_equipments.json",
-  JSON.stringify(mitigationEquipment)
-);
-writeFileSync("./mitigation.json", JSON.stringify(mitigation));
-writeFileSync("./chemicals.json", JSON.stringify(chemical));
+  node .\cli.js detection
+  node .\cli.js mitigation
+*/
+{
+  // Switch base on the CLI option entered
+  switch (process.argv[2]) {
+    case "detection":
+      const { detectionEquipment, detection } =
+        require("./index").parseDetection(getFile("./detection.csv", "utf8"));
+
+      saveToDataFile(detectionEquipment, "detection_equipments");
+      saveToDataFile(detection, "detection");
+
+      return;
+
+    case "mitigation":
+      const { mitigationEquipment, mitigation, chemical } =
+        require("./index").parseMitigation(getFile("./test.csv", "utf8"));
+
+      saveToDataFile(mitigationEquipment, "mitigation_equipments");
+      saveToDataFile(mitigation, "mitigation");
+      saveToDataFile(chemical, "chemicals");
+
+      return;
+
+    default:
+      console.log("Invalid option selected!");
+  }
+
+  console.log("Parsing complete");
+}
