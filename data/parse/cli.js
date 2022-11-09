@@ -24,7 +24,7 @@ const saveToDataFile = (data, dataFileName) =>
   switch (process.argv[2]) {
     case "detection":
       const { detectionEquipment, detection } =
-        require("./index").parseDetection(getFile("./detection.csv", "utf8"));
+        require("./parseDetection").parse(getFile("./detection.csv", "utf8"));
 
       saveToDataFile(detectionEquipment, "detection_equipments");
       saveToDataFile(detection, "detection");
@@ -33,7 +33,7 @@ const saveToDataFile = (data, dataFileName) =>
 
     case "mitigation":
       const { mitigationEquipment, mitigation, chemical } =
-        require("./index").parseMitigation(getFile("./test.csv", "utf8"));
+        require("./parseMitigation").parse(getFile("./test.csv", "utf8"));
 
       saveToDataFile(mitigationEquipment, "mitigation_equipments");
       saveToDataFile(mitigation, "mitigation");

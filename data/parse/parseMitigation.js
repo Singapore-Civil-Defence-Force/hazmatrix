@@ -65,11 +65,11 @@ function getMitigationStatus(mitigationStatus) {
 }
 
 /**
- * Process the parsed CSV array into data file format
+ * Process the parsed mitigation CSV array into data file format
  * @param {Array<Array<String>>} csv Call this parse function with the parsed CSV string array, `parse(Papa.parse(csvString).data)`
  * @returns {{ mitigationEquipment, mitigation, chemical }} Data file contents for mitigationEquipment, mitigation, chemical
  */
-module.exports = function parse(csv) {
+function parseMitigation(csv) {
   // The number of rows before the start of the first acid, where the first few rows are used for equipment data
   const numOfRowsBeforeAcid = 5;
 
@@ -99,6 +99,7 @@ module.exports = function parse(csv) {
                   ...acc,
                   // Assuming that equipmentID is 0 indexed
                   [equipmentID]: {
+                    // @todo Need this to be string instead of number to match the key type
                     id: equipmentID,
                     status: getMitigationStatus(mitigationStatus),
                   },
@@ -107,6 +108,7 @@ module.exports = function parse(csv) {
           {}
         );
 
+    // @todo Make sure chemical IDs line up correctly, now it does not
     // Slice array to keep the Chemical's data
     const [chemicalName, formula, unNumbers] = row.slice(0, 3);
     chemical[chemicalID] = {
@@ -134,4 +136,6 @@ module.exports = function parse(csv) {
 
   // Basically what is the most compact format i can store my data in, and also how to ensure that the data structure is the most efficient after parsed?
   // maybe instead of  [equipmentID]: mitigationStatus  the value is stored as either 0 (for compatible), 1 (for last resort), String (for conditonally compatible, this one just put the whole string in?)
-};
+}
+
+module.exports.parse = parseMitigation;
