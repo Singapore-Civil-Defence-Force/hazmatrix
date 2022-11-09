@@ -1,4 +1,6 @@
-// Parse the Meta Data into mitigation equipment JSON
+/**
+ * Parse the metadata into mitigation equipment JSON
+ */
 function mitigationEquipmentJSON(metaData) {
   // Extract out the rows individually, hardcoding all the rows now as they most probably will not change
   const [
@@ -26,6 +28,11 @@ function mitigationEquipmentJSON(metaData) {
   // which the other data file, mitigations.json expects mitigation_equipment ID's to be 0 indexed.
   for (let col = 1, len = equipmentNames.length - 1; col < len; col++)
     rObj[col - 1] = {
+      // This needs to be a string instead of number to match the key type of
+      // the generated JSON file which is always string, so that when the JSON
+      // is used directly in the TS files, it will type check properly.
+      id: (col - 1).toString(),
+
       [equipmentNames[0]]: equipmentNames[col],
       [mitigatingLimitations[0]]: mitigatingLimitations[col],
       [operatingPressures[0]]: operatingPressures[col],
@@ -73,7 +80,7 @@ function parseMitigation(csv) {
   // The number of rows before the start of the first acid, where the first few rows are used for equipment data
   const numOfRowsBeforeAcid = 5;
 
-  // Parse Meta Data into mitigation equipment JSON
+  // Parse metadata into mitigation equipment JSON
   const mitigationEquipment = mitigationEquipmentJSON(
     csv.slice(0, numOfRowsBeforeAcid)
   );
@@ -99,8 +106,10 @@ function parseMitigation(csv) {
                   ...acc,
                   // Assuming that equipmentID is 0 indexed
                   [equipmentID]: {
-                    // @todo Need this to be string instead of number to match the key type
-                    id: equipmentID,
+                    // This needs to be a string instead of number to match the key type of
+                    // the generated JSON file which is always string, so that when the JSON
+                    // is used directly in the TS files, it will type check properly.
+                    id: equipmentID.toString(),
                     status: getMitigationStatus(mitigationStatus),
                   },
                 }
@@ -112,7 +121,11 @@ function parseMitigation(csv) {
     // Slice array to keep the Chemical's data
     const [chemicalName, formula, unNumbers] = row.slice(0, 3);
     chemical[chemicalID] = {
-      id: chemicalID,
+      // This needs to be a string instead of number to match the key type of
+      // the generated JSON file which is always string, so that when the JSON
+      // is used directly in the TS files, it will type check properly.
+      id: chemicalID.toString(),
+
       name: chemicalName,
 
       // Defaults to undefined so that it will not be stringified, because an empty string will still be stringified
