@@ -16,12 +16,22 @@ const saveToDataFile = (data, dataFileName) =>
 /*
   Expected sample input from CLI:
 
+  node .\cli.js all
   node .\cli.js detection
   node .\cli.js mitigation
+  
+  @todo Maybe the parser should be a top level thing too outside of data
+  then it will write data to ../parse/*.json
+  
+  @todo This should be index.js instead...
 */
 {
   // Switch base on the CLI option entered
   switch (process.argv[2]) {
+    case "all":
+      // Call both as 2 seperate functions one after the other
+      return;
+
     case "detection":
       const { detectionEquipment, detection } =
         require("./parseDetection").parse(getFile("./detection.csv", "utf8"));
@@ -33,6 +43,7 @@ const saveToDataFile = (data, dataFileName) =>
 
     case "mitigation":
       const { mitigationEquipment, mitigation, chemical } =
+        // @todo THis should not be test.csv...
         require("./parseMitigation").parse(getFile("./test.csv", "utf8"));
 
       saveToDataFile(mitigationEquipment, "mitigation_equipments");
