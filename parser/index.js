@@ -8,10 +8,10 @@ const getFile = (fileName) =>
 
 /**
  * Utility function to stringify the object and save it into the file synchronously.
- * This function will auto add relative path and the JSON file extension.
+ * This function will auto add relative path and the JSON file extension to save in /data/*.
  */
 const saveToDataFile = (data, dataFileName) =>
-  writeFileSync(`./${dataFileName}.json`, JSON.stringify(data));
+  writeFileSync(`../data/${dataFileName}.json`, JSON.stringify(data));
 
 /*
   Expected sample input from CLI:
@@ -19,22 +19,24 @@ const saveToDataFile = (data, dataFileName) =>
   node .\cli.js all
   node .\cli.js detection
   node .\cli.js mitigation
-  
-  @todo Maybe the parser should be a top level thing too outside of data
-  then it will write data to ../parse/*.json
-  
-  @todo This should be index.js instead...
 */
 {
   // Switch base on the CLI option entered
   switch (process.argv[2]) {
     case "all":
+      console.log("Parsing all datasets");
       // Call both as 2 seperate functions one after the other
       return;
 
     case "detection":
+      const detectionFileName = process.argv[3]
+        ? process.argv[3]
+        : "../raw/detection.csv";
+
+      console.log(`Parsing 'detection' dataset from '${detectionFileName}'`);
+
       const { detectionEquipment, detection } =
-        require("./parseDetection").parse(getFile("./detection.csv", "utf8"));
+        require("./parseDetection").parse(getFile(detectionFileName, "utf8"));
 
       saveToDataFile(detectionEquipment, "detection_equipments");
       saveToDataFile(detection, "detection");
@@ -42,9 +44,14 @@ const saveToDataFile = (data, dataFileName) =>
       return;
 
     case "mitigation":
+      const mitigationFileName = process.argv[3]
+        ? process.argv[3]
+        : "../raw/mitigation.csv";
+
+      console.log(`Parsing 'mitigation' dataset from '${mitigationFileName}'`);
+
       const { mitigationEquipment, mitigation, chemical } =
-        // @todo THis should not be test.csv...
-        require("./parseMitigation").parse(getFile("./test.csv", "utf8"));
+        require("./parseMitigation").parse(getFile(mitigationFileName, "utf8"));
 
       saveToDataFile(mitigationEquipment, "mitigation_equipments");
       saveToDataFile(mitigation, "mitigation");
