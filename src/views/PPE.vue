@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PPEs from "../../data/PPE.json";
+import DynamicImage from "../components/DynamicImage.vue";
 
 // Get PPE's id from router
 const { id } = defineProps<{ id: string }>();
@@ -8,10 +9,6 @@ const { id } = defineProps<{ id: string }>();
 // is valid since the parent component is taking the value from the PPE.json directly.
 // @ts-ignore
 const PPE = PPEs[id];
-
-// Need to do this to get the image link dynamically and cannot be done inside the template
-// Reference: https://stackoverflow.com/questions/66419471/vue-3-vite-dynamic-img-src
-const image = new URL(`../assets/PPE/${id}.jpg`, import.meta.url).href;
 </script>
 
 <template>
@@ -38,7 +35,7 @@ const image = new URL(`../assets/PPE/${id}.jpg`, import.meta.url).href;
     </div>
 
     <div class="column is-full">
-      <img class="image" :src="image" alt="PPE" />
+      <DynamicImage :src="`../assets/PPE/${id}.jpg`" alt="PPE" />
     </div>
   </div>
 </template>
