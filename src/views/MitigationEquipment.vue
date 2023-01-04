@@ -5,6 +5,7 @@ import mitigation from "../../data/mitigation.json";
 // @todo Only load this async if there is a chemical ID and only put the name onto data object
 import chemicals from "../../data/chemicals.json";
 
+import DynamicImage from "../components/DynamicImage.vue";
 import Share from "../components/Share.vue";
 import NavBtn from "../components/NavBtn.vue";
 
@@ -24,6 +25,14 @@ const mitigation_status = chemicalID
   <div class="columns is-multiline has-text-left px-4 pt-4">
     <div class="column">
       <p class="title is-4">{{ equipment.name }}</p>
+    </div>
+
+    <div class="column content pb-0 mb-0">
+      <details class="pb-0">
+        <summary class="subtitle">Picture</summary>
+
+        <DynamicImage :src="`../assets/Mitigators/${id}.jpg`" alt="Equipment" />
+      </details>
     </div>
 
     <div class="column content pb-0 mb-0">
