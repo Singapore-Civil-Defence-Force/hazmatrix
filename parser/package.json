@@ -2,7 +2,9 @@
   "name": "parser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "parse:detection": "node ./index.js detection",
+    "parse:mitigation": "node ./index.js mitigation",
+    "parse:all": "node ./index.js all"
   },
   "dependencies": {
     "papaparse": "^5.3.1"

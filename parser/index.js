@@ -16,6 +16,9 @@ const saveToDataFile = (data, dataFileName) =>
 /*
   Expected sample input from CLI:
 
+  @todo let user specify where to find raw data
+  By default expects a folder /raw/** with all the csv data at repo root
+
   node .\cli.js all
   node .\cli.js detection
   node .\cli.js mitigation
