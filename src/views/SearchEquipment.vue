@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, onActivated } from "vue";
 
-// @todo This only searches for mitigation equipment and not detection equipment
-import equipment from "../../data/mitigation_equipments.json";
+import equipment from "../utils/AllEquipments";
+
 import Fuse from "fuse.js";
 
 import Share from "../components/Share.vue";
@@ -31,7 +31,7 @@ const searchField = ref<HTMLInputElement | null>(null);
 onActivated(() => searchField.value!.focus());
 
 // Update fuse object when search options is updated
-const fuse = computed(() => new Fuse(Object.values(equipment), search_options));
+const fuse = computed(() => new Fuse(equipment, search_options));
 
 // Continously search as user input changes
 // Search result is not limited as the total number of equipments is also not alot
@@ -86,17 +86,20 @@ function clearSearchInput() {
     />
 
     <!-- Search results -->
-    <div v-for="result in results" :key="result.item.name" class="column">
+    <div v-for="{ item } in results" :key="item.name" class="column">
       <div class="card px-4">
         <!-- Display card content in a router-link element to make the card's content section clickable -->
         <router-link
           :to="{
-            name: 'mitigation-equipment',
-            params: { id: result.item.id },
+            name:
+              item.type === 'm'
+                ? 'mitigation-equipment'
+                : 'detection-equipment',
+            params: { id: item.id },
           }"
           class="card-content content"
         >
-          <h2>{{ result.item.name }}</h2>
+          <h2>{{ item.name }}</h2>
         </router-link>
       </div>
     </div>
