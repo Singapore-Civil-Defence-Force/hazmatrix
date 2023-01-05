@@ -8,6 +8,24 @@
     "not ie <= 11"
   ],
   "hints": {
-    "meta-viewport": "off"
+    "meta-viewport": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "scrollbar-width",
+          "scroll-behavior"
+        ]
+      }
+    ],
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "meta[name=theme-color]",
+          "meta[name=theme-color]"
+        ]
+      }
+    ]
   }
 }
