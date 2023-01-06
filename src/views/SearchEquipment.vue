@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onActivated } from "vue";
 
-import equipment from "../utils/AllEquipments";
+import equipment from "../utils/AllEquipmentsForSearch";
 
 import Fuse from "fuse.js";
 
