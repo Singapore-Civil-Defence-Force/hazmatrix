@@ -1,25 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, onActivated } from "vue";
-
-import equipment from "../utils/AllEquipmentsForSearch";
-
 import Fuse from "fuse.js";
-
-import Share from "../components/Share.vue";
 
 import { baseURL } from "../config";
 
+import equipment from "../utils/AllEquipmentsForSearch";
+import Share from "../components/Share.vue";
+
 // This search view is shareable, when shared, the URL contains a URL search `query` string, which will be the default search input
 const { query } = defineProps<{ query?: string }>();
-
-// Fixed search options for now, but might allow user to customize this in the future
-const search_options = {
-  keys: ["name"],
-
-  // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
-  // Default: 0.6
-  threshold: 0.5,
-};
 
 // Defaults to the URL `search` query string if there is any
 const search_input = ref<string>(query || "");
@@ -30,12 +19,17 @@ const searchField = ref<HTMLInputElement | null>(null);
 // Autofocus on search input on view visible
 onActivated(() => searchField.value!.focus());
 
-// Update fuse object when search options is updated
-const fuse = computed(() => new Fuse(equipment, search_options));
+const fuse = new Fuse(equipment, {
+  keys: ["name"],
+
+  // When to give up search. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
+  // Default: 0.6
+  threshold: 0.5,
+});
 
 // Continously search as user input changes
 // Search result is not limited as the total number of equipments is also not alot
-const results = computed(() => fuse.value.search(search_input.value));
+const results = computed(() => fuse.search(search_input.value));
 
 // Clear the search input box and re-focus on the search field
 function clearSearchInput() {
